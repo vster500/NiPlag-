@@ -204,3 +204,54 @@ label {
   }
 }
 
+/* DAY 3 - HOMEPAGE */
+
+h1 {
+  font-size: 30px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+section {
+  width: 100%;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product-grid .btn {
+  flex: 1 1 42%;
+}
+
+.product-card h3 {
+  margin: 12px 0 8px;
+  color: var(--primary);
+}
+
+.product-card .btn {
+  margin-top: 14px;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+}
+
+footer a {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+@media (min-width: 700px) {
+  h1 {
+    font-size: 42px;
+  }
+
+  .product-grid .btn {
+    flex: 1;
+  }
+  }
+  
