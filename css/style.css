@@ -255,3 +255,67 @@ footer a {
   }
   }
   
+/* DAY 4 - SEARCH PAGE */
+
+.search-intro {
+  padding: 25px 0;
+}
+
+.search-intro form {
+  margin-top: 16px;
+}
+
+.search-intro .btn {
+  width: 100%;
+}
+
+.search-categories,
+.search-results,
+.search-request,
+.search-buying {
+  margin-bottom: 28px;
+}
+
+.search-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.search-chips a {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 10px 13px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.search-chips a:hover {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.search-request {
+  margin-top: 20px;
+}
+
+.search-request .btn {
+  margin-top: 12px;
+}
+
+@media (min-width: 700px) {
+  .search-intro form {
+    display: flex;
+    gap: 10px;
+  }
+
+  .search-intro .form-control {
+    flex: 1;
+  }
+
+  .search-intro .btn {
+    width: auto;
+  }
+  }
+
