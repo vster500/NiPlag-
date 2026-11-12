@@ -1,1 +1,139 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search wholesale products and suppliers on NiPlag.">
+  <title>Search Products | NiPlag</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">NiPlag<span>.</span></a>
+    <p>Find wholesale products across Kenya.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="search-intro">
+    <h1>Find what you need.</h1>
+    <p class="muted">
+      Search products, compare wholesale prices
+      and discover suppliers.
+    </p>
+
+    <form action="search.html" method="GET">
+      <input
+        class="form-control"
+        type="search"
+        name="q"
+        id="search-input"
+        placeholder="e.g. LED bulbs, phone covers..."
+        required>
+
+      <button class="btn btn-accent" type="submit">
+        Search
+      </button>
+    </form>
+  </section>
+
+  <section class="search-categories">
+    <h2 class="section-title">Popular categories</h2>
+
+    <div class="search-chips">
+      <a href="categories.html">Electronics</a>
+      <a href="categories.html">Electrical</a>
+      <a href="categories.html">Farming</a>
+      <a href="categories.html">Home & Living</a>
+      <a href="categories.html">Accessories</a>
+    </div>
+  </section>
+
+  <section class="search-results">
+
+    <h2 class="section-title" id="search-heading">
+      Wholesale products
+    </h2>
+
+    <div class="notice">
+      <h3>Building our product catalogue</h3>
+      <p>
+        We're adding reviewed wholesale products
+        and supplier information.
+      </p>
+      <p class="muted">
+        Search results will appear here as listings
+        become available.
+      </p>
+    </div>
+
+  </section>
+
+  <section class="search-request notice">
+    <h3>Can't find your product?</h3>
+    <p>
+      Tell us what you're looking for.
+      NiPlag can help search for a supplier.
+    </p>
+
+    <a href="request-item.html" class="btn btn-accent">
+      Request a product
+    </a>
+  </section>
+
+  <section class="search-buying">
+    <h2 class="section-title">Two ways to purchase</h2>
+
+    <div class="product-card">
+      <div class="product-info">
+        <h3>Unlock supplier contact</h3>
+        <p class="muted">
+          Get supplier details and buy directly.
+          The direct transaction is your responsibility.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-info">
+        <h3>Buy through NiPlag</h3>
+        <p class="muted">
+          Ask us to source and coordinate your purchase
+          under agreed terms.
+        </p>
+        <a href="https://wa.me/254754058116"
+           class="btn btn-accent">
+          Contact NiPlag
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="container">
+  <p class="muted">
+    © 2026 NiPlag. Wholesale discovery made easier.
+  </p>
+  <a href="index.html">Back to homepage</a>
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q");
+
+  if (query) {
+    document.getElementById("search-input").value = query;
+    document.getElementById("search-heading").textContent =
+      'Search for: ' + query;
+  }
+</script>
+
+</body>
+  </html>
+  
