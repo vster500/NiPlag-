@@ -398,3 +398,77 @@ footer a {
   }
   }
 
+/* DAY 6 - JIPLAG DEALS PAGE */
+
+.deals-hero {
+  padding: 30px 0;
+}
+
+.deals-hero h1 {
+  margin: 14px 0 10px;
+}
+
+.deals-hero .btn {
+  margin-top: 18px;
+}
+
+.deals-section {
+  margin-bottom: 30px;
+}
+
+.deal-empty {
+  background: white;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 28px 18px;
+  text-align: center;
+}
+
+.deal-empty-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.deal-empty h3 {
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.deal-empty .btn {
+  margin-top: 18px;
+}
+
+.deals-benefits {
+  margin-bottom: 28px;
+}
+
+.deals-benefits .product-card {
+  margin-top: 12px;
+}
+
+.deals-benefits .btn {
+  margin-top: 14px;
+}
+
+.deals-notice {
+  margin: 25px 0;
+}
+
+.deals-notice h3 {
+  margin-bottom: 8px;
+}
+
+.deals-footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+
+.deals-footer a {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.deals-footer p + p {
+  margin-top: 12px;
+  }
+
