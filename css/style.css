@@ -472,3 +472,144 @@ footer a {
   margin-top: 12px;
   }
 
+/* DAY 7 - PRODUCT DETAILS PAGE */
+
+.product-breadcrumb {
+  padding: 18px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.product-breadcrumb a {
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+.product-detail {
+  margin-bottom: 30px;
+}
+
+.product-detail-image {
+  width: 100%;
+  min-height: 240px;
+  background: #e9eee9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.product-detail-image span {
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+.product-detail-image p {
+  font-size: 13px;
+}
+
+.product-detail-info h1 {
+  margin: 12px 0;
+}
+
+.product-description {
+  margin: 16px 0;
+  color: var(--muted);
+}
+
+.product-price-panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.price-row:last-child {
+  border-bottom: none;
+}
+
+.price-row strong {
+  text-align: right;
+  color: var(--primary);
+}
+
+.profit-row strong {
+  color: #236b39;
+}
+
+.product-facts {
+  background: white;
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.product-facts p {
+  font-size: 13px;
+  margin: 9px 0;
+}
+
+.product-verification {
+  margin: 18px 0;
+  padding: 15px;
+  background: #edf4ef;
+  border-radius: var(--radius);
+}
+
+.product-verification p {
+  margin-top: 6px;
+}
+
+.product-buying {
+  margin-bottom: 30px;
+}
+
+.product-buying .product-card {
+  margin-top: 14px;
+}
+
+.product-buying .btn {
+  margin-top: 14px;
+}
+
+.product-more {
+  margin: 25px 0;
+}
+
+.product-more .btn {
+  margin: 6px 4px 6px 0;
+}
+
+.product-footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 700px) {
+  .product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .product-detail-image {
+    min-height: 400px;
+    margin-bottom: 0;
+  }
+  }
+
