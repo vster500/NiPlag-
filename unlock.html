@@ -1,1 +1,135 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlock Supplier Contact | NiPlag</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">NiPlag<span>.</span></div>
+  <p>Find it. Unlock it. Make money.</p>
+</header>
+
+<main class="container">
+
+  <section class="unlock-hero">
+    <p class="muted">SUPPLIER ACCESS</p>
+    <h1>Unlock Supplier Contact</h1>
+    <p>Get direct access to the supplier behind this product.</p>
+  </section>
+
+  <section class="product-card unlock-product">
+    <div class="product-info">
+      <span class="badge unlock-badge">CONTACT UNLOCK</span>
+      <h2 id="product-name">Selected Product</h2>
+      <p class="muted">Product ID: <span id="product-id">Not supplied</span></p>
+
+      <div class="unlock-price">
+        <p class="muted">Contact unlock fee</p>
+        <h2 id="unlock-fee">Confirm fee on WhatsApp</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="unlock-steps">
+    <h2 class="section-title">How it works</h2>
+    <p>1. Confirm the product and unlock fee.</p>
+    <p>2. Request NiPlag's payment instructions on WhatsApp.</p>
+    <p>3. Pay and submit your M-Pesa transaction code.</p>
+    <p>4. NiPlag verifies payment and sends the supplier contact.</p>
+  </section>
+
+  <section class="product-card unlock-form-card">
+    <div class="product-info">
+      <h2>Submit payment details</h2>
+      <p class="muted">Complete this after receiving payment instructions and making payment.</p>
+
+      <form id="unlock-form">
+
+        <label for="buyer-phone">Your WhatsApp number</label>
+        <input class="form-control" type="tel" id="buyer-phone"
+          placeholder="e.g. 07XXXXXXXX" required>
+
+        <label for="mpesa-code">M-Pesa transaction code</label>
+        <input class="form-control" type="text" id="mpesa-code"
+          placeholder="e.g. QWE123ABC" required>
+
+        <label for="amount-paid">Amount paid (KES)</label>
+        <input class="form-control" type="number" id="amount-paid"
+          placeholder="Enter amount paid" min="1" required>
+
+        <button class="btn btn-accent" type="submit">
+          Submit on WhatsApp
+        </button>
+
+      </form>
+    </div>
+  </section>
+
+  <section class="notice unlock-warning">
+    <strong>Important: Direct supplier transactions</strong>
+    <p>The unlock fee only gives you access to supplier contact details. Once you deal directly with the supplier, NiPlag does not guarantee the goods, delivery or refund. Verify all details before sending money to the supplier.</p>
+  </section>
+
+  <p class="muted unlock-help">
+    Need assistance? Contact NiPlag through WhatsApp.
+  </p>
+
+  <a class="btn" href="https://wa.me/254754058116">
+    Contact NiPlag
+  </a>
+
+</main>
+
+<footer class="container product-footer">
+  <a href="index.html">Home</a> |
+  <a href="categories.html">Categories</a> |
+  <a href="search.html">Search</a>
+  <p class="muted">Wholesale discovery made easier.</p>
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  const product = params.get("product") || "Selected Product";
+  const productId = params.get("id") || "Not supplied";
+  const fee = params.get("fee");
+
+  document.getElementById("product-name").textContent = product;
+  document.getElementById("product-id").textContent = productId;
+
+  if (fee && !isNaN(Number(fee)) && Number(fee) > 0) {
+    document.getElementById("unlock-fee").textContent = "KES " + fee;
+  }
+
+  document.getElementById("unlock-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const phone = document.getElementById("buyer-phone").value.trim();
+    const code = document.getElementById("mpesa-code").value.trim().toUpperCase();
+    const amount = document.getElementById("amount-paid").value;
+
+    const message =
+      "NIPlAG SUPPLIER CONTACT UNLOCK REQUEST\n\n" +
+      "Product: " + product + "\n" +
+      "Product ID: " + productId + "\n" +
+      "Unlock fee shown: " + (fee ? "KES " + fee : "Not specified") + "\n" +
+      "Buyer WhatsApp: " + phone + "\n" +
+      "M-Pesa code: " + code + "\n" +
+      "Amount paid: KES " + amount + "\n\n" +
+      "Please verify my payment and send the supplier contact.";
+
+    const whatsappURL =
+      "https://wa.me/254754058116?text=" + encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+  });
+</script>
+
+</body>
+  </html>
+  
