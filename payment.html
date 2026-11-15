@@ -1,1 +1,149 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment | NiPlag</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">NiPlag<span>.</span></div>
+  <p>Find it. Unlock it. Make money.</p>
+</header>
+
+<main class="container">
+
+  <section class="payment-hero">
+    <p class="muted">SECURE PAYMENT PROCESS</p>
+    <h1>Complete Your Payment</h1>
+    <p>Follow the steps below to request payment instructions and submit your M-Pesa confirmation.</p>
+  </section>
+
+  <section class="product-card">
+    <div class="product-info">
+      <h2>Payment summary</h2>
+      <p><strong>Product:</strong> <span id="product-name">Supplier contact unlock</span></p>
+      <p><strong>Product ID:</strong> <span id="product-id">Not supplied</span></p>
+      <div class="payment-amount">
+        <p class="muted">Unlock fee</p>
+        <h2 id="payment-fee">Confirm on WhatsApp</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="payment-steps">
+    <h2 class="section-title">Step 1: Request payment instructions</h2>
+    <p>Contact NiPlag first. We will confirm the amount and send you the current payment instructions.</p>
+    <a class="btn btn-accent" id="request-payment" href="https://wa.me/254754058116">
+      Request M-Pesa Instructions
+    </a>
+  </section>
+
+  <section class="notice payment-notice">
+    <strong>Before you pay</strong>
+    <p>Only pay using payment instructions confirmed by NiPlag through its official WhatsApp contact. Confirm the amount and purpose before sending money. Do not rely on payment details forwarded by strangers.</p>
+  </section>
+
+  <section class="product-card payment-form-card">
+    <div class="product-info">
+      <h2>Step 2: Submit your payment</h2>
+      <p class="muted">Complete this section after making payment.</p>
+
+      <form id="payment-form">
+
+        <label for="buyer-phone">Your WhatsApp number</label>
+        <input class="form-control" type="tel" id="buyer-phone"
+          placeholder="e.g. 07XXXXXXXX" required>
+
+        <label for="mpesa-code">M-Pesa transaction code</label>
+        <input class="form-control" type="text" id="mpesa-code"
+          placeholder="e.g. QWE123ABC" required>
+
+        <label for="amount-paid">Amount paid (KES)</label>
+        <input class="form-control" type="number" id="amount-paid"
+          min="1" placeholder="Enter amount paid" required>
+
+        <button class="btn btn-accent" type="submit">
+          Submit Payment for Verification
+        </button>
+
+      </form>
+    </div>
+  </section>
+
+  <section class="payment-steps">
+    <h2 class="section-title">Step 3: Wait for verification</h2>
+    <p>NiPlag will check the payment manually. If confirmed, the supplier contact will be sent to your WhatsApp number.</p>
+    <p class="muted">Submitting a transaction code is not proof that payment has been received or verified.</p>
+  </section>
+
+  <section class="notice payment-warning">
+    <strong>Understand what you are paying for</strong>
+    <p>This payment is for access to supplier contact details only. If you transact directly with the supplier, NiPlag does not guarantee the goods, delivery or refund.</p>
+  </section>
+
+  <a class="btn" href="index.html">Back to NiPlag Home</a>
+
+</main>
+
+<footer class="container product-footer">
+  <a href="index.html">Home</a> |
+  <a href="categories.html">Categories</a> |
+  <a href="assistance.html">Assistance</a>
+  <p class="muted">Wholesale discovery made easier.</p>
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  const product = params.get("product") || "Supplier contact unlock";
+  const productId = params.get("id") || "Not supplied";
+  const fee = params.get("fee");
+
+  document.getElementById("product-name").textContent = product;
+  document.getElementById("product-id").textContent = productId;
+
+  if (fee && !isNaN(Number(fee)) && Number(fee) > 0) {
+    document.getElementById("payment-fee").textContent = "KES " + fee;
+  }
+
+  const requestMessage =
+    "Hello NiPlag. I would like payment instructions for a supplier contact unlock.\n\n" +
+    "Product: " + product + "\n" +
+    "Product ID: " + productId + "\n" +
+    "Expected unlock fee: " + (fee ? "KES " + fee : "Please confirm") +
+    "\n\nPlease confirm the payment method and amount.";
+
+  document.getElementById("request-payment").href =
+    "https://wa.me/254754058116?text=" + encodeURIComponent(requestMessage);
+
+  document.getElementById("payment-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const phone = document.getElementById("buyer-phone").value.trim();
+    const code = document.getElementById("mpesa-code").value.trim().toUpperCase();
+    const amount = document.getElementById("amount-paid").value;
+
+    const message =
+      "NIPLAG PAYMENT VERIFICATION REQUEST\n\n" +
+      "Product: " + product + "\n" +
+      "Product ID: " + productId + "\n" +
+      "Expected unlock fee: " + (fee ? "KES " + fee : "Not specified") + "\n" +
+      "Buyer WhatsApp: " + phone + "\n" +
+      "M-Pesa transaction code: " + code + "\n" +
+      "Amount paid: KES " + amount + "\n\n" +
+      "Please verify my payment and process my supplier contact unlock.";
+
+    window.open(
+      "https://wa.me/254754058116?text=" + encodeURIComponent(message),
+      "_blank"
+    );
+  });
+</script>
+
+</body>
+    </html>
+  
