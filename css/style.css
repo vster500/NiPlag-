@@ -673,3 +673,60 @@ footer a {
   margin: 18px 0 10px;
   }
   
+.payment-hero {
+  padding: 28px 0;
+}
+
+.payment-hero h1 {
+  margin: 8px 0;
+}
+
+.payment-amount {
+  margin-top: 18px;
+  padding: 16px;
+  background: #edf4ef;
+  border-radius: var(--radius);
+}
+
+.payment-amount h2 {
+  color: var(--primary);
+  font-size: 25px;
+  margin-top: 5px;
+}
+
+.payment-steps {
+  margin: 26px 0;
+}
+
+.payment-steps p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.payment-steps .btn {
+  margin-top: 12px;
+}
+
+.payment-notice,
+.payment-warning {
+  margin: 22px 0;
+}
+
+.payment-notice p,
+.payment-warning p {
+  margin-top: 8px;
+}
+
+.payment-form-card {
+  margin: 24px 0;
+}
+
+.payment-form-card h2 {
+  margin-bottom: 10px;
+}
+
+.payment-form-card button {
+  width: 100%;
+  margin-top: 8px;
+  }
+
