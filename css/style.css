@@ -1432,3 +1432,249 @@ footer a {
   }
   }
 
+/* DAY 14 - NIPLAG PROFIT CALCULATOR */
+
+.calculator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calculator-basket {
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.calculator-hero {
+  background: var(--primary);
+  color: white;
+  padding: 48px 0;
+}
+
+.calculator-hero h1 {
+  font-size: clamp(29px, 6vw, 43px);
+  line-height: 1.15;
+  max-width: 650px;
+  margin: 14px 0;
+}
+
+.calculator-hero p {
+  max-width: 580px;
+  color: #dce8df;
+}
+
+.calculator-tag {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.calculator-main {
+  max-width: 950px;
+  padding-top: 35px;
+  padding-bottom: 25px;
+}
+
+.calculator-intro {
+  margin-bottom: 20px;
+}
+
+.calculator-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.calculator-input-section,
+.calculator-results {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.calculator-input-section h3 {
+  font-size: 16px;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+.calculator-input-section label {
+  display: block;
+  margin-top: 12px;
+}
+
+.calculator-input-section .form-control {
+  margin-bottom: 8px;
+}
+
+.calculator-expense-heading {
+  padding-top: 18px;
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.calculator-expense-note {
+  margin-bottom: 12px;
+}
+
+.calculator-reset {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.calculator-results {
+  background: var(--primary);
+  color: white;
+}
+
+.calculator-result-label {
+  display: block;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.calculator-profit {
+  font-size: clamp(27px, 6vw, 37px);
+  font-weight: 800;
+  margin: 10px 0 4px;
+  overflow-wrap: anywhere;
+}
+
+.profit-positive {
+  color: var(--accent);
+}
+
+.profit-negative {
+  color: #ff9b9b;
+}
+
+.calculator-status {
+  font-size: 12px;
+  color: #dce8df;
+  margin-bottom: 22px;
+}
+
+.calculator-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  font-size: 13px;
+}
+
+.calculator-result-row span {
+  color: #dce8df;
+}
+
+.calculator-result-row strong {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.calculator-highlight {
+  background: rgba(200,241,105,0.12);
+  padding: 13px 9px;
+  margin: 5px -9px;
+  border-radius: 7px;
+}
+
+.calculator-highlight strong {
+  color: var(--accent);
+}
+
+.calculator-disclaimer {
+  background: rgba(255,255,255,0.09);
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #e3ebe5;
+}
+
+.calculator-disclaimer strong {
+  color: var(--accent);
+}
+
+.calculator-guide {
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.calculator-guide-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.calculator-guide-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.calculator-guide-card span {
+  display: block;
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 9px;
+}
+
+.calculator-guide-card h3 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.calculator-guide-card p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.calculator-cta {
+  background: #eaf2eb;
+  border-radius: var(--radius);
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.calculator-cta h2 {
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.calculator-cta p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 750px) {
+  .calculator-panel {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .calculator-results {
+    position: sticky;
+    top: 15px;
+  }
+
+  .calculator-input-section,
+  .calculator-results {
+    padding: 25px;
+  }
+
+  .calculator-guide-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  }
+  
