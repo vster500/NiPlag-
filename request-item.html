@@ -1,1 +1,307 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request wholesale products that you cannot find on NiPlag.">
+  <title>Request a Product | NiPlag</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Ni<span>Plag</span>.</a>
+    <p class="muted">Wholesale discoveries. Better buying.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- INTRODUCTION -->
+
+  <section class="request-hero">
+    <p class="muted">NIPLAG PRODUCT DISCOVERY</p>
+
+    <h1>Can't Find What You're Looking For?</h1>
+
+    <p>
+      Tell us what you need. NiPlag will explore possible
+      wholesale sources and help you find the product.
+    </p>
+
+    <div class="notice">
+      You don't have to find every product in our catalogue.
+      Send us your request and let us investigate.
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section class="request-benefits">
+    <h2 class="section-title">How it works</h2>
+
+    <div class="request-benefit">
+      <span>01</span>
+      <div>
+        <h3>Tell us what you need</h3>
+        <p class="muted">
+          Describe the product, quantity and preferred price.
+        </p>
+      </div>
+    </div>
+
+    <div class="request-benefit">
+      <span>02</span>
+      <div>
+        <h3>We look for suppliers</h3>
+        <p class="muted">
+          NiPlag checks possible wholesale sources and availability.
+        </p>
+      </div>
+    </div>
+
+    <div class="request-benefit">
+      <span>03</span>
+      <div>
+        <h3>Receive feedback</h3>
+        <p class="muted">
+          We contact you with available options and pricing
+          when a suitable source is found.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT REQUEST FORM -->
+
+  <section class="request-form-section">
+
+    <h2 class="section-title">Request a Product</h2>
+
+    <p class="muted">
+      Give us as much detail as possible to help us
+      identify the correct product.
+    </p>
+
+    <form id="product-request-form">
+
+      <label for="request-name">Product Name *</label>
+      <input
+        class="form-control"
+        type="text"
+        id="request-name"
+        required
+        placeholder="e.g. Solar security lights">
+
+      <label for="request-category">Product Category *</label>
+      <select class="form-control" id="request-category" required>
+        <option value="">Select category</option>
+        <option>Electronics</option>
+        <option>Electrical</option>
+        <option>Farming</option>
+        <option>Home & Living</option>
+        <option>Building & Construction</option>
+        <option>Fashion & Accessories</option>
+        <option>Automotive</option>
+        <option>Beauty & Personal Care</option>
+        <option>Other</option>
+      </select>
+
+      <label for="request-description">Product Description *</label>
+      <textarea
+        class="form-control"
+        id="request-description"
+        rows="4"
+        required
+        placeholder="Describe the product, specifications, size, brand or features you need."></textarea>
+
+      <label for="request-quantity">Quantity Needed *</label>
+      <input
+        class="form-control"
+        type="number"
+        id="request-quantity"
+        min="1"
+        required
+        placeholder="e.g. 50">
+
+      <label for="request-budget">Expected Budget (KES)</label>
+      <input
+        class="form-control"
+        type="number"
+        id="request-budget"
+        min="0"
+        placeholder="Your estimated budget">
+
+      <label for="request-price">Preferred Price Per Item (KES)</label>
+      <input
+        class="form-control"
+        type="number"
+        id="request-price"
+        min="0"
+        placeholder="Optional">
+
+      <label for="request-location">Your County *</label>
+      <input
+        class="form-control"
+        type="text"
+        id="request-location"
+        required
+        placeholder="e.g. Bungoma">
+
+      <label for="request-town">Your Town / Area *</label>
+      <input
+        class="form-control"
+        type="text"
+        id="request-town"
+        required
+        placeholder="e.g. Webuye">
+
+      <label for="request-use">What is the product for?</label>
+      <select class="form-control" id="request-use">
+        <option value="">Select purpose</option>
+        <option>Personal use</option>
+        <option>Resale / Business</option>
+        <option>Construction project</option>
+        <option>Institution / Organisation</option>
+        <option>Other</option>
+      </select>
+
+      <label for="request-contact">Your Name *</label>
+      <input
+        class="form-control"
+        type="text"
+        id="request-contact"
+        required
+        placeholder="Your name">
+
+      <label for="request-whatsapp">Your WhatsApp Number *</label>
+      <input
+        class="form-control"
+        type="tel"
+        id="request-whatsapp"
+        required
+        placeholder="e.g. 07XXXXXXXX">
+
+      <label for="request-extra">Additional Information</label>
+      <textarea
+        class="form-control"
+        id="request-extra"
+        rows="3"
+        placeholder="Any other details or special requirements?"></textarea>
+
+      <div class="notice">
+        <strong>Before submitting:</strong>
+        A product request is not an order or confirmation of stock.
+        NiPlag will first investigate availability, wholesale prices,
+        minimum order quantities and possible delivery arrangements.
+      </div>
+
+      <label class="request-consent">
+        <input type="checkbox" id="request-consent" required>
+        I confirm that my request details are accurate and
+        agree that NiPlag may contact me about this request.
+      </label>
+
+      <button type="submit" class="btn btn-accent request-submit">
+        Send Product Request on WhatsApp
+      </button>
+
+      <p class="muted">
+        WhatsApp will open with your request prepared.
+        Press Send to submit it to NiPlag.
+      </p>
+
+    </form>
+  </section>
+
+  <!-- OTHER OPTIONS -->
+
+  <section class="request-other">
+    <h2 class="section-title">Need help buying?</h2>
+
+    <p>
+      If you already know what you want but cannot travel
+      to the supplier, NiPlag may be able to assist with
+      sourcing and purchasing.
+    </p>
+
+    <a href="assistance.html" class="btn">
+      Explore Buy Through NiPlag
+    </a>
+  </section>
+
+  <section class="notice">
+    <strong>NiPlag reminder:</strong>
+    We review sourcing options before confirming an order.
+    Prices, stock, service fees and delivery charges must
+    be agreed upon before payment.
+  </section>
+
+  <div class="basket-actions">
+    <a href="index.html" class="btn btn-outline">
+      Back to Home
+    </a>
+  </div>
+
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html">Home</a>
+  <a href="search.html">Search</a>
+  <a href="categories.html">Categories</a>
+  <a href="basket.html">Basket</a>
+</nav>
+
+<script>
+document.getElementById("product-request-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const getValue = id =>
+    document.getElementById(id).value.trim();
+
+  const message = `
+NIPLAG - NEW PRODUCT REQUEST
+
+PRODUCT DETAILS
+Product: ${getValue("request-name")}
+Category: ${getValue("request-category")}
+Description: ${getValue("request-description")}
+Quantity needed: ${getValue("request-quantity")}
+
+Budget: ${getValue("request-budget") || "Not specified"}
+Preferred price per item: ${getValue("request-price") || "Not specified"}
+
+BUYER LOCATION
+County: ${getValue("request-location")}
+Town / Area: ${getValue("request-town")}
+
+PURPOSE
+${getValue("request-use") || "Not specified"}
+
+BUYER CONTACT
+Name: ${getValue("request-contact")}
+WhatsApp: ${getValue("request-whatsapp")}
+
+Additional information:
+${getValue("request-extra") || "None"}
+
+I would like NiPlag to investigate this product
+and contact me with possible wholesale options.
+  `.trim();
+
+  const niplagWhatsApp = "254754058116";
+
+  const whatsappURL =
+    "https://wa.me/" + niplagWhatsApp +
+    "?text=" + encodeURIComponent(message);
+
+  window.location.href = whatsappURL;
+});
+</script>
+
+</body>
+    </html>
+  
