@@ -1081,3 +1081,153 @@ footer a {
   }
     }
   
+/* =====================================
+   NIPLAG DAY 12 - PRODUCT REQUEST
+===================================== */
+
+.request-hero {
+  padding: 28px 0;
+}
+
+.request-hero h1 {
+  color: var(--primary);
+  font-size: 29px;
+  line-height: 1.25;
+  margin: 10px 0 14px;
+}
+
+.request-hero > p {
+  margin-bottom: 12px;
+}
+
+/* How it works */
+
+.request-benefits {
+  margin: 20px 0 30px;
+}
+
+.request-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.request-benefit > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  background: var(--primary);
+  color: var(--accent);
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.request-benefit h3 {
+  color: var(--primary);
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+/* Request form */
+
+.request-form-section {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 17px;
+  margin-bottom: 25px;
+}
+
+.request-form-section > p {
+  margin-bottom: 20px;
+}
+
+.request-form-section .form-control {
+  display: block;
+}
+
+.request-form-section textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+.request-form-section select {
+  cursor: pointer;
+}
+
+/* Consent */
+
+.request-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.request-consent input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--primary);
+}
+
+/* Submit button */
+
+.request-submit {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin: 18px 0 12px;
+  line-height: 1.4;
+}
+
+/* Assisted buying section */
+
+.request-other {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin: 25px 0;
+}
+
+.request-other p {
+  margin-bottom: 15px;
+}
+
+/* Mobile spacing */
+
+.request-form-section .notice {
+  line-height: 1.6;
+}
+
+@media (min-width: 700px) {
+  .request-hero h1 {
+    font-size: 36px;
+  }
+
+  .request-form-section {
+    padding: 28px;
+  }
+
+  .request-submit {
+    max-width: 430px;
+  }
+
+  .request-other {
+    padding: 24px;
+  }
+  }
+  
