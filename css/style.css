@@ -931,3 +931,153 @@ footer a {
   }
   }
   
+/* =====================================
+   NIPLAG DAY 11 - SUPPLIER APPLICATION
+===================================== */
+
+.supplier-hero {
+  padding: 28px 0;
+}
+
+.supplier-hero h1 {
+  color: var(--primary);
+  font-size: 29px;
+  line-height: 1.2;
+  margin: 10px 0 14px;
+}
+
+.supplier-hero > p {
+  margin-bottom: 12px;
+}
+
+.supplier-benefits {
+  margin: 20px 0 30px;
+}
+
+.supplier-benefit {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.supplier-benefit h3 {
+  color: var(--primary);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.supplier-form-section {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 17px;
+  margin-bottom: 25px;
+}
+
+.supplier-form-section > p {
+  margin-bottom: 20px;
+}
+
+.form-subheading {
+  color: var(--primary);
+  font-size: 17px;
+  margin: 25px 0 14px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border);
+}
+
+.supplier-form-section .form-control {
+  display: block;
+}
+
+.supplier-form-section textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.supplier-form-section select {
+  cursor: pointer;
+}
+
+.supplier-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.supplier-consent input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--primary);
+}
+
+.supplier-submit {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin: 18px 0 12px;
+  line-height: 1.4;
+}
+
+.supplier-process {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin: 25px 0;
+}
+
+.supplier-process ol {
+  padding-left: 22px;
+}
+
+.supplier-process li {
+  padding: 7px 0;
+  line-height: 1.5;
+}
+
+.supplier-form-section .notice {
+  line-height: 1.6;
+}
+
+.supplier-form-section .notice ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.supplier-form-section .notice li {
+  margin-bottom: 6px;
+}
+
+@media (min-width: 700px) {
+  .supplier-hero h1 {
+    font-size: 36px;
+  }
+
+  .supplier-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .supplier-benefit {
+    margin-bottom: 0;
+  }
+
+  .supplier-form-section {
+    padding: 28px;
+  }
+
+  .supplier-submit {
+    max-width: 420px;
+  }
+    }
+  
