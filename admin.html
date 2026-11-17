@@ -1,1 +1,294 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NiPlag administration dashboard.">
+  <title>NiPlag | Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <header class="site-header">
+    <div class="container admin-header">
+      <a href="index.html" class="logo">Ni<span>Plag</span></a>
+      <span class="admin-label">ADMIN AREA</span>
+    </div>
+  </header>
+
+  <main class="container admin-container">
+
+    <section class="admin-warning">
+      <strong>Development preview — not secured yet</strong>
+      <p>
+        This dashboard is currently a visual layout. It has no login,
+        database connection or live customer records. Do not enter
+        real customer, supplier or payment information here.
+      </p>
+    </section>
+
+    <section class="admin-welcome">
+      <div>
+        <span class="admin-eyebrow">NIPLAG MANAGEMENT</span>
+        <h1>Admin Dashboard</h1>
+        <p class="muted">Manage your wholesale discovery platform.</p>
+      </div>
+      <a href="index.html" class="btn btn-outline">View Website</a>
+    </section>
+
+    <nav class="admin-nav" aria-label="Admin sections">
+      <a href="#overview">Overview</a>
+      <a href="#products">Products</a>
+      <a href="#suppliers">Suppliers</a>
+      <a href="#requests">Requests</a>
+      <a href="#orders">Orders & Unlocks</a>
+    </nav>
+
+    <!-- OVERVIEW -->
+    <section class="admin-section" id="overview">
+      <h2 class="section-title">Overview</h2>
+      <p class="muted admin-section-intro">
+        These are display placeholders. Live figures will come from Firebase later.
+      </p>
+
+      <div class="admin-stats-grid">
+        <div class="admin-stat">
+          <span>Published products</span>
+          <strong>—</strong>
+          <small>Awaiting database</small>
+        </div>
+
+        <div class="admin-stat">
+          <span>Supplier applications</span>
+          <strong>—</strong>
+          <small>Awaiting database</small>
+        </div>
+
+        <div class="admin-stat">
+          <span>Buyer requests</span>
+          <strong>—</strong>
+          <small>Awaiting database</small>
+        </div>
+
+        <div class="admin-stat">
+          <span>Pending orders</span>
+          <strong>—</strong>
+          <small>Awaiting database</small>
+        </div>
+      </div>
+
+      <div class="admin-panel">
+        <h3>Admin workflow</h3>
+        <div class="admin-workflow-list">
+          <div>
+            <span class="admin-step-number">01</span>
+            <p><strong>Review suppliers</strong><br>
+              Check business details and verification information.</p>
+          </div>
+          <div>
+            <span class="admin-step-number">02</span>
+            <p><strong>Prepare product listings</strong><br>
+              Confirm prices, quantities, locations and product details.</p>
+          </div>
+          <div>
+            <span class="admin-step-number">03</span>
+            <p><strong>Handle buyer requests</strong><br>
+              Respond to product enquiries and assisted-purchase requests.</p>
+          </div>
+          <div>
+            <span class="admin-step-number">04</span>
+            <p><strong>Confirm payments and orders</strong><br>
+              Verify payments and communicate the next steps to customers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="admin-section" id="products">
+      <h2 class="section-title">Product Management</h2>
+      <p class="muted admin-section-intro">
+        Prepare the information needed before publishing a product.
+      </p>
+
+      <div class="admin-panel">
+        <h3>Product listing checklist</h3>
+
+        <div class="admin-checklist">
+          <label><input type="checkbox"> Product name and category confirmed</label>
+          <label><input type="checkbox"> Product image ready</label>
+          <label><input type="checkbox"> Wholesale price confirmed</label>
+          <label><input type="checkbox"> Suggested selling price checked</label>
+          <label><input type="checkbox"> Minimum order quantity confirmed</label>
+          <label><input type="checkbox"> Supplier identity reviewed</label>
+          <label><input type="checkbox"> Supplier location confirmed</label>
+          <label><input type="checkbox"> Contact unlock fee decided</label>
+        </div>
+
+        <p class="admin-note">
+          These checkboxes are a visual checklist only. They do not save
+          your progress. Product publishing will be connected to Firebase.
+        </p>
+      </div>
+
+      <div class="admin-panel">
+        <h3>Product catalogue</h3>
+        <div class="admin-empty">
+          <span>📦</span>
+          <strong>No live products connected yet</strong>
+          <p>Published products will appear here after database integration.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPLIERS -->
+    <section class="admin-section" id="suppliers">
+      <h2 class="section-title">Supplier Applications</h2>
+      <p class="muted admin-section-intro">
+        Review businesses that want to list products on NiPlag.
+      </p>
+
+      <div class="admin-panel">
+        <h3>Supplier review checklist</h3>
+
+        <div class="admin-checklist">
+          <label><input type="checkbox"> Business name and location checked</label>
+          <label><input type="checkbox"> Contact person and phone checked</label>
+          <label><input type="checkbox"> Product range reviewed</label>
+          <label><input type="checkbox"> Price and stock information requested</label>
+          <label><input type="checkbox"> Supporting evidence reviewed where necessary</label>
+          <label><input type="checkbox"> Approval decision recorded</label>
+        </div>
+
+        <div class="admin-note">
+          <strong>Verification reminder</strong>
+          <p>
+            A supplier should only be marked Verified after NiPlag has
+            reviewed the relevant business and supplier information.
+            Verification does not automatically guarantee product quality,
+            delivery or future transactions.
+          </p>
+        </div>
+      </div>
+
+      <div class="admin-panel">
+        <h3>Incoming supplier applications</h3>
+        <div class="admin-empty">
+          <span>🏪</span>
+          <strong>No supplier records connected yet</strong>
+          <p>Applications will appear here after the form is connected to Firebase.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUYER REQUESTS -->
+    <section class="admin-section" id="requests">
+      <h2 class="section-title">Buyer Product Requests</h2>
+      <p class="muted admin-section-intro">
+        Track products customers cannot find in the catalogue.
+      </p>
+
+      <div class="admin-panel">
+        <h3>Request handling process</h3>
+        <ol class="admin-numbered-list">
+          <li>Read the requested product specifications and quantity.</li>
+          <li>Identify possible suppliers and compare available prices.</li>
+          <li>Contact the buyer with relevant findings.</li>
+          <li>Update the request as handled when a response is sent.</li>
+        </ol>
+      </div>
+
+      <div class="admin-panel">
+        <h3>Incoming buyer requests</h3>
+        <div class="admin-empty">
+          <span>🔎</span>
+          <strong>No buyer requests connected yet</strong>
+          <p>Customer requests will appear here after database integration.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDERS AND UNLOCKS -->
+    <section class="admin-section" id="orders">
+      <h2 class="section-title">Orders & Contact Unlocks</h2>
+      <p class="muted admin-section-intro">
+        Keep direct supplier unlocks separate from assisted purchases.
+      </p>
+
+      <div class="admin-panel">
+        <h3>Contact unlock requests</h3>
+        <p class="muted">
+          Buyers pay the applicable unlock fee and submit their payment
+          details for manual verification.
+        </p>
+
+        <div class="admin-checklist">
+          <label><input type="checkbox"> Match the payment to the correct product and fee</label>
+          <label><input type="checkbox"> Verify the M-Pesa transaction independently</label>
+          <label><input type="checkbox"> Confirm the buyer's WhatsApp number</label>
+          <label><input type="checkbox"> Send the correct supplier contact privately</label>
+          <label><input type="checkbox"> Record that the unlock was handled</label>
+        </div>
+
+        <div class="admin-note">
+          Never treat a screenshot or customer-submitted transaction code
+          alone as proof of payment. Verify the transaction using the
+          appropriate M-Pesa records before releasing a supplier contact.
+        </div>
+
+        <div class="admin-empty">
+          <span>🔐</span>
+          <strong>No unlock records connected yet</strong>
+          <p>Payment submissions will appear here after database integration.</p>
+        </div>
+      </div>
+
+      <div class="admin-panel">
+        <h3>Assisted purchase orders</h3>
+        <p class="muted">
+          These are orders where NiPlag helps source and coordinate products
+          on behalf of the customer.
+        </p>
+
+        <div class="admin-order-stages">
+          <div><span>01</span> Request received</div>
+          <div><span>02</span> Checking stock and prices</div>
+          <div><span>03</span> Quotation sent</div>
+          <div><span>04</span> Customer approval</div>
+          <div><span>05</span> Payment verified</div>
+          <div><span>06</span> Purchase and delivery</div>
+        </div>
+
+        <div class="admin-empty">
+          <span>🛒</span>
+          <strong>No assisted orders connected yet</strong>
+          <p>Customer orders will appear here after database integration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-bottom-note">
+      <h3>Next development stage</h3>
+      <p>
+        Firebase will provide the database, secure admin authentication,
+        product records, application records and order management.
+        Access to private supplier information will be restricted to
+        authorized administration.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="logo">Ni<span>Plag</span></a>
+      <p>Wholesale discovery made easier.</p>
+      <p class="muted">ADMIN DEVELOPMENT PREVIEW</p>
+      <p class="muted">© 2026 NiPlag</p>
+    </div>
+  </footer>
+
+</body>
+  </html>
+  
