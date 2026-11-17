@@ -1,1 +1,354 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate wholesale costs, resale revenue and estimated profit with the NiPlag profit calculator.">
+  <title>Profit Calculator | NiPlag</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container calculator-header">
+      <a href="index.html" class="logo">Ni<span>Plag</span></a>
+      <a href="basket.html" class="calculator-basket">My Basket</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="calculator-hero">
+      <div class="container">
+        <span class="calculator-tag">SMART WHOLESALE BUYING</span>
+        <h1>Know your profit before you buy.</h1>
+        <p>
+          Calculate your product costs, expected sales and estimated
+          profit before investing your money.
+        </p>
+      </div>
+    </section>
+
+    <section class="container calculator-main">
+
+      <div class="calculator-intro">
+        <h2 class="section-title">Resale Profit Calculator</h2>
+        <p class="muted">
+          Enter your buying price, expected selling price and expenses.
+          Results update automatically.
+        </p>
+      </div>
+
+      <div class="calculator-panel">
+
+        <div class="calculator-input-section">
+          <h3>1. Product information</h3>
+
+          <label for="calc-product">Product name (optional)</label>
+          <input
+            class="form-control"
+            type="text"
+            id="calc-product"
+            placeholder="e.g. Wireless earbuds"
+          >
+
+          <label for="calc-cost">Wholesale price per item (KES)</label>
+          <input
+            class="form-control"
+            type="number"
+            id="calc-cost"
+            min="0"
+            step="0.01"
+            placeholder="e.g. 250"
+          >
+
+          <label for="calc-selling">Expected selling price per item (KES)</label>
+          <input
+            class="form-control"
+            type="number"
+            id="calc-selling"
+            min="0"
+            step="0.01"
+            placeholder="e.g. 400"
+          >
+
+          <label for="calc-quantity">Number of items</label>
+          <input
+            class="form-control"
+            type="number"
+            id="calc-quantity"
+            min="1"
+            step="1"
+            value="1"
+          >
+
+          <h3 class="calculator-expense-heading">2. Additional expenses</h3>
+
+          <p class="muted calculator-expense-note">
+            Enter the total expenses for the entire purchase, not the
+            cost per item.
+          </p>
+
+          <label for="calc-transport">Transport / delivery (KES)</label>
+          <input
+            class="form-control"
+            type="number"
+            id="calc-transport"
+            min="0"
+            step="0.01"
+            value="0"
+          >
+
+          <label for="calc-packaging">Packaging (KES)</label>
+          <input
+            class="form-control"
+            type="number"
+            id="calc-packaging"
+            min="0"
+            step="0.01"
+            value="0"
+          >
+
+          <label for="calc-other">Other expenses (KES)</label>
+          <input
+            class="form-control"
+            type="number"
+            id="calc-other"
+            min="0"
+            step="0.01"
+            value="0"
+          >
+
+          <button type="button" id="calc-reset" class="btn btn-outline calculator-reset">
+            Reset Calculator
+          </button>
+        </div>
+
+        <div class="calculator-results" aria-live="polite">
+
+          <span class="calculator-result-label">YOUR ESTIMATED PROFIT</span>
+
+          <div class="calculator-profit" id="result-profit">
+            KES 0.00
+          </div>
+
+          <p class="calculator-status" id="result-status">
+            Enter your figures to calculate.
+          </p>
+
+          <div class="calculator-result-row">
+            <span>Total product purchase cost</span>
+            <strong id="result-product-cost">KES 0.00</strong>
+          </div>
+
+          <div class="calculator-result-row">
+            <span>Additional expenses</span>
+            <strong id="result-expenses">KES 0.00</strong>
+          </div>
+
+          <div class="calculator-result-row">
+            <span>Total investment</span>
+            <strong id="result-investment">KES 0.00</strong>
+          </div>
+
+          <div class="calculator-result-row">
+            <span>Expected sales revenue</span>
+            <strong id="result-revenue">KES 0.00</strong>
+          </div>
+
+          <div class="calculator-result-row calculator-highlight">
+            <span>Profit / loss per item</span>
+            <strong id="result-per-item">KES 0.00</strong>
+          </div>
+
+          <div class="calculator-result-row">
+            <span>Profit margin</span>
+            <strong id="result-margin">0%</strong>
+          </div>
+
+          <div class="calculator-result-row">
+            <span>Break-even selling price per item</span>
+            <strong id="result-breakeven">KES 0.00</strong>
+          </div>
+
+          <div class="calculator-disclaimer">
+            <strong>Important:</strong>
+            These are estimates based on the figures you enter.
+            Actual profit may change due to unsold stock, discounts,
+            damaged goods, taxes or expenses not included above.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="container calculator-guide">
+
+      <h2 class="section-title">How to use the calculator</h2>
+
+      <div class="calculator-guide-grid">
+
+        <div class="calculator-guide-card">
+          <span>01</span>
+          <h3>Enter buying price</h3>
+          <p>How much does one item cost from the wholesaler?</p>
+        </div>
+
+        <div class="calculator-guide-card">
+          <span>02</span>
+          <h3>Set selling price</h3>
+          <p>How much do you expect to sell one item for?</p>
+        </div>
+
+        <div class="calculator-guide-card">
+          <span>03</span>
+          <h3>Add expenses</h3>
+          <p>Include transport, packaging and other costs.</p>
+        </div>
+
+        <div class="calculator-guide-card">
+          <span>04</span>
+          <h3>Review your profit</h3>
+          <p>Check your estimated return before committing your money.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="container calculator-cta">
+      <h2>Found a wholesale deal?</h2>
+      <p>Explore products listed on NiPlag and compare buying opportunities.</p>
+      <a href="search.html" class="btn btn-accent">Explore Products</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="logo">Ni<span>Plag</span></a>
+      <p>Wholesale discovery made easier.</p>
+      <p class="muted">DISCOVER • COMPARE • SOURCE</p>
+      <p class="muted">© 2026 NiPlag</p>
+    </div>
+  </footer>
+
+  <script>
+    const calculatorFields = [
+      "calc-cost",
+      "calc-selling",
+      "calc-quantity",
+      "calc-transport",
+      "calc-packaging",
+      "calc-other"
+    ];
+
+    function getNumber(id) {
+      const value = Number(document.getElementById(id).value);
+      return Number.isFinite(value) ? Math.max(0, value) : 0;
+    }
+
+    function money(value) {
+      return "KES " + value.toLocaleString("en-KE", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function updateCalculator() {
+      const cost = getNumber("calc-cost");
+      const selling = getNumber("calc-selling");
+      const quantity = Math.floor(getNumber("calc-quantity"));
+
+      const transport = getNumber("calc-transport");
+      const packaging = getNumber("calc-packaging");
+      const other = getNumber("calc-other");
+
+      const validQuantity = quantity >= 1;
+
+      const productCost = cost * quantity;
+      const expenses = transport + packaging + other;
+      const investment = productCost + expenses;
+      const revenue = selling * quantity;
+
+      const profit = revenue - investment;
+      const perItem = validQuantity ? profit / quantity : 0;
+
+      const margin = revenue > 0
+        ? (profit / revenue) * 100
+        : 0;
+
+      const breakEven = validQuantity
+        ? investment / quantity
+        : 0;
+
+      document.getElementById("result-product-cost").textContent =
+        money(productCost);
+
+      document.getElementById("result-expenses").textContent =
+        money(expenses);
+
+      document.getElementById("result-investment").textContent =
+        money(investment);
+
+      document.getElementById("result-revenue").textContent =
+        money(revenue);
+
+      document.getElementById("result-per-item").textContent =
+        money(perItem);
+
+      document.getElementById("result-margin").textContent =
+        revenue > 0 ? margin.toFixed(2) + "%" : "N/A";
+
+      document.getElementById("result-breakeven").textContent =
+        money(breakEven);
+
+      const profitElement = document.getElementById("result-profit");
+      const statusElement = document.getElementById("result-status");
+
+      profitElement.textContent = money(profit);
+
+      profitElement.classList.remove(
+        "profit-positive",
+        "profit-negative"
+      );
+
+      if (!validQuantity) {
+        statusElement.textContent = "Enter at least one item.";
+      } else if (profit > 0) {
+        profitElement.classList.add("profit-positive");
+        statusElement.textContent = "Estimated profit. Your figures show a positive return.";
+      } else if (profit < 0) {
+        profitElement.classList.add("profit-negative");
+        statusElement.textContent = "Estimated loss. Your costs are higher than your expected sales.";
+      } else {
+        statusElement.textContent = "Break-even. Your expected sales equal your total costs.";
+      }
+    }
+
+    calculatorFields.forEach(function(id) {
+      document.getElementById(id).addEventListener("input", updateCalculator);
+    });
+
+    document.getElementById("calc-reset").addEventListener("click", function() {
+      document.getElementById("calc-product").value = "";
+      document.getElementById("calc-cost").value = "";
+      document.getElementById("calc-selling").value = "";
+      document.getElementById("calc-quantity").value = "1";
+      document.getElementById("calc-transport").value = "0";
+      document.getElementById("calc-packaging").value = "0";
+      document.getElementById("calc-other").value = "0";
+
+      updateCalculator();
+    });
+
+    updateCalculator();
+  </script>
+
+</body>
+  </html>
+        
