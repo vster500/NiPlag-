@@ -4,291 +4,411 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NiPlag administration dashboard.">
-  <title>NiPlag | Admin Dashboard</title>
+  <title>NiPlag Admin | Product Management</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="admin-body">
 
-  <header class="site-header">
-    <div class="container admin-header">
-      <a href="index.html" class="logo">Ni<span>Plag</span></a>
-      <span class="admin-label">ADMIN AREA</span>
+<header class="admin-header">
+  <a href="index.html" class="logo">Ni<span>Plag</span></a>
+  <span class="admin-label">ADMIN DASHBOARD</span>
+</header>
+
+<main class="admin-container">
+
+  <div class="admin-warning">
+    <strong>Development preview:</strong>
+    This dashboard is not secured and is not connected to Firebase.
+    Products added here are temporary previews, not live public listings.
+    Do not enter real supplier contact details.
+  </div>
+
+  <section class="admin-welcome">
+    <p class="muted">NIPLAG MANAGEMENT</p>
+    <h1>Product Management</h1>
+    <p>Add products, assign categories, set contact access and prepare listings.</p>
+  </section>
+
+  <nav class="admin-nav">
+    <a href="#overview">Overview</a>
+    <a href="#add-product">Add Product</a>
+    <a href="#product-list">Products</a>
+    <a href="#admin-process">Admin Process</a>
+  </nav>
+
+  <section id="overview" class="admin-section">
+    <h2 class="section-title">Dashboard Overview</h2>
+
+    <div class="admin-stats-grid">
+      <div class="admin-stat">
+        <span>Products in preview</span>
+        <strong id="total-products">0</strong>
+      </div>
+      <div class="admin-stat">
+        <span>Published previews</span>
+        <strong id="published-products">0</strong>
+      </div>
+      <div class="admin-stat">
+        <span>Draft previews</span>
+        <strong id="draft-products">0</strong>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main class="container admin-container">
-
-    <section class="admin-warning">
-      <strong>Development preview — not secured yet</strong>
-      <p>
-        This dashboard is currently a visual layout. It has no login,
-        database connection or live customer records. Do not enter
-        real customer, supplier or payment information here.
-      </p>
-    </section>
-
-    <section class="admin-welcome">
-      <div>
-        <span class="admin-eyebrow">NIPLAG MANAGEMENT</span>
-        <h1>Admin Dashboard</h1>
-        <p class="muted">Manage your wholesale discovery platform.</p>
-      </div>
-      <a href="index.html" class="btn btn-outline">View Website</a>
-    </section>
-
-    <nav class="admin-nav" aria-label="Admin sections">
-      <a href="#overview">Overview</a>
-      <a href="#products">Products</a>
-      <a href="#suppliers">Suppliers</a>
-      <a href="#requests">Requests</a>
-      <a href="#orders">Orders & Unlocks</a>
-    </nav>
-
-    <!-- OVERVIEW -->
-    <section class="admin-section" id="overview">
-      <h2 class="section-title">Overview</h2>
-      <p class="muted admin-section-intro">
-        These are display placeholders. Live figures will come from Firebase later.
+  <section id="add-product" class="admin-section">
+    <div class="admin-panel">
+      <h2 class="section-title" id="form-heading">Add a Product</h2>
+      <p class="muted">
+        Complete the product details below. Required fields are marked.
       </p>
 
-      <div class="admin-stats-grid">
-        <div class="admin-stat">
-          <span>Published products</span>
-          <strong>—</strong>
-          <small>Awaiting database</small>
-        </div>
+      <form id="product-form">
 
-        <div class="admin-stat">
-          <span>Supplier applications</span>
-          <strong>—</strong>
-          <small>Awaiting database</small>
-        </div>
+        <label for="product-name">Product name *</label>
+        <input class="form-control" id="product-name" type="text"
+          placeholder="Example: Rechargeable LED Bulb" required>
 
-        <div class="admin-stat">
-          <span>Buyer requests</span>
-          <strong>—</strong>
-          <small>Awaiting database</small>
-        </div>
+        <label for="product-category">Product category *</label>
+        <select class="form-control" id="product-category" required>
+          <option value="">Select a category</option>
+          <option>Electronics</option>
+          <option>Electrical</option>
+          <option>Farming</option>
+          <option>Home & Living</option>
+          <option>Building & Construction</option>
+          <option>Fashion & Accessories</option>
+          <option>Other</option>
+        </select>
 
-        <div class="admin-stat">
-          <span>Pending orders</span>
-          <strong>—</strong>
-          <small>Awaiting database</small>
-        </div>
-      </div>
+        <label for="product-description">Product description *</label>
+        <textarea class="form-control" id="product-description" rows="4"
+          placeholder="Describe the product, features and important details..."
+          required></textarea>
 
-      <div class="admin-panel">
-        <h3>Admin workflow</h3>
-        <div class="admin-workflow-list">
+        <label for="product-image">Product image URL</label>
+        <input class="form-control" id="product-image" type="url"
+          placeholder="Paste an image link (optional)">
+
+        <div class="admin-form-grid">
           <div>
-            <span class="admin-step-number">01</span>
-            <p><strong>Review suppliers</strong><br>
-              Check business details and verification information.</p>
+            <label for="wholesale-price">Wholesale price (KES) *</label>
+            <input class="form-control" id="wholesale-price" type="number"
+              min="0" step="0.01" placeholder="250" required>
           </div>
           <div>
-            <span class="admin-step-number">02</span>
-            <p><strong>Prepare product listings</strong><br>
-              Confirm prices, quantities, locations and product details.</p>
+            <label for="retail-price">Suggested selling price (KES)</label>
+            <input class="form-control" id="retail-price" type="number"
+              min="0" step="0.01" placeholder="400">
           </div>
           <div>
-            <span class="admin-step-number">03</span>
-            <p><strong>Handle buyer requests</strong><br>
-              Respond to product enquiries and assisted-purchase requests.</p>
+            <label for="minimum-quantity">Minimum order quantity *</label>
+            <input class="form-control" id="minimum-quantity" type="number"
+              min="1" step="1" value="1" required>
           </div>
           <div>
-            <span class="admin-step-number">04</span>
-            <p><strong>Confirm payments and orders</strong><br>
-              Verify payments and communicate the next steps to customers.</p>
+            <label for="supplier-location">Supplier location *</label>
+            <input class="form-control" id="supplier-location" type="text"
+              placeholder="Example: Kamukunji, Nairobi" required>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- PRODUCTS -->
-    <section class="admin-section" id="products">
-      <h2 class="section-title">Product Management</h2>
-      <p class="muted admin-section-intro">
-        Prepare the information needed before publishing a product.
-      </p>
-
-      <div class="admin-panel">
-        <h3>Product listing checklist</h3>
-
-        <div class="admin-checklist">
-          <label><input type="checkbox"> Product name and category confirmed</label>
-          <label><input type="checkbox"> Product image ready</label>
-          <label><input type="checkbox"> Wholesale price confirmed</label>
-          <label><input type="checkbox"> Suggested selling price checked</label>
-          <label><input type="checkbox"> Minimum order quantity confirmed</label>
-          <label><input type="checkbox"> Supplier identity reviewed</label>
-          <label><input type="checkbox"> Supplier location confirmed</label>
-          <label><input type="checkbox"> Contact unlock fee decided</label>
-        </div>
-
-        <p class="admin-note">
-          These checkboxes are a visual checklist only. They do not save
-          your progress. Product publishing will be connected to Firebase.
-        </p>
-      </div>
-
-      <div class="admin-panel">
-        <h3>Product catalogue</h3>
-        <div class="admin-empty">
-          <span>📦</span>
-          <strong>No live products connected yet</strong>
-          <p>Published products will appear here after database integration.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SUPPLIERS -->
-    <section class="admin-section" id="suppliers">
-      <h2 class="section-title">Supplier Applications</h2>
-      <p class="muted admin-section-intro">
-        Review businesses that want to list products on NiPlag.
-      </p>
-
-      <div class="admin-panel">
-        <h3>Supplier review checklist</h3>
-
-        <div class="admin-checklist">
-          <label><input type="checkbox"> Business name and location checked</label>
-          <label><input type="checkbox"> Contact person and phone checked</label>
-          <label><input type="checkbox"> Product range reviewed</label>
-          <label><input type="checkbox"> Price and stock information requested</label>
-          <label><input type="checkbox"> Supporting evidence reviewed where necessary</label>
-          <label><input type="checkbox"> Approval decision recorded</label>
-        </div>
-
-        <div class="admin-note">
-          <strong>Verification reminder</strong>
-          <p>
-            A supplier should only be marked Verified after NiPlag has
-            reviewed the relevant business and supplier information.
-            Verification does not automatically guarantee product quality,
-            delivery or future transactions.
+        <div class="admin-setting">
+          <h3>Verification badge</h3>
+          <p class="muted">
+            Mark a product Verified only after you have reviewed the relevant
+            supplier and product information.
           </p>
-        </div>
-      </div>
-
-      <div class="admin-panel">
-        <h3>Incoming supplier applications</h3>
-        <div class="admin-empty">
-          <span>🏪</span>
-          <strong>No supplier records connected yet</strong>
-          <p>Applications will appear here after the form is connected to Firebase.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- BUYER REQUESTS -->
-    <section class="admin-section" id="requests">
-      <h2 class="section-title">Buyer Product Requests</h2>
-      <p class="muted admin-section-intro">
-        Track products customers cannot find in the catalogue.
-      </p>
-
-      <div class="admin-panel">
-        <h3>Request handling process</h3>
-        <ol class="admin-numbered-list">
-          <li>Read the requested product specifications and quantity.</li>
-          <li>Identify possible suppliers and compare available prices.</li>
-          <li>Contact the buyer with relevant findings.</li>
-          <li>Update the request as handled when a response is sent.</li>
-        </ol>
-      </div>
-
-      <div class="admin-panel">
-        <h3>Incoming buyer requests</h3>
-        <div class="admin-empty">
-          <span>🔎</span>
-          <strong>No buyer requests connected yet</strong>
-          <p>Customer requests will appear here after database integration.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ORDERS AND UNLOCKS -->
-    <section class="admin-section" id="orders">
-      <h2 class="section-title">Orders & Contact Unlocks</h2>
-      <p class="muted admin-section-intro">
-        Keep direct supplier unlocks separate from assisted purchases.
-      </p>
-
-      <div class="admin-panel">
-        <h3>Contact unlock requests</h3>
-        <p class="muted">
-          Buyers pay the applicable unlock fee and submit their payment
-          details for manual verification.
-        </p>
-
-        <div class="admin-checklist">
-          <label><input type="checkbox"> Match the payment to the correct product and fee</label>
-          <label><input type="checkbox"> Verify the M-Pesa transaction independently</label>
-          <label><input type="checkbox"> Confirm the buyer's WhatsApp number</label>
-          <label><input type="checkbox"> Send the correct supplier contact privately</label>
-          <label><input type="checkbox"> Record that the unlock was handled</label>
+          <select class="form-control" id="verified-status">
+            <option value="no">No — Not verified</option>
+            <option value="yes">Yes — Verified</option>
+          </select>
         </div>
 
-        <div class="admin-note">
-          Never treat a screenshot or customer-submitted transaction code
-          alone as proof of payment. Verify the transaction using the
-          appropriate M-Pesa records before releasing a supplier contact.
+        <div class="admin-setting">
+          <h3>Supplier contact access</h3>
+          <p class="muted">
+            This setting is independent of the verification badge.
+          </p>
+
+          <label for="contact-access">Choose access type *</label>
+          <select class="form-control" id="contact-access" required>
+            <option value="paid">Locked — Buyer pays to unlock</option>
+            <option value="free">Free — No payment required</option>
+          </select>
+
+          <div id="unlock-fee-wrap">
+            <label for="unlock-fee">Contact unlock fee (KES)</label>
+            <input class="form-control" id="unlock-fee" type="number"
+              min="0" step="1" value="50">
+            <small class="muted">
+              You can set the fee to KES 0. Choose Free above if no payment
+              should be required.
+            </small>
+          </div>
+
+          <div class="admin-private-note">
+            Supplier phone numbers and private contact details will be stored
+            securely in the Firebase backend later. Do not put them in this
+            public-facing preview or in product descriptions.
+          </div>
         </div>
 
-        <div class="admin-empty">
-          <span>🔐</span>
-          <strong>No unlock records connected yet</strong>
-          <p>Payment submissions will appear here after database integration.</p>
-        </div>
-      </div>
-
-      <div class="admin-panel">
-        <h3>Assisted purchase orders</h3>
-        <p class="muted">
-          These are orders where NiPlag helps source and coordinate products
-          on behalf of the customer.
-        </p>
-
-        <div class="admin-order-stages">
-          <div><span>01</span> Request received</div>
-          <div><span>02</span> Checking stock and prices</div>
-          <div><span>03</span> Quotation sent</div>
-          <div><span>04</span> Customer approval</div>
-          <div><span>05</span> Payment verified</div>
-          <div><span>06</span> Purchase and delivery</div>
+        <div class="admin-setting">
+          <h3>Listing status</h3>
+          <select class="form-control" id="product-status">
+            <option value="draft">Draft — Not ready</option>
+            <option value="published">Published — Ready for catalogue</option>
+          </select>
+          <small class="muted">
+            Published is only a preview status until the backend is connected.
+          </small>
         </div>
 
-        <div class="admin-empty">
-          <span>🛒</span>
-          <strong>No assisted orders connected yet</strong>
-          <p>Customer orders will appear here after database integration.</p>
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-accent" id="save-product">
+            Add Product to Preview
+          </button>
+          <button type="button" class="btn btn-outline" id="cancel-edit"
+            hidden>
+            Cancel Edit
+          </button>
         </div>
-      </div>
-    </section>
 
-    <section class="admin-bottom-note">
-      <h3>Next development stage</h3>
-      <p>
-        Firebase will provide the database, secure admin authentication,
-        product records, application records and order management.
-        Access to private supplier information will be restricted to
-        authorized administration.
-      </p>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <a href="index.html" class="logo">Ni<span>Plag</span></a>
-      <p>Wholesale discovery made easier.</p>
-      <p class="muted">ADMIN DEVELOPMENT PREVIEW</p>
-      <p class="muted">© 2026 NiPlag</p>
+      </form>
     </div>
-  </footer>
+  </section>
+
+  <section id="product-list" class="admin-section">
+    <h2 class="section-title">Products in This Preview</h2>
+    <p class="muted">
+      These entries are temporary. They disappear when this page is refreshed.
+    </p>
+
+    <div id="admin-product-list" class="admin-product-list">
+      <div class="admin-empty">
+        <strong>No products added yet.</strong>
+        <p>Your product previews will appear here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="admin-process" class="admin-section">
+    <div class="admin-panel">
+      <h2 class="section-title">Publishing Checklist</h2>
+      <ol class="admin-checklist">
+        <li>Confirm supplier identity and shop details.</li>
+        <li>Check product description, price and minimum order quantity.</li>
+        <li>Review the product image and category.</li>
+        <li>Choose whether the Verified badge should appear.</li>
+        <li>Choose Free or Locked/Paid contact access and set the fee.</li>
+        <li>Confirm the listing is ready before publishing.</li>
+        <li>Keep supplier contact information private.</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="admin-bottom-note">
+    <strong>Next development stage:</strong>
+    Connect this dashboard to Firebase, add administrator login,
+    securely save products and images, and protect supplier contact details.
+  </div>
+
+</main>
+
+<script>
+const productForm = document.getElementById("product-form");
+const accessSelect = document.getElementById("contact-access");
+const feeWrap = document.getElementById("unlock-fee-wrap");
+const feeInput = document.getElementById("unlock-fee");
+const productList = document.getElementById("admin-product-list");
+
+let products = [];
+let editingId = null;
+let nextId = 1;
+
+function updateFeeVisibility() {
+  const isFree = accessSelect.value === "free";
+  feeWrap.style.display = isFree ? "none" : "block";
+  feeInput.disabled = isFree;
+}
+
+accessSelect.addEventListener("change", updateFeeVisibility);
+updateFeeVisibility();
+
+function money(value) {
+  return "KES " + Number(value || 0).toLocaleString("en-KE");
+}
+
+function safe(value) {
+  return String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[character]);
+}
+
+function updateStats() {
+  document.getElementById("total-products").textContent = products.length;
+  document.getElementById("published-products").textContent =
+    products.filter(p => p.status === "published").length;
+  document.getElementById("draft-products").textContent =
+    products.filter(p => p.status === "draft").length;
+}
+
+function renderProducts() {
+  if (products.length === 0) {
+    productList.innerHTML = `
+      <div class="admin-empty">
+        <strong>No products added yet.</strong>
+        <p>Your product previews will appear here.</p>
+      </div>`;
+    updateStats();
+    return;
+  }
+
+  productList.innerHTML = products.map(product => `
+    <article class="admin-product-card">
+      <div class="admin-product-top">
+        <div>
+          <h3>${safe(product.name)}</h3>
+          <p class="muted">${safe(product.category)} · ${safe(product.location)}</p>
+        </div>
+        <span class="admin-status ${product.status}">
+          ${product.status === "published" ? "Published preview" : "Draft"}
+        </span>
+      </div>
+
+      <p>${safe(product.description)}</p>
+
+      <div class="admin-product-details">
+        <span>Wholesale: <strong>${money(product.wholesale)}</strong></span>
+        <span>Suggested selling: <strong>${product.retail ? money(product.retail) : "Not set"}</strong></span>
+        <span>MOQ: <strong>${safe(product.moq)}</strong></span>
+      </div>
+
+      <div class="admin-product-tags">
+        <span class="admin-tag">${product.verified ? "Verified" : "Not verified"}</span>
+        <span class="admin-tag">
+          ${product.access === "free" ? "Free contact access" : "Locked contact · " + money(product.fee)}
+        </span>
+      </div>
+
+      <div class="admin-product-actions">
+        <button type="button" class="btn btn-outline"
+          onclick="editProduct(${product.id})">Edit</button>
+        <button type="button" class="btn btn-outline"
+          onclick="toggleStatus(${product.id})">
+          ${product.status === "published" ? "Move to Draft" : "Mark Published"}
+        </button>
+        <button type="button" class="btn admin-delete"
+          onclick="deleteProduct(${product.id})">Delete</button>
+      </div>
+    </article>
+  `).join("");
+
+  updateStats();
+}
+
+productForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const access = accessSelect.value;
+  const fee = access === "free" ? 0 : Number(feeInput.value);
+
+  if (access === "paid" && (!Number.isFinite(fee) || fee < 0)) {
+    alert("Enter a valid contact unlock fee.");
+    return;
+  }
+
+  const product = {
+    id: editingId ?? nextId++,
+    name: document.getElementById("product-name").value.trim(),
+    category: document.getElementById("product-category").value,
+    description: document.getElementById("product-description").value.trim(),
+    image: document.getElementById("product-image").value.trim(),
+    wholesale: Number(document.getElementById("wholesale-price").value),
+    retail: Number(document.getElementById("retail-price").value),
+    moq: Number(document.getElementById("minimum-quantity").value),
+    location: document.getElementById("supplier-location").value.trim(),
+    verified: document.getElementById("verified-status").value === "yes",
+    access: access,
+    fee: fee,
+    status: document.getElementById("product-status").value
+  };
+
+  if (editingId !== null) {
+    products = products.map(item => item.id === editingId ? product : item);
+  } else {
+    products.push(product);
+  }
+
+  resetForm();
+  renderProducts();
+  document.getElementById("product-list").scrollIntoView({ behavior: "smooth" });
+});
+
+function editProduct(id) {
+  const product = products.find(item => item.id === id);
+  if (!product) return;
+
+  editingId = id;
+
+  document.getElementById("product-name").value = product.name;
+  document.getElementById("product-category").value = product.category;
+  document.getElementById("product-description").value = product.description;
+  document.getElementById("product-image").value = product.image;
+  document.getElementById("wholesale-price").value = product.wholesale;
+  document.getElementById("retail-price").value = product.retail || "";
+  document.getElementById("minimum-quantity").value = product.moq;
+  document.getElementById("supplier-location").value = product.location;
+  document.getElementById("verified-status").value = product.verified ? "yes" : "no";
+  document.getElementById("contact-access").value = product.access;
+  document.getElementById("unlock-fee").value = product.fee;
+  document.getElementById("product-status").value = product.status;
+
+  document.getElementById("form-heading").textContent = "Edit Product";
+  document.getElementById("save-product").textContent = "Update Product Preview";
+  document.getElementById("cancel-edit").hidden = false;
+
+  updateFeeVisibility();
+  document.getElementById("add-product").scrollIntoView({ behavior: "smooth" });
+}
+
+function toggleStatus(id) {
+  products = products.map(product => {
+    if (product.id === id) {
+      product.status = product.status === "published" ? "draft" : "published";
+    }
+    return product;
+  });
+  renderProducts();
+}
+
+function deleteProduct(id) {
+  if (!confirm("Delete this product from the temporary preview?")) return;
+  products = products.filter(product => product.id !== id);
+  if (editingId === id) resetForm();
+  renderProducts();
+}
+
+function resetForm() {
+  productForm.reset();
+  editingId = null;
+  document.getElementById("minimum-quantity").value = 1;
+  document.getElementById("unlock-fee").value = 50;
+  document.getElementById("form-heading").textContent = "Add a Product";
+  document.getElementById("save-product").textContent = "Add Product to Preview";
+  document.getElementById("cancel-edit").hidden = true;
+  updateFeeVisibility();
+}
+
+document.getElementById("cancel-edit").addEventListener("click", resetForm);
+
+renderProducts();
+</script>
 
 </body>
-  </html>
+        </html>
   
