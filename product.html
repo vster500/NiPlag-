@@ -7,14 +7,17 @@
   <meta name="description" content="View wholesale product details and buying options on NiPlag.">
   <title>Product Details | NiPlag</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
-
 <body>
 
 <header class="site-header">
   <div class="container">
     <a href="index.html" class="logo">NiPlag<span>.</span></a>
     <p>Wholesale product discovery</p>
+    <a href="basket.html" class="basket-header-link">
+      🛒 My Basket <span id="basket-count">0</span>
+    </a>
   </div>
 </header>
 
@@ -26,7 +29,6 @@
     <span>Product details</span>
   </nav>
 
-  <!-- PRODUCT INFORMATION -->
   <section class="product-detail">
 
     <div class="product-detail-image">
@@ -38,9 +40,9 @@
 
       <span class="badge verified">PRODUCT LISTING TEMPLATE</span>
 
-      <h1>Product name will appear here</h1>
+      <h1 id="product-name">Product name will appear here</h1>
 
-      <p class="muted">
+      <p class="muted" id="product-category">
         Product category: To be added
       </p>
 
@@ -54,7 +56,7 @@
 
         <div class="price-row">
           <span>Wholesale price</span>
-          <strong>To be confirmed</strong>
+          <strong id="product-price">To be confirmed</strong>
         </div>
 
         <div class="price-row">
@@ -78,62 +80,69 @@
       <div class="product-verification">
         <strong>Supplier verification</strong>
         <p class="muted">
-          Verification status will be displayed after the
-          supplier information has been reviewed by NiPlag.
+          Verification status will be displayed after supplier
+          information has been reviewed by NiPlag.
         </p>
       </div>
 
     </div>
-
   </section>
 
-  <!-- BUYING OPTIONS -->
   <section class="product-buying">
 
     <h2 class="section-title">Choose how you buy</h2>
 
+    <div class="buying-actions">
+
+      <a href="#" id="unlock-button" class="btn">
+        🔓 Unlock Supplier Contact
+      </a>
+
+      <a href="#" id="assisted-button" class="btn btn-accent">
+        🤝 Buy Through NiPlag
+      </a>
+
+      <button type="button" id="add-to-basket" class="btn btn-outline">
+        🛒 Add to Basket
+      </button>
+
+    </div>
+
     <div class="product-card">
       <div class="product-info">
-        <span class="badge unlock-badge">DIRECT CONTACT</span>
-        <h3>Unlock supplier contact</h3>
+        <h3>Direct supplier contact</h3>
         <p class="muted">
-          Pay the contact-unlock fee to receive supplier
-          contact details and deal directly with them.
+          Pay the contact-unlock fee to receive supplier details
+          and deal directly with the supplier.
         </p>
         <p class="muted">
-          Direct purchases are between you and the supplier.
-          NiPlag does not guarantee these transactions.
+          NiPlag does not guarantee direct transactions between
+          buyers and suppliers.
         </p>
-        <a href="unlock.html" class="btn">
-          Unlock supplier details
-        </a>
       </div>
     </div>
 
     <div class="product-card">
       <div class="product-info">
-        <span class="badge verified">ASSISTED BUYING</span>
-        <h3>Buy through NiPlag</h3>
+        <h3>Assisted buying by NiPlag</h3>
         <p class="muted">
-          Prefer help? Contact NiPlag to confirm availability,
-          price, service fee and delivery arrangements.
+          We can help source products, confirm prices, coordinate
+          purchases and arrange delivery under agreed terms.
         </p>
-        <a href="https://wa.me/254754058116" class="btn btn-accent">
-          Ask NiPlag on WhatsApp
-        </a>
         <p class="muted">
-          Purchase protection applies only under agreed terms.
+          Availability, service fees and delivery costs must be
+          confirmed before payment.
         </p>
       </div>
     </div>
 
   </section>
 
-  <!-- MORE PRODUCTS -->
   <section class="product-more">
     <h2 class="section-title">Explore more products</h2>
     <a href="search.html" class="btn">Browse products</a>
     <a href="categories.html" class="btn btn-outline">View categories</a>
+    <a href="basket.html" class="btn btn-outline">View my basket</a>
   </section>
 
 </main>
@@ -144,5 +153,5 @@
 </footer>
 
 </body>
-  </html>
-        
+            </html>
+      
