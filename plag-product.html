@@ -1,1 +1,352 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apply to list your wholesale products on NiPlag and reach buyers across Kenya.">
+  <title>List Your Products | NiPlag</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Ni<span>Plag</span>.</a>
+    <p class="muted">Wholesale discoveries. Better buying.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- INTRODUCTION -->
+
+  <section class="supplier-hero">
+    <p class="muted">NIPLAG SUPPLIER NETWORK</p>
+    <h1>List Your Products on NiPlag</h1>
+
+    <p>
+      Are you a wholesaler, distributor or manufacturer?
+      Reach potential buyers across Kenya by submitting
+      your products for review and listing.
+    </p>
+
+    <div class="notice">
+      NiPlag reviews suppliers and products before publication.
+      Submitting an application does not guarantee approval.
+    </div>
+  </section>
+
+  <!-- SUPPLIER BENEFITS -->
+
+  <section class="supplier-benefits">
+    <h2 class="section-title">Why list with NiPlag?</h2>
+
+    <div class="supplier-benefit">
+      <h3>Reach more buyers</h3>
+      <p class="muted">
+        Make your wholesale products discoverable to customers
+        searching for suppliers across Kenya.
+      </p>
+    </div>
+
+    <div class="supplier-benefit">
+      <h3>Showcase your prices</h3>
+      <p class="muted">
+        Display wholesale prices, minimum order quantities
+        and product information.
+      </p>
+    </div>
+
+    <div class="supplier-benefit">
+      <h3>Supplier contact privacy</h3>
+      <p class="muted">
+        Your private contact details are not automatically
+        displayed publicly. Buyers may access supplier
+        contacts through NiPlag's contact process.
+      </p>
+    </div>
+  </section>
+
+  <!-- APPLICATION FORM -->
+
+  <section class="supplier-form-section">
+
+    <h2 class="section-title">Supplier Application</h2>
+
+    <p class="muted">
+      Complete the information below. NiPlag will contact
+      you for verification and further discussion.
+    </p>
+
+    <form id="supplier-form">
+
+      <h3 class="form-subheading">1. Business Information</h3>
+
+      <label for="business-name">Business / Shop Name *</label>
+      <input
+        class="form-control"
+        type="text"
+        id="business-name"
+        required
+        placeholder="Enter your business name">
+
+      <label for="business-type">Business Type *</label>
+      <select class="form-control" id="business-type" required>
+        <option value="">Select business type</option>
+        <option>Wholesaler</option>
+        <option>Distributor</option>
+        <option>Manufacturer</option>
+        <option>Importer</option>
+        <option>Retailer</option>
+        <option>Other</option>
+      </select>
+
+      <label for="years-business">Years in Business</label>
+      <input
+        class="form-control"
+        type="number"
+        id="years-business"
+        min="0"
+        placeholder="e.g. 3">
+
+      <label for="business-location">County *</label>
+      <input
+        class="form-control"
+        type="text"
+        id="business-location"
+        required
+        placeholder="e.g. Nairobi">
+
+      <label for="business-town">Town / Area *</label>
+      <input
+        class="form-control"
+        type="text"
+        id="business-town"
+        required
+        placeholder="e.g. Eastleigh">
+
+      <label for="shop-location">Physical Shop / Market Location *</label>
+      <textarea
+        class="form-control"
+        id="shop-location"
+        rows="3"
+        required
+        placeholder="Describe where your shop or warehouse is located"></textarea>
+
+
+      <h3 class="form-subheading">2. Contact Information</h3>
+
+      <label for="contact-person">Contact Person's Name *</label>
+      <input
+        class="form-control"
+        type="text"
+        id="contact-person"
+        required
+        placeholder="Full name">
+
+      <label for="supplier-phone">Phone Number *</label>
+      <input
+        class="form-control"
+        type="tel"
+        id="supplier-phone"
+        required
+        placeholder="e.g. 07XXXXXXXX">
+
+      <label for="supplier-whatsapp">WhatsApp Number</label>
+      <input
+        class="form-control"
+        type="tel"
+        id="supplier-whatsapp"
+        placeholder="If different from phone number">
+
+
+      <h3 class="form-subheading">3. Product Information</h3>
+
+      <label for="product-category">Main Product Category *</label>
+      <select class="form-control" id="product-category" required>
+        <option value="">Select category</option>
+        <option>Electronics</option>
+        <option>Electrical</option>
+        <option>Farming</option>
+        <option>Home & Living</option>
+        <option>Building & Construction</option>
+        <option>Fashion & Accessories</option>
+        <option>Other</option>
+      </select>
+
+      <label for="product-details">Products You Supply *</label>
+      <textarea
+        class="form-control"
+        id="product-details"
+        rows="5"
+        required
+        placeholder="List your products, descriptions, wholesale prices, minimum order quantities and available stock. Include as much detail as possible."></textarea>
+
+      <label for="catalogue-link">Product Catalogue / Website Link</label>
+      <input
+        class="form-control"
+        type="url"
+        id="catalogue-link"
+        placeholder="https://example.com">
+
+      <p class="muted">
+        You can send product photographs, catalogues and
+        additional price lists separately after opening
+        the WhatsApp conversation.
+      </p>
+
+
+      <h3 class="form-subheading">4. Supply and Verification</h3>
+
+      <label for="receipt">Can you provide purchase or sales receipts? *</label>
+      <select class="form-control" id="receipt" required>
+        <option value="">Select an answer</option>
+        <option>Yes</option>
+        <option>No</option>
+        <option>Depending on the product</option>
+      </select>
+
+      <label for="verification">Are you available for physical verification? *</label>
+      <select class="form-control" id="verification" required>
+        <option value="">Select an answer</option>
+        <option>Yes</option>
+        <option>No</option>
+        <option>By appointment</option>
+      </select>
+
+      <label for="additional-info">Additional Information</label>
+      <textarea
+        class="form-control"
+        id="additional-info"
+        rows="3"
+        placeholder="Anything else NiPlag should know about your business?"></textarea>
+
+
+      <h3 class="form-subheading">5. Application Agreement</h3>
+
+      <div class="notice">
+        <p>
+          By submitting this application, you understand that:
+        </p>
+
+        <ul>
+          <li>NiPlag reviews and approves products before publication.</li>
+          <li>Submitting an application does not guarantee listing or sales.</li>
+          <li>You must provide accurate business and product information.</li>
+          <li>You should notify NiPlag when prices, stock or MOQ change.</li>
+          <li>NiPlag may request additional evidence or physical verification.</li>
+          <li>Repeated complaints or misleading information may result in removal.</li>
+        </ul>
+      </div>
+
+      <label class="supplier-consent">
+        <input type="checkbox" id="supplier-consent" required>
+        I confirm that the information provided is accurate
+        and agree that NiPlag may contact me about this application.
+      </label>
+
+      <button type="submit" class="btn btn-accent supplier-submit">
+        Submit Supplier Application on WhatsApp
+      </button>
+
+      <p class="muted">
+        Your application will be prepared in WhatsApp.
+        You must press Send in WhatsApp to submit it.
+      </p>
+
+    </form>
+
+  </section>
+
+  <!-- VERIFICATION PROCESS -->
+
+  <section class="supplier-process">
+    <h2 class="section-title">What happens next?</h2>
+
+    <ol>
+      <li>Submit your supplier application.</li>
+      <li>NiPlag reviews your information.</li>
+      <li>We contact you for verification or clarification.</li>
+      <li>Approved products are prepared for publication.</li>
+    </ol>
+  </section>
+
+  <section class="notice">
+    <strong>Important:</strong> NiPlag's Verified label means
+    that the supplier and listing information have undergone
+    review. It is not an unconditional guarantee of every
+    future transaction.
+  </section>
+
+  <div class="basket-actions">
+    <a href="index.html" class="btn btn-outline">
+      Back to NiPlag Home
+    </a>
+  </div>
+
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html">Home</a>
+  <a href="search.html">Search</a>
+  <a href="categories.html">Categories</a>
+  <a href="basket.html">Basket</a>
+</nav>
+
+<script>
+document.getElementById("supplier-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const getValue = id =>
+    document.getElementById(id).value.trim();
+
+  const message = `
+NIPLAG SUPPLIER APPLICATION
+
+BUSINESS INFORMATION
+Business name: ${getValue("business-name")}
+Business type: ${getValue("business-type")}
+Years in business: ${getValue("years-business") || "Not provided"}
+County: ${getValue("business-location")}
+Town / Area: ${getValue("business-town")}
+Shop location: ${getValue("shop-location")}
+
+CONTACT INFORMATION
+Contact person: ${getValue("contact-person")}
+Phone: ${getValue("supplier-phone")}
+WhatsApp: ${getValue("supplier-whatsapp") || "Same as phone / Not provided"}
+
+PRODUCT INFORMATION
+Main category: ${getValue("product-category")}
+Products and prices:
+${getValue("product-details")}
+
+Catalogue / Website:
+${getValue("catalogue-link") || "Not provided"}
+
+SUPPLY AND VERIFICATION
+Receipts: ${getValue("receipt")}
+Physical verification: ${getValue("verification")}
+
+Additional information:
+${getValue("additional-info") || "None"}
+
+I confirm that the information provided is accurate.
+I am applying to list products on NiPlag.
+  `.trim();
+
+  const supplierWhatsApp = "254703859837";
+
+  const whatsappURL =
+    "https://wa.me/" + supplierWhatsApp +
+    "?text=" + encodeURIComponent(message);
+
+  window.location.href = whatsappURL;
+});
+</script>
+
+</body>
+      </html>
+  
