@@ -1231,3 +1231,204 @@ footer a {
   }
   }
   
+/* DAY 13 - ASSISTED PURCHASING */
+
+.assistance-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.assistance-basket {
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.assistance-hero {
+  background: var(--primary);
+  color: white;
+  padding: 55px 0;
+}
+
+.assistance-hero h1 {
+  font-size: clamp(29px, 6vw, 43px);
+  line-height: 1.15;
+  max-width: 650px;
+  margin: 15px 0;
+}
+
+.assistance-hero p {
+  color: #dce8df;
+  max-width: 600px;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+.assistance-tag {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  margin-bottom: 8px;
+}
+
+.assistance-intro,
+.assistance-benefits,
+.assistance-form-section,
+.assistance-faq {
+  padding-top: 38px;
+  padding-bottom: 25px;
+}
+
+.assistance-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 13px;
+}
+
+.assistance-step,
+.assistance-benefit,
+.assistance-faq-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.assistance-step > span {
+  display: inline-block;
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.assistance-step h3,
+.assistance-benefit h3,
+.assistance-faq-item h3 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+.assistance-step p,
+.assistance-benefit p,
+.assistance-faq-item p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.assistance-benefit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.assistance-form-section {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.assistance-form-heading {
+  margin-bottom: 20px;
+}
+
+.assistance-form-section form {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.form-subheading {
+  font-size: 16px;
+  color: var(--primary);
+  margin: 20px 0 13px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border);
+}
+
+.form-subheading:first-child {
+  margin-top: 0;
+}
+
+.assistance-form-section textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.assistance-policy {
+  background: #edf4ef;
+  border-radius: 9px;
+  padding: 15px;
+  margin: 18px 0;
+  font-size: 13px;
+}
+
+.assistance-policy strong {
+  display: block;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.assistance-policy p {
+  color: #52645a;
+}
+
+.assistance-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.assistance-consent input {
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.assistance-submit {
+  width: 100%;
+  font-size: 15px;
+  padding: 15px;
+}
+
+.assistance-faq {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.assistance-faq-item {
+  margin-bottom: 12px;
+}
+
+.site-footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 28px 0;
+  margin-top: 25px;
+}
+
+.site-footer p {
+  margin-top: 9px;
+  font-size: 13px;
+}
+
+@media (min-width: 700px) {
+  .assistance-steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .assistance-benefit-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .assistance-form-section form {
+    padding: 28px;
+  }
+  }
+
