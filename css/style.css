@@ -730,3 +730,204 @@ footer a {
   margin-top: 8px;
   }
 
+/* =====================================
+   NIPLAG DAY 10 - PRODUCT & BASKET
+===================================== */
+
+/* Product action buttons */
+
+.buying-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.buying-actions .btn {
+  width: 100%;
+  min-height: 46px;
+}
+
+/* Basket header */
+
+.basket-header-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.basket-header-link span {
+  background: var(--accent);
+  color: var(--primary);
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-left: 4px;
+}
+
+/* Basket layout */
+
+.basket-hero {
+  padding: 28px 0;
+}
+
+.basket-hero h1 {
+  margin: 8px 0;
+}
+
+.basket-panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.basket-empty {
+  text-align: center;
+  padding: 25px 10px;
+}
+
+.basket-empty span {
+  font-size: 45px;
+}
+
+.basket-empty h2 {
+  margin: 10px 0;
+}
+
+.basket-empty .btn {
+  margin-top: 16px;
+}
+
+/* Basket product rows */
+
+.basket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.basket-item h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.basket-item p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 4px 0;
+}
+
+.basket-item button {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+/* Quantity controls */
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--background);
+  color: var(--primary);
+  font-size: 19px;
+  font-weight: bold;
+}
+
+/* Basket totals */
+
+.basket-total-panel {
+  margin-top: 20px;
+  padding: 16px;
+  background: #edf4ef;
+  border-radius: var(--radius);
+}
+
+.basket-total-panel h2 {
+  color: var(--primary);
+  margin: 6px 0 12px;
+  overflow-wrap: anywhere;
+}
+
+.basket-total-panel p {
+  margin-top: 8px;
+}
+
+/* Basket action buttons */
+
+.basket-actions {
+  margin: 25px 0;
+}
+
+.basket-actions .btn {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+#share-basket,
+#send-basket-whatsapp {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  min-height: 46px;
+}
+
+/* Product profit estimator */
+
+.profit-estimator {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.profit-estimator h2 {
+  margin-bottom: 12px;
+}
+
+.profit-result {
+  background: #edf4ef;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.profit-result strong {
+  color: var(--primary);
+}
+
+/* Desktop layout */
+
+@media (min-width: 700px) {
+  .buying-actions {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .buying-actions .btn {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .basket-panel {
+    padding: 22px;
+  }
+  }
+  
