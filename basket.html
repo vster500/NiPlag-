@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Basket | NiPlag</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Ni<span>Plag</span>.</a>
+    <p class="muted">Wholesale discoveries. Better buying.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="basket-hero">
+    <p class="muted">YOUR SHOPPING LIST</p>
+    <h1>My Basket</h1>
+    <p>Collect products from different wholesalers in one place.</p>
+  </section>
+
+  <section class="basket-panel">
+
+    <div id="basket-empty" class="basket-empty">
+      <span>🛒</span>
+      <h2>Your basket is empty</h2>
+      <p class="muted">Explore products and add the ones you want to buy.</p>
+      <a href="index.html" class="btn btn-accent">Explore Products</a>
+    </div>
+
+    <div id="basket-items"></div>
+
+    <div id="basket-summary" class="basket-total-panel">
+      <h3>Order Summary</h3>
+
+      <p>Total product units:
+        <strong id="basket-quantity">0</strong>
+      </p>
+
+      <p>Estimated product cost:</p>
+      <h2 id="basket-total">KES 0</h2>
+
+      <p>Estimated gross profit:</p>
+      <h2 id="basket-profit">KES 0</h2>
+
+      <p class="muted">
+        Profit is an estimate based on the suggested selling prices.
+        It excludes transport, delivery and other expenses.
+      </p>
+    </div>
+
+  </section>
+
+  <section class="basket-panel">
+    <h2 class="section-title">Share with friends</h2>
+
+    <p>
+      Planning to buy together? Share this shopping list with up to
+      two friends so you can coordinate products and quantities.
+    </p>
+
+    <div class="notice">
+      This is a shared shopping list, not a live group account.
+      Friends can send you their requested products and quantities,
+      which can then be added to the final order with NiPlag.
+    </div>
+
+    <button type="button" id="share-basket" class="btn btn-accent">
+      Share Basket with Friends
+    </button>
+
+    <button type="button" id="send-basket-whatsapp" class="btn">
+      Send Basket to NiPlag on WhatsApp
+    </button>
+  </section>
+
+  <section class="basket-panel">
+    <h2 class="section-title">Delivery and transport</h2>
+
+    <p>
+      A small delivery or transport charge may apply depending on
+      your location, order size and delivery arrangements.
+    </p>
+
+    <p>
+      Combining orders with other buyers may help reduce transport
+      costs. Final charges will be confirmed before payment.
+    </p>
+  </section>
+
+  <section class="notice">
+    <strong>Important:</strong> Adding products to your basket does
+    not place an order or reserve stock. NiPlag will confirm stock,
+    prices, quantities, service fees and delivery charges before
+    you make payment.
+  </section>
+
+  <div class="basket-actions">
+    <a href="index.html" class="btn btn-outline">
+      Continue Shopping
+    </a>
+  </div>
+
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html">Home</a>
+  <a href="search.html">Search</a>
+  <a href="categories.html">Categories</a>
+  <a href="basket.html">Basket</a>
+</nav>
+
+</body>
+  </html>
+  
