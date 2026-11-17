@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="View wholesale product details and buying options on NiPlag.">
+  <meta name="description" content="Discover wholesale products and estimate your resale profit on NiPlag.">
   <title>Product Details | NiPlag</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
@@ -16,7 +16,7 @@
     <a href="index.html" class="logo">NiPlag<span>.</span></a>
     <p>Wholesale product discovery</p>
     <a href="basket.html" class="basket-header-link">
-      🛒 My Basket <span id="basket-count">0</span>
+      🛒 My Basket (<span id="basket-count">0</span>)
     </a>
   </div>
 </header>
@@ -26,7 +26,7 @@
   <nav class="product-breadcrumb">
     <a href="index.html">Home</a> /
     <a href="categories.html">Categories</a> /
-    <span>Product details</span>
+    Product details
   </nav>
 
   <section class="product-detail">
@@ -47,26 +47,19 @@
       </p>
 
       <p class="product-description">
-        A full product description will appear here.
-        Buyers will be able to review product specifications,
-        available variations and other important details.
+        Product description and specifications will appear here.
       </p>
 
       <div class="product-price-panel">
 
         <div class="price-row">
-          <span>Wholesale price</span>
+          <span>Wholesale price per item</span>
           <strong id="product-price">To be confirmed</strong>
         </div>
 
         <div class="price-row">
           <span>Suggested retail price</span>
-          <strong>To be confirmed</strong>
-        </div>
-
-        <div class="price-row profit-row">
-          <span>Estimated gross profit</span>
-          <strong>Pending prices</strong>
+          <strong id="suggested-price">To be confirmed</strong>
         </div>
 
       </div>
@@ -88,21 +81,67 @@
     </div>
   </section>
 
+  <!-- PROFIT ESTIMATOR -->
+  <section class="profit-estimator product-card">
+    <div class="product-info">
+
+      <span class="badge verified">BUSINESS TOOL</span>
+      <h2 class="section-title">Estimate your profit</h2>
+
+      <p class="muted">
+        Change the selling price and quantity to estimate
+        your potential gross profit.
+      </p>
+
+      <label for="estimate-cost">Wholesale cost per item (KES)</label>
+      <input class="form-control" type="number"
+        id="estimate-cost" min="0" placeholder="Wholesale price">
+
+      <label for="estimate-selling">Your expected selling price (KES)</label>
+      <input class="form-control" type="number"
+        id="estimate-selling" min="0" placeholder="Selling price">
+
+      <label for="estimate-quantity">Quantity you plan to buy</label>
+      <input class="form-control" type="number"
+        id="estimate-quantity" min="1" value="1">
+
+      <div class="profit-results">
+        <p>Estimated profit per item</p>
+        <h3 id="profit-per-item">KES 0</h3>
+
+        <p>Total estimated gross profit</p>
+        <h2 id="profit-total">KES 0</h2>
+
+        <p>Total wholesale cost</p>
+        <h3 id="wholesale-total">KES 0</h3>
+      </div>
+
+      <p class="muted">
+        Estimates exclude transport, delivery, taxes and other
+        business expenses. Actual profit may be lower.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- THREE BUYING OPTIONS -->
   <section class="product-buying">
 
     <h2 class="section-title">Choose how you buy</h2>
 
     <div class="buying-actions">
 
-      <a href="#" id="unlock-button" class="btn">
+      <a href="unlock.html" id="unlock-button" class="btn">
         🔓 Unlock Supplier Contact
       </a>
 
-      <a href="#" id="assisted-button" class="btn btn-accent">
+      <a href="https://wa.me/254754058116"
+        id="assisted-button" class="btn btn-accent">
         🤝 Buy Through NiPlag
       </a>
 
-      <button type="button" id="add-to-basket" class="btn btn-outline">
+      <button type="button" id="add-to-basket"
+        class="btn btn-outline">
         🛒 Add to Basket
       </button>
 
@@ -112,12 +151,9 @@
       <div class="product-info">
         <h3>Direct supplier contact</h3>
         <p class="muted">
-          Pay the contact-unlock fee to receive supplier details
-          and deal directly with the supplier.
-        </p>
-        <p class="muted">
-          NiPlag does not guarantee direct transactions between
-          buyers and suppliers.
+          Pay the contact-unlock fee to receive supplier
+          details and deal directly with the supplier.
+          NiPlag does not guarantee direct transactions.
         </p>
       </div>
     </div>
@@ -126,12 +162,8 @@
       <div class="product-info">
         <h3>Assisted buying by NiPlag</h3>
         <p class="muted">
-          We can help source products, confirm prices, coordinate
+          We help source products, confirm prices, coordinate
           purchases and arrange delivery under agreed terms.
-        </p>
-        <p class="muted">
-          Availability, service fees and delivery costs must be
-          confirmed before payment.
         </p>
       </div>
     </div>
@@ -141,8 +173,8 @@
   <section class="product-more">
     <h2 class="section-title">Explore more products</h2>
     <a href="search.html" class="btn">Browse products</a>
-    <a href="categories.html" class="btn btn-outline">View categories</a>
     <a href="basket.html" class="btn btn-outline">View my basket</a>
+    <a href="categories.html" class="btn btn-outline">Categories</a>
   </section>
 
 </main>
@@ -153,5 +185,5 @@
 </footer>
 
 </body>
-            </html>
-      
+  </html>
+        
