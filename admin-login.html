@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NiPlag Admin Login</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .login-box {
+      max-width: 420px;
+      margin: 60px auto;
+      padding: 25px;
+      background: white;
+      border: 1px solid #e2e8e3;
+      border-radius: 14px;
+    }
+    .login-box h1 { margin-bottom: 8px; }
+    .login-box input {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0 18px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .login-box button { width: 100%; }
+    #login-message { margin-top: 14px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">NiPlag<span>.</span> Admin</div>
+  </header>
+
+  <main class="container">
+    <section class="login-box">
+      <h1>Administrator Login</h1>
+      <p class="muted">Sign in to manage NiPlag products.</p>
+
+      <form id="login-form">
+        <label for="email">Admin email</label>
+        <input id="email" type="email" required autocomplete="username">
+
+        <label for="password">Password</label>
+        <input id="password" type="password" required
+          autocomplete="current-password">
+
+        <button class="btn btn-accent" type="submit">
+          Sign In
+        </button>
+      </form>
+
+      <p id="login-message" role="status"></p>
+    </section>
+  </main>
+
+  <script type="module">
+    import { auth } from "./js/firebase.js";
+    import {
+      signInWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-auth.js";
+
+    const form = document.getElementById("login-form");
+    const message = document.getElementById("login-message");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      message.textContent = "Signing in...";
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = "admin.html";
+      } catch (error) {
+        message.textContent =
+          "Login failed. Check your email and password.";
+      }
+    });
+  </script>
+</body>
+</html>
