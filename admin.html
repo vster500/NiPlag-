@@ -574,3 +574,125 @@ function deleteProduct(id) {
 
   if (!saveProducts()) {
  
+    alert("Browser storage is full. Product deletion may not have been saved.");
+    return;
+  }
+
+  renderProducts();
+}
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const status = document.getElementById("product-status").value;
+
+  if (status === "published" && !currentImage) {
+    formMessage.textContent =
+      "Please upload a product image before publishing.";
+    return;
+  }
+
+  const product = {
+    id: editingId || (
+      window.crypto && crypto.randomUUID
+        ? crypto.randomUUID()
+        : String(Date.now())
+    ),
+    name: document.getElementById("product-name").value.trim(),
+    category: document.getElementById("product-category").value,
+    description: document.getElementById("product-description").value.trim(),
+    image: currentImage,
+    wholesale: Number(document.getElementById("wholesale-price").value),
+    retail: Number(document.getElementById("retail-price").value || 0),
+    moq: Number(document.getElementById("minimum-quantity").value),
+    location: document.getElementById("supplier-location").value.trim(),
+    verified: document.getElementById("verified-status").value === "yes",
+    access: accessSelect.value,
+    fee: accessSelect.value === "free" ? 0 : Number(feeInput.value),
+    status: status
+  };
+
+  if (
+    !product.name ||
+    !product.description ||
+    !product.location ||
+    product.wholesale < 0 ||
+    product.moq < 1 ||
+    (product.access === "paid" && product.fee < 0)
+  ) {
+    formMessage.textContent = "Please check all required fields.";
+    return;
+  }
+
+  if (editingId) {
+    const index = products.findIndex(item => item.id === editingId);
+    if (index !== -1) products[index] = product;
+  } else {
+    products.unshift(product);
+  }
+
+  if (!saveProducts()) {
+    formMessage.textContent =
+      "Could not save. Browser storage may be full.";
+    return;
+  }
+
+  formMessage.textContent = "Product saved in this browser preview.";
+  resetForm();
+  renderProducts();
+});
+
+productList.addEventListener("click", function(event) {
+  const button = event.target.closest("button[data-action]");
+  if (!button) return;
+
+  const id = button.dataset.id;
+  const action = button.dataset.action;
+
+  if (action === "edit") {
+    editProduct(id);
+  }
+
+  if (action === "delete") {
+    deleteProduct(id);
+  }
+
+  if (action === "toggle") {
+    const product = products.find(item => item.id === id);
+    if (!product) return;
+
+    if (product.status === "draft" && !product.image) {
+      alert("Upload a product image before publishing.");
+      return;
+    }
+
+    product.status =
+      product.status === "published" ? "draft" : "published";
+
+    if (saveProducts()) renderProducts();
+  }
+});
+
+document.getElementById("cancel-edit").addEventListener("click", resetForm);
+
+document.getElementById("product-search").addEventListener(
+  "input", renderProducts
+);
+
+document.getElementById("category-filter").addEventListener(
+  "change", renderProducts
+);
+
+document.getElementById("status-filter").addEventListener(
+  "change", renderProducts
+);
+
+updateFeeVisibility();
+renderProducts();
+showImagePreview("");
+</script>
+
+<script type="module" src="js/admin-auth.js"></script>
+</body>
+</html>
+
