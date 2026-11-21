@@ -5,8 +5,132 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Discover wholesale products and suppliers across Kenya with NiPlag.">
+  <meta name="theme-color" content="#102b24">
   <title>NiPlag | Wholesale Discovery Kenya</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 12px;
+    }
+
+    .quick-links a {
+      text-decoration: none;
+      color: inherit;
+      background: rgba(128,128,128,0.12);
+      padding: 7px 10px;
+      border-radius: 20px;
+    }
+
+    .home-product-image {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .home-product-card {
+      margin-bottom: 15px;
+      min-width: 0;
+    }
+
+    .home-product-card .product-info {
+      padding: 12px;
+    }
+
+    .home-product-price {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .home-product-card button {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .home-verified {
+      color: #16834b;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .bucket-floating {
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      z-index: 999;
+      border: none;
+      border-radius: 50px;
+      padding: 13px 17px;
+      background: #102b24;
+      color: white;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .bucket-count {
+      background: #e5b94b;
+      color: #102b24;
+      border-radius: 50%;
+      min-width: 23px;
+      height: 23px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .bucket-panel {
+      position: fixed;
+      z-index: 998;
+      right: 12px;
+      bottom: 82px;
+      width: min(340px, calc(100% - 24px));
+      max-height: 65vh;
+      overflow-y: auto;
+      background: white;
+      color: #17231e;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    }
+
+    .bucket-panel[hidden] {
+      display: none;
+    }
+
+    .bucket-item {
+      border-bottom: 1px solid #ddd;
+      padding: 12px 0;
+    }
+
+    .bucket-item button {
+      margin-top: 7px;
+    }
+
+    .bucket-close {
+      float: right;
+      border: none;
+      background: transparent;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .bucket-empty {
+      color: #666;
+      padding: 15px 0;
+    }
+  </style>
 </head>
 
 <body>
@@ -16,6 +140,13 @@
     <div class="container">
       <div class="logo">NiPlag<span>.</span></div>
       <p>Find it. Unlock it. Make money.</p>
+
+      <!-- QUICK FEATURE LINKS -->
+      <nav class="quick-links">
+        <a href="assistance.html">Supplier assistance</a>
+        <a href="calculator.html">Profit calculator</a>
+        <a href="plag-product.html">For wholesalers</a>
+      </nav>
     </div>
   </header>
 
@@ -55,9 +186,9 @@
       </div>
     </section>
 
-    <!-- JIPLAG DEALS -->
+    <!-- NIPLAG DEALS -->
     <section style="margin-bottom:30px;">
-      <h2 class="section-title">JiPlag deals 🔥</h2>
+      <h2 class="section-title">NiPlag deals 🔥</h2>
       <p class="muted">
         Interesting wholesale finds and special offers.
       </p>
@@ -70,14 +201,18 @@
     <!-- RECENT PRODUCTS -->
     <section style="margin-bottom:30px;">
       <h2 class="section-title">Recently added products</h2>
+      <p class="muted">
+        Discover products recently listed by NiPlag.
+      </p>
 
-      <div class="notice">
-        New wholesale discoveries will appear here.
-        Check back for the latest listings.
+      <div id="home-products" class="product-grid">
+        <div class="notice">
+          Loading wholesale products...
+        </div>
       </div>
 
-      <a class="btn" href="search.html">
-        Browse products
+      <a class="btn" href="search.html" style="margin-top:15px;">
+        Browse all products
       </a>
     </section>
 
@@ -117,7 +252,6 @@
             Ask us on WhatsApp
           </a>
           <p class="muted">
-            Replace the WhatsApp number before publishing.
             Purchase protection applies only under agreed terms.
           </p>
         </div>
@@ -168,6 +302,28 @@
 
   </main>
 
+  <!-- FLOATING SHOPPING BUCKET -->
+  <button type="button" id="bucket-button"
+    class="bucket-floating" aria-label="Open shopping bucket">
+    🛒 Bucket
+    <span id="bucket-count" class="bucket-count">0</span>
+  </button>
+
+  <!-- BUCKET CONTENTS -->
+  <div id="bucket-panel" class="bucket-panel" hidden>
+    <button type="button" id="bucket-close"
+      class="bucket-close" aria-label="Close bucket">×</button>
+
+    <h3>My shopping bucket</h3>
+    <p class="muted">Your saved product selections.</p>
+
+    <div id="bucket-items">
+      <p class="bucket-empty">Your bucket is empty.</p>
+    </div>
+  </div>
+
+  <script type="module" src="js/home.js"></script>
+
 </body>
-    </html>
-  
+                                                       </html>
+                                                          
