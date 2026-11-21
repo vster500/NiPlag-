@@ -11,24 +11,37 @@ import {
 } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-auth.js";
 
 const ADMIN_UID = "hSrcvZLpvBSAY9RguhhsbulFrnF3";
-
 const status = document.getElementById("storage-status");
 
 onAuthStateChanged(auth, async (user) => {
-  if (!user || user.uid !== ADMIN_UID) return;
+  if (!user) {
+    status.textContent = "No authenticated user detected.";
+    return;
+  }
 
-  status.textContent = "Connecting to NiPlag database...";
+  status.textContent =
+    "Signed in. Checking administrator identity...";
+
+  if (user.uid !== ADMIN_UID) {
+    status.textContent = "Wrong administrator UID: " + user.uid;
+    return;
+  }
+
+  status.textContent = "Admin confirmed. Reading products...";
 
   try {
     const result = await getDocs(collection(db, "products"));
 
     status.textContent =
-      "Firebase connected successfully. Products found: " +
-      result.size;
+      "SUCCESS: Admin confirmed. Project: niplag-637d1. " +
+      "Products found: " + result.size +
+      ". Document IDs: " +
+      result.docs.map(doc => doc.id).join(", ");
   } catch (error) {
-    console.error("Firebase connection error:", error);
+    console.error("Firebase diagnostic error:", error);
 
     status.textContent =
-      "Firebase connection failed: " + error.message;
+      "ERROR: " + error.code + " — " + error.message;
   }
 });
+      
