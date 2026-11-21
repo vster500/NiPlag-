@@ -3,7 +3,9 @@ import { db, auth } from "./firebase.js";
 
 import {
   collection,
-  getDocs
+  getDocs,
+  doc,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js";
 
 import {
@@ -14,34 +16,30 @@ const ADMIN_UID = "hSrcvZLpvBSAY9RguhhsbulFrnF3";
 const status = document.getElementById("storage-status");
 
 onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    status.textContent = "No authenticated user detected.";
+  if (!user || user.uid !== ADMIN_UID) {
+    status.textContent = "Admin authentication failed.";
     return;
   }
 
-  status.textContent =
-    "Signed in. Checking administrator identity...";
-
-  if (user.uid !== ADMIN_UID) {
-    status.textContent = "Wrong administrator UID: " + user.uid;
-    return;
-  }
-
-  status.textContent = "Admin confirmed. Reading products...";
+  status.textContent = "Running Firestore document tests...";
 
   try {
-    const result = await getDocs(collection(db, "products"));
+    const exactDoc = await getDoc(
+      doc(db, "products", "hHe3Blf79yi56cEBW6Fx")
+    );
+
+    const lower = await getDocs(collection(db, "products"));
+    const upper = await getDocs(collection(db, "Products"));
 
     status.textContent =
-      "SUCCESS: Admin confirmed. Project: niplag-637d1. " +
-      "Products found: " + result.size +
-      ". Document IDs: " +
-      result.docs.map(doc => doc.id).join(", ");
-  } catch (error) {
-    console.error("Firebase diagnostic error:", error);
+      "Exact document exists: " + exactDoc.exists() +
+      " | lowercase products: " + lower.size +
+      " | uppercase Products: " + upper.size;
 
+  } catch (error) {
     status.textContent =
       "ERROR: " + error.code + " — " + error.message;
+    console.error(error);
   }
 });
       
