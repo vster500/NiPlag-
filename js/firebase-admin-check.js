@@ -3,6 +3,7 @@ import { db, auth } from "./firebase.js";
 
 import {
   doc,
+  setDoc,
   getDoc
 } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js";
 
@@ -13,36 +14,35 @@ import {
 const status = document.getElementById("storage-status");
 
 onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    status.textContent = "Not signed in.";
+  if (!user || user.uid !== "hSrcvZLpvBSAY9RguhhsbulFrnF3") {
+    status.textContent = "Admin authentication failed.";
     return;
   }
 
   try {
-    const productRef = doc(
+    const testRef = doc(
       db,
       "products",
-      "hHe3Blf79yi56cEBW6Fx"
+      "website-connection-test-20261121"
     );
 
-    const result = await getDoc(productRef);
+    await setDoc(testRef, {
+      name: "NiPlag Connection Test",
+      status: "draft",
+      testDocument: true
+    });
 
-    if (result.exists()) {
-      const data = result.data();
+    const result = await getDoc(testRef);
 
-      status.textContent =
-        "DOCUMENT FOUND! Name: " + data.name +
-        " | Status: [" + data.status + "]" +
-        " | Project: " + db.app.options.projectId;
-    } else {
-      status.textContent =
-        "DOCUMENT NOT FOUND at products/hHe3Blf79yi56cEBW6Fx" +
-        " | Project: " + db.app.options.projectId;
-    }
+    status.textContent = result.exists()
+      ? "SUCCESS: Website can WRITE and READ Firestore. Project: " +
+        db.app.options.projectId
+      : "Write completed, but document could not be read.";
 
   } catch (error) {
     status.textContent =
       "ERROR: " + error.code + " — " + error.message;
+    console.error(error);
   }
 });
-                   
+      
