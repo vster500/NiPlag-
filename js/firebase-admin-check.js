@@ -2,10 +2,8 @@
 import { db, auth } from "./firebase.js";
 
 import {
-  collection,
-  getDocs,
-  query,
-  where
+  doc,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js";
 
 import {
@@ -16,28 +14,35 @@ const status = document.getElementById("storage-status");
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
-    status.textContent = "No user signed in.";
+    status.textContent = "Not signed in.";
     return;
   }
 
-  status.textContent = "Checking published products...";
-
   try {
-    const q = query(
-      collection(db, "products"),
-      where("status", "==", "published")
+    const productRef = doc(
+      db,
+      "products",
+      "hHe3Blf79yi56cEBW6Fx"
     );
 
-    const result = await getDocs(q);
+    const result = await getDoc(productRef);
 
-    status.textContent =
-      "Published products found: " + result.size +
-      " | IDs: " +
-      result.docs.map(item => item.id).join(", ") +
-      " | Signed-in UID: " + user.uid;
+    if (result.exists()) {
+      const data = result.data();
+
+      status.textContent =
+        "DOCUMENT FOUND! Name: " + data.name +
+        " | Status: [" + data.status + "]" +
+        " | Project: " + db.app.options.projectId;
+    } else {
+      status.textContent =
+        "DOCUMENT NOT FOUND at products/hHe3Blf79yi56cEBW6Fx" +
+        " | Project: " + db.app.options.projectId;
+    }
 
   } catch (error) {
     status.textContent =
       "ERROR: " + error.code + " — " + error.message;
   }
 });
+                   
