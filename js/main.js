@@ -1,29 +1,17 @@
 
 /* =====================================
    NIPLAG - MAIN JAVASCRIPT
-   Product page + Shopping basket
+   Shared Shopping Bucket + Basket
 ===================================== */
 
 const NIPLAG_WHATSAPP = "254754058116";
-const BASKET_KEY = "niplagBasket";
+const BUCKET_KEY = "niplagShoppingBucketV1";
+const OLD_BASKET_KEY = "niplagBasket";
 
 /* ---------- GENERAL HELPERS ---------- */
 
-function getBasket() {
-  try {
-    return JSON.parse(localStorage.getItem(BASKET_KEY)) || [];
-  } catch (error) {
-    return [];
-  }
-}
-
-function saveBasket(items) {
-  localStorage.setItem(BASKET_KEY, JSON.stringify(items));
-  updateBasketCount();
-}
-
 function formatKES(amount) {
-  return "KES " + Number(amount).toLocaleString("en-KE", {
+  return "KES " + Number(amount || 0).toLocaleString("en-KE", {
     maximumFractionDigits: 2
   });
 }
@@ -38,101 +26,103 @@ function escapeHTML(value) {
   })[char]);
 }
 
+/* ---------- SHARED BUCKET STORAGE ---------- */
+
+function getBasket() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(BUCKET_KEY) || "null"
+    );
+
+    if (Array.isArray(saved)) return saved;
+
+    // Migrate products from the old basket if necessary.
+    const oldSaved = JSON.parse(
+      localStorage.getItem(OLD_BASKET_KEY) || "[]"
+    );
+
+    if (Array.isArray(oldSaved) && oldSaved.length) {
+      localStorage.setItem(BUCKET_KEY, JSON.stringify(oldSaved));
+      return oldSaved;
+    }
+
+    return [];
+
+  } catch (error) {
+    console.error("Could not load shopping bucket:", error);
+    return [];
+  }
+}
+
+function saveBasket(items) {
+  try {
+    localStorage.setItem(BUCKET_KEY, JSON.stringify(items));
+    updateBasketCount();
+    return true;
+  } catch (error) {
+    alert("Could not save your shopping bucket on this device.");
+    return false;
+  }
+}
+
 function updateBasketCount() {
   const countElement = document.getElementById("basket-count");
 
   if (!countElement) return;
 
   const total = getBasket().reduce(
-    (sum, item) => sum + Number(item.quantity || 0), 0
+    (sum, item) => sum + Number(item.quantity || 0),
+    0
   );
 
   countElement.textContent = total;
 }
 
-/* ---------- PRODUCT DETAILS ---------- */
+/* ---------- ADD PRODUCT TO SHARED BUCKET ---------- */
 
-function getCurrentProduct() {
-  const params = new URLSearchParams(window.location.search);
-
-  const nameElement = document.getElementById("product-name");
-
-  const name = params.get("product") ||
-    (nameElement ? nameElement.textContent.trim() : "Product");
-
-  const priceFromURL = Number(params.get("price"));
-  const sellingFromURL = Number(params.get("selling"));
-
-  const costElement = document.getElementById("product-price");
-  const sellingElement = document.getElementById("suggested-price");
-
-  const costText = costElement ? costElement.textContent : "";
-  const sellingText = sellingElement ? sellingElement.textContent : "";
-
-  const extractNumber = text =>
-    Number(String(text).replace(/[^0-9.]/g, ""));
-
-  const cost = priceFromURL > 0
-    ? priceFromURL
-    : extractNumber(costText);
-
-  const sellingPrice = sellingFromURL > 0
-    ? sellingFromURL
-    : extractNumber(sellingText);
-
-  const id = params.get("id") ||
-    name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-
-  return {
-    id,
-    name,
-    price: cost > 0 ? cost : null,
-    sellingPrice: sellingPrice > 0 ? sellingPrice : null
-  };
-}
-
-/* ---------- ADD PRODUCT TO BASKET ---------- */
-
-function addCurrentProduct() {
-  const product = getCurrentProduct();
-
-  const quantityInput = document.getElementById("estimate-quantity");
-  const quantity = Math.max(
-    1,
-    Number(quantityInput?.value || 1)
-  );
-
-  const sellingInput = document.getElementById("estimate-selling");
-
-  if (sellingInput && Number(sellingInput.value) > 0) {
-    product.sellingPrice = Number(sellingInput.value);
+function addProductToBucket(product, quantity = 1, sellingPrice = null) {
+  if (!product || !product.id) {
+    alert("Product information is missing.");
+    return false;
   }
 
   const basket = getBasket();
 
-  const existing = basket.find(item => item.id === product.id);
+  const existing = basket.find(
+    item => item.id === product.id
+  );
+
+  const amount = Math.max(1, Number(quantity) || 1);
+  const price = Number(product.wholesalePrice ?? product.price ?? 0);
 
   if (existing) {
-    existing.quantity += quantity;
+    existing.quantity = Number(existing.quantity || 0) + amount;
+    existing.price = price;
 
-    if (product.price !== null) {
-      existing.price = product.price;
+    if (sellingPrice !== null && Number(sellingPrice) > 0) {
+      existing.sellingPrice = Number(sellingPrice);
     }
 
-    if (product.sellingPrice !== null) {
-      existing.sellingPrice = product.sellingPrice;
-    }
   } else {
     basket.push({
-      ...product,
-      quantity
+      id: product.id,
+      name: product.name || "Product",
+      price: price,
+      sellingPrice: Number(sellingPrice || product.suggestedRetailPrice || 0),
+      quantity: amount
     });
   }
 
-  saveBasket(basket);
-
-  alert("Product added to your NiPlag basket.");
+  return saveBasket(basket);
 }
+
+/* Expose shared basket functions for other NiPlag pages. */
+window.NiPlagBasket = {
+  getItems: getBasket,
+  addProduct: addProductToBucket,
+  saveItems: saveBasket,
+  formatKES: formatKES
+};
 
 /* ---------- REMOVE AND UPDATE QUANTITY ---------- */
 
@@ -142,17 +132,20 @@ function changeQuantity(id, change) {
 
   if (!item) return;
 
-  item.quantity = Math.max(1, item.quantity + change);
+  item.quantity = Math.max(
+    1,
+    Number(item.quantity || 1) + change
+  );
 
-  saveBasket(basket);
-  renderBasket();
+  if (saveBasket(basket)) renderBasket();
 }
 
 function removeBasketItem(id) {
-  const basket = getBasket().filter(item => item.id !== id);
+  const basket = getBasket().filter(
+    item => item.id !== id
+  );
 
-  saveBasket(basket);
-  renderBasket();
+  if (saveBasket(basket)) renderBasket();
 }
 
 /* ---------- BASKET DISPLAY ---------- */
@@ -182,19 +175,22 @@ function renderBasket() {
 
   itemsContainer.innerHTML = basket.map(item => {
     const quantity = Number(item.quantity || 1);
-    const hasPrice = Number(item.price) > 0;
-    const hasSelling = Number(item.sellingPrice) > 0;
+    const price = Number(item.price || 0);
+    const sellingPrice = Number(item.sellingPrice || 0);
+
+    const hasPrice = price > 0;
+    const hasSelling = sellingPrice > 0;
 
     totalQuantity += quantity;
 
     if (hasPrice) {
-      totalCost += item.price * quantity;
+      totalCost += price * quantity;
     } else {
       allPricesKnown = false;
     }
 
     if (hasPrice && hasSelling) {
-      totalProfit += (item.sellingPrice - item.price) * quantity;
+      totalProfit += (sellingPrice - price) * quantity;
     } else {
       allSellingPricesKnown = false;
     }
@@ -203,20 +199,17 @@ function renderBasket() {
       <div class="basket-item">
         <div>
           <h3>${escapeHTML(item.name)}</h3>
+
           <p>
-            Unit price: ${
-              hasPrice ? formatKES(item.price) : "To be confirmed"
-            }
+            Unit price:
+            ${hasPrice ? formatKES(price) : "To be confirmed"}
           </p>
+
+          <p>Quantity: ${quantity}</p>
+
           <p>
-            Quantity: ${quantity}
-          </p>
-          <p>
-            Item total: ${
-              hasPrice
-                ? formatKES(item.price * quantity)
-                : "Price pending"
-            }
+            Item total:
+            ${hasPrice ? formatKES(price * quantity) : "Price pending"}
           </p>
 
           <div class="quantity-controls">
@@ -325,14 +318,13 @@ function calculateProductProfit() {
 function createShoppingMessage() {
   const basket = getBasket();
 
-  if (!basket.length) {
-    return "";
-  }
+  if (!basket.length) return "";
 
   let total = 0;
   let pricesComplete = true;
 
-  let message = "Hello NiPlag! I would like assistance purchasing these products:\n\n";
+  let message =
+    "Hello NiPlag! I would like assistance purchasing these products:\n\n";
 
   basket.forEach((item, index) => {
     message += `${index + 1}. ${item.name}\n`;
@@ -341,6 +333,7 @@ function createShoppingMessage() {
     if (Number(item.price) > 0) {
       const lineTotal = item.price * item.quantity;
       total += lineTotal;
+
       message += `Unit price: ${formatKES(item.price)}\n`;
       message += `Estimated total: ${formatKES(lineTotal)}\n`;
     } else {
@@ -352,9 +345,12 @@ function createShoppingMessage() {
   });
 
   message += "Estimated product cost: " +
-    (pricesComplete ? formatKES(total) : formatKES(total) + " + prices pending");
+    (pricesComplete
+      ? formatKES(total)
+      : formatKES(total) + " + prices pending");
 
-  message += "\n\nPlease confirm stock, final prices, service fees and delivery charges before I make payment.";
+  message +=
+    "\n\nPlease confirm stock, final prices, service fees and delivery charges before I make payment.";
 
   return message;
 }
@@ -367,7 +363,8 @@ function sendBasketToWhatsApp() {
     return;
   }
 
-  const url = `https://wa.me/${NIPLAG_WHATSAPP}?text=${encodeURIComponent(message)}`;
+  const url =
+    `https://wa.me/${NIPLAG_WHATSAPP}?text=${encodeURIComponent(message)}`;
 
   window.open(url, "_blank");
 }
@@ -402,61 +399,11 @@ async function shareBasket() {
   window.open(url, "_blank");
 }
 
-/* ---------- PRODUCT PAGE BUTTONS ---------- */
-
-function setupProductPage() {
-  const product = getCurrentProduct();
-
-  const addButton = document.getElementById("add-to-basket");
-
-  if (addButton) {
-    addButton.addEventListener("click", addCurrentProduct);
-  }
-
-  const unlockButton = document.getElementById("unlock-button");
-
-  if (unlockButton) {
-    const params = new URLSearchParams(window.location.search);
-    const query = new URLSearchParams({
-      product: product.name,
-      id: product.id,
-      fee: params.get("fee") || ""
-    });
-
-    unlockButton.href = "unlock.html?" + query.toString();
-  }
-
-  const assistedButton = document.getElementById("assisted-button");
-
-  if (assistedButton) {
-    const message =
-      `Hello NiPlag, I need help purchasing ${product.name}. Please confirm availability, final price and delivery arrangements.`;
-
-    assistedButton.href =
-      `https://wa.me/${NIPLAG_WHATSAPP}?text=${encodeURIComponent(message)}`;
-  }
-
-  const sellingInput = document.getElementById("estimate-selling");
-  const quantityInput = document.getElementById("estimate-quantity");
-
-  if (sellingInput) {
-    sellingInput.addEventListener("input", calculateProductProfit);
-  }
-
-  if (quantityInput) {
-    quantityInput.addEventListener("input", calculateProductProfit);
-  }
-
-  calculateProductProfit();
-}
-
-/* ---------- START ---------- */
+/* ---------- INITIALIZE ---------- */
 
 document.addEventListener("DOMContentLoaded", () => {
   updateBasketCount();
   renderBasket();
-
-  setupProductPage();
 
   const itemsContainer = document.getElementById("basket-items");
 
@@ -464,7 +411,8 @@ document.addEventListener("DOMContentLoaded", () => {
     itemsContainer.addEventListener("click", handleBasketActions);
   }
 
-  const whatsappButton = document.getElementById("send-basket-whatsapp");
+  const whatsappButton =
+    document.getElementById("send-basket-whatsapp");
 
   if (whatsappButton) {
     whatsappButton.addEventListener("click", sendBasketToWhatsApp);
@@ -475,4 +423,17 @@ document.addEventListener("DOMContentLoaded", () => {
   if (shareButton) {
     shareButton.addEventListener("click", shareBasket);
   }
+
+  const costInput = document.getElementById("estimate-cost");
+  const sellingInput = document.getElementById("estimate-selling");
+  const quantityInput = document.getElementById("estimate-quantity");
+
+  [costInput, sellingInput, quantityInput].forEach(input => {
+    if (input) {
+      input.addEventListener("input", calculateProductProfit);
+    }
+  });
+
+  calculateProductProfit();
 });
+     
