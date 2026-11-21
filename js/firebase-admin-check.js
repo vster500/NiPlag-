@@ -3,9 +3,7 @@ import { db, auth } from "./firebase.js";
 
 import {
   collection,
-  getDocs,
-  doc,
-  getDoc
+  getDocs
 } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js";
 
 import {
@@ -21,20 +19,13 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  status.textContent = "Running Firestore document tests...";
-
   try {
-    const exactDoc = await getDoc(
-      doc(db, "products", "hHe3Blf79yi56cEBW6Fx")
-    );
-
-    const lower = await getDocs(collection(db, "products"));
-    const upper = await getDocs(collection(db, "Products"));
+    const result = await getDocs(collection(db, "products"));
 
     status.textContent =
-      "Exact document exists: " + exactDoc.exists() +
-      " | lowercase products: " + lower.size +
-      " | uppercase Products: " + upper.size;
+      "SUCCESS. Products found: " + result.size +
+      ". IDs: " +
+      result.docs.map(item => item.id).join(", ");
 
   } catch (error) {
     status.textContent =
