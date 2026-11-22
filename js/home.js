@@ -49,7 +49,7 @@ function safeImage(value) {
   return "";
 }
 
-// LOAD PUBLISHED PRODUCTS FROM FIREBASE
+// LOAD PUBLISHED PRODUCTS
 async function loadHomeProducts() {
   productsContainer.innerHTML =
     '<div class="notice">Loading wholesale products...</div>';
@@ -94,25 +94,33 @@ function renderHomeProducts() {
 
   productsContainer.innerHTML = publishedProducts.map(product => {
     const image = safeImage(product.imageUrl);
+    const detailsLink =
+      `product.html?id=${encodeURIComponent(product.id)}`;
 
     return `
       <article class="product-card home-product-card">
 
         <div class="product-info">
 
-          ${image ? `
-            <img
-              class="home-product-image"
-              src="${escapeHTML(image)}"
-              alt="${escapeHTML(product.name)}"
-              loading="lazy">
-          ` : ""}
+          <a href="${detailsLink}" class="product-open-link">
+
+            ${image ? `
+              <img
+                class="home-product-image"
+                src="${escapeHTML(image)}"
+                alt="${escapeHTML(product.name)}"
+                loading="lazy">
+            ` : `
+              <div class="notice">📦 Product image</div>
+            `}
+
+            <h3>${escapeHTML(product.name)}</h3>
+
+          </a>
 
           ${product.verified === true
             ? '<span class="home-verified">✓ VERIFIED</span>'
             : ""}
-
-          <h3>${escapeHTML(product.name)}</h3>
 
           <p class="muted">
             ${escapeHTML(product.category || "Other")}
@@ -122,6 +130,11 @@ function renderHomeProducts() {
             ${escapeHTML(product.description || "")}
           </p>
 
+          <p class="muted">
+            📍 Wholesaler:
+            ${escapeHTML(product.supplierLocation || "To be confirmed")}
+          </p>
+
           <p class="home-product-price">
             ${money(product.wholesalePrice)}
           </p>
@@ -129,6 +142,10 @@ function renderHomeProducts() {
           <p class="muted">
             MOQ: ${escapeHTML(product.moq || 1)}
           </p>
+
+          <a href="${detailsLink}" class="btn btn-outline">
+            View product details
+          </a>
 
           <button
             type="button"
@@ -167,10 +184,10 @@ function saveBucket() {
   }
 }
 
-// UPDATE BUCKET COUNTER AND CONTENTS
+// UPDATE BUCKET
 function renderBucket() {
   const totalItems = bucket.reduce(
-    (total, item) => total + item.quantity,
+    (total, item) => total + Number(item.quantity || 0),
     0
   );
 
@@ -200,7 +217,7 @@ function renderBucket() {
   `).join("");
 }
 
-// ADD PRODUCT
+// ADD PRODUCT TO BUCKET
 productsContainer.addEventListener("click", function(event) {
   const button = event.target.closest(".add-to-bucket");
   if (!button) return;
@@ -262,4 +279,4 @@ bucketClose.addEventListener("click", function() {
 // INITIALIZE
 renderBucket();
 loadHomeProducts();
-
+  
