@@ -130,8 +130,11 @@ function renderHomeProducts() {
             ${escapeHTML(product.description || "")}
           </p>
 
-   <p class="home-location">
-  📍 ${escapeHTML(product.supplierLocation || "To be confirmed")}
+<p class="home-location">
+  📍 ${escapeHTML(
+    String(product.supplierLocation || "To be confirmed")
+      .replace(/^wholesaler:\s*/i, "")
+  )}
 </p>
 
           <p class="home-product-price">
