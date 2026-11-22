@@ -67,7 +67,8 @@ function normalizeProduct(id, data) {
     moq: Number(data.moq || 1),
     location: data.supplierLocation || "",
     verified: data.verified === true,
-    access: data.contactAccess || "paid",
+featuredDeal: data.featuredDeal === true,
+access: data.contactAccess || "paid",
     fee: Number(data.unlockFee || 0),
     status: data.status || "draft"
   };
@@ -84,7 +85,8 @@ function firestoreProduct(product) {
     moq: product.moq,
     supplierLocation: product.location,
     verified: product.verified,
-    contactAccess: product.access,
+featuredDeal: product.featuredDeal,
+contactAccess: product.access,
     unlockFee: product.fee,
     status: product.status,
     updatedAt: serverTimestamp()
@@ -210,6 +212,9 @@ function renderProducts() {
         <span class="admin-tag">
           ${product.verified ? "Verified" : "Not verified"}
         </span>
+        <span class="admin-tag">
+  ${product.featuredDeal ? "🔥 Special Offer" : "Regular Listing"}
+</span>
 
         <span class="admin-tag">
           ${product.access === "free"
@@ -244,6 +249,7 @@ function resetForm() {
 
   document.getElementById("minimum-quantity").value = 1;
   feeInput.value = 50;
+  document.getElementById("featured-deal").value = "no";
 
   document.getElementById("form-heading").textContent = "Add New Product";
   document.getElementById("save-product").textContent = "Save Product";
@@ -271,6 +277,8 @@ function editProduct(id) {
 
   document.getElementById("verified-status").value =
     product.verified ? "yes" : "no";
+  document.getElementById("featured-deal").value =
+  product.featuredDeal ? "yes" : "no";
 
   accessSelect.value = product.access;
   feeInput.value = product.fee;
@@ -326,7 +334,8 @@ form.addEventListener("submit", async function(event) {
     moq: Number(document.getElementById("minimum-quantity").value),
     location: document.getElementById("supplier-location").value.trim(),
     verified: document.getElementById("verified-status").value === "yes",
-    access: accessSelect.value,
+featuredDeal: document.getElementById("featured-deal").value === "yes",
+access: accessSelect.value,
     fee: accessSelect.value === "free" ? 0 : Number(feeInput.value),
     status
   };
