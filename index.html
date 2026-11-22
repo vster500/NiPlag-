@@ -10,6 +10,72 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
+    
+/* HOMEPAGE PRODUCT GRID - MOBILE FIX */
+
+#home-products {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px;
+  align-items: stretch;
+}
+
+#home-products .home-product-card {
+  min-width: 0;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#home-products .home-product-image {
+  height: 100px;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+#home-products .product-info {
+  padding: 8px;
+}
+
+#home-products .product-name,
+#home-products h3 {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+#home-products .home-product-price,
+#home-products .price {
+  font-size: 16px;
+  margin: 6px 0;
+}
+
+#home-products .muted {
+  font-size: 11px;
+}
+
+#home-products .btn {
+  width: 100%;
+  padding: 9px 5px;
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+@media (min-width: 700px) {
+  #home-products {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  #home-products .home-product-image {
+    height: 150px;
+  }
+}
+
+@media (min-width: 1000px) {
+  #home-products {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+    }
+  
     .quick-links {
       display: flex;
       flex-wrap: wrap;
