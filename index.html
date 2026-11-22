@@ -10,6 +10,41 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
+    /* NIPLAG PRODUCT CARD FINISH */
+
+#home-products .home-product-card {
+  background: #f7f9f8;
+  border: 1px solid #e3eae6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#home-products .home-product-price {
+  color: #146c43;
+  font-size: 17px;
+  font-weight: 800;
+  margin: 5px 0 7px;
+}
+
+/* LOCATION AND MOQ SIDE BY SIDE */
+
+#home-products .home-meta-row {
+  display: flex;
+  align-items: stretch;
+  gap: 5px;
+  width: 100%;
+}
+
+#home-products .home-meta-row .home-location,
+#home-products .home-meta-row .home-moq {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  padding: 5px 4px;
+  margin: 2px 0;
+  overflow-wrap: anywhere;
+}
     /* SUPPLIER LOCATION AND MOQ HIGHLIGHT */
 
 #home-products .home-location {
