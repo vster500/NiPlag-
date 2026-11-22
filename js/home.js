@@ -131,7 +131,7 @@ function renderHomeProducts() {
           </p>
 
           <p class="home-location">
-  📍 Wholesaler: ${escapeHTML(product.supplierLocation || "To be confirmed")}
+  📍${escapeHTML(product.supplierLocation || "To be confirmed")}
 </p>
 
           <p class="home-product-price">
