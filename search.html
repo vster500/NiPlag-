@@ -7,6 +7,8 @@
   <meta name="description" content="Search wholesale products and suppliers on NiPlag.">
   <title>Search Products | NiPlag</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script type="module" src="js/search.js"></script>
 </head>
 
 <body>
@@ -15,6 +17,9 @@
   <div class="container">
     <a href="index.html" class="logo">NiPlag<span>.</span></a>
     <p>Find wholesale products across Kenya.</p>
+    <a href="basket.html" class="basket-header-link">
+      🛒 My Basket (<span id="basket-count">0</span>)
+    </a>
   </div>
 </header>
 
@@ -33,8 +38,7 @@
         type="search"
         name="q"
         id="search-input"
-        placeholder="e.g. LED bulbs, phone covers..."
-        required>
+        placeholder="e.g. LED bulbs, phone covers...">
 
       <button class="btn btn-accent" type="submit">
         Search
@@ -46,11 +50,11 @@
     <h2 class="section-title">Popular categories</h2>
 
     <div class="search-chips">
-      <a href="categories.html">Electronics</a>
-      <a href="categories.html">Electrical</a>
-      <a href="categories.html">Farming</a>
-      <a href="categories.html">Home & Living</a>
-      <a href="categories.html">Accessories</a>
+      <a href="search.html?q=Electronics">Electronics</a>
+      <a href="search.html?q=Electrical">Electrical</a>
+      <a href="search.html?q=Farming">Farming</a>
+      <a href="search.html?q=Home%20%26%20Living">Home & Living</a>
+      <a href="search.html?q=Accessories">Accessories</a>
     </div>
   </section>
 
@@ -60,16 +64,12 @@
       Wholesale products
     </h2>
 
-    <div class="notice">
-      <h3>Building our product catalogue</h3>
-      <p>
-        We're adding reviewed wholesale products
-        and supplier information.
-      </p>
-      <p class="muted">
-        Search results will appear here as listings
-        become available.
-      </p>
+    <p class="muted" id="search-count"></p>
+
+    <div id="search-results-grid" class="product-grid">
+      <div class="notice">
+        Loading wholesale products...
+      </div>
     </div>
 
   </section>
@@ -123,17 +123,6 @@
   <a href="index.html">Back to homepage</a>
 </footer>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const query = params.get("q");
-
-  if (query) {
-    document.getElementById("search-input").value = query;
-    document.getElementById("search-heading").textContent =
-      'Search for: ' + query;
-  }
-</script>
-
 </body>
-  </html>
+      </html>
   
