@@ -149,18 +149,18 @@ function renderHomeProducts() {
 
 </div>
 
-          <a href="${detailsLink}" class="btn btn-outline">
-            View product details
-          </a>
+<a href="${detailsLink}" class="btn btn-outline">
+  View product details
+</a>
 
-          <button
-            type="button"
-            class="btn btn-accent add-to-bucket"
-            data-id="${escapeHTML(product.id)}">
-            + Add to bucket
-          </button>
+<button
+  type="button"
+  class="btn btn-accent add-to-bucket"
+  data-id="${escapeHTML(product.id)}">
+  + Add to bucket
+</button>
 
-        </div>
+</div>
       </article>
     `;
   }).join("");
