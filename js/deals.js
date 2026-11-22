@@ -64,28 +64,28 @@ function renderDeals(products) {
       <article class="product-card">
 
         <div style="position:relative;">
-  ${image ? `
-    <img
-      src="${escapeHTML(image)}"
-      alt="${escapeHTML(product.name)}"
-      loading="lazy"
-      style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;"
-    >
-  ` : ""}
+          ${image ? `
+            <img
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(product.name)}"
+              loading="lazy"
+              style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;"
+            >
+          ` : ""}
 
-  <span style="
-    position:absolute;
-    top:10px;
-    left:10px;
-    background:#e84920;
-    color:white;
-    padding:6px 11px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
-    box-shadow:0 2px 6px rgba(0,0,0,0.2);
-  ">🔥 HOT DEAL</span>
-</div>
+          <span style="
+            position:absolute;
+            top:10px;
+            left:10px;
+            background:#e84920;
+            color:white;
+            padding:6px 11px;
+            border-radius:20px;
+            font-size:12px;
+            font-weight:bold;
+            box-shadow:0 2px 6px rgba(0,0,0,0.2);
+          ">🔥 HOT DEAL</span>
+        </div>
 
         <div class="product-info">
 
@@ -139,23 +139,31 @@ function renderDeals(products) {
 }
 
 async function loadDeals() {
+  if (!dealsContainer) {
+    console.error("Deals container not found.");
+    return;
+  }
+
   dealsContainer.innerHTML = `
     <div class="notice">Loading special offers...</div>
   `;
 
   try {
-    const dealsQuery = query(
+    // Load published products using one Firestore filter.
+    const publishedQuery = query(
       collection(db, "products"),
-      where("status", "==", "published"),
-      where("featuredDeal", "==", true)
+      where("status", "==", "published")
     );
 
-    const snapshot = await getDocs(dealsQuery);
+    const snapshot = await getDocs(publishedQuery);
 
-    const deals = snapshot.docs.map(item => ({
-      id: item.id,
-      ...item.data()
-    }));
+    // Filter featured deals in JavaScript.
+    const deals = snapshot.docs
+      .map(item => ({
+        id: item.id,
+        ...item.data()
+      }))
+      .filter(product => product.featuredDeal === true);
 
     renderDeals(deals);
 
@@ -165,12 +173,11 @@ async function loadDeals() {
     dealsContainer.innerHTML = `
       <div class="notice">
         <h3>Unable to load special offers.</h3>
-        <p>
-          Please refresh the page or try again later.
-        </p>
+        <p>${escapeHTML(error.message || "Unknown error")}</p>
       </div>
     `;
   }
 }
 
 loadDeals();
+              
