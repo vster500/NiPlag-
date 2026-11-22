@@ -63,14 +63,29 @@ function renderDeals(products) {
     return `
       <article class="product-card">
 
-        ${image ? `
-          <img
-            src="${escapeHTML(image)}"
-            alt="${escapeHTML(product.name)}"
-            loading="lazy"
-            style="width:100%; aspect-ratio:4/3; object-fit:contain;"
-          >
-        ` : ""}
+        <div style="position:relative;">
+  ${image ? `
+    <img
+      src="${escapeHTML(image)}"
+      alt="${escapeHTML(product.name)}"
+      loading="lazy"
+      style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;"
+    >
+  ` : ""}
+
+  <span style="
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:#e84920;
+    color:white;
+    padding:6px 11px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+  ">🔥 HOT DEAL</span>
+</div>
 
         <div class="product-info">
 
