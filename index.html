@@ -10,6 +10,40 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
+    /* FIX HOMEPAGE PRODUCT CARD ORDER AND BUTTON LAYOUT */
+
+#home-products .home-product-card .product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#home-products .home-product-card .home-product-price {
+  order: 3;
+}
+
+#home-products .home-product-card .home-meta-row {
+  order: 4;
+}
+
+#home-products .home-product-card > .product-info > .btn-outline {
+  order: 5;
+}
+
+#home-products .home-product-card > .product-info > .add-to-bucket {
+  order: 6;
+}
+
+#home-products .home-product-card .home-meta-row {
+  display: flex;
+  gap: 5px;
+}
+
+#home-products .home-product-card .btn {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+}
     /* FORCE PRICE ABOVE LOCATION AND MOQ */
 
 #home-products .home-product-price {
