@@ -130,18 +130,17 @@ function renderHomeProducts() {
             ${escapeHTML(product.description || "")}
           </p>
 
-          <p class="muted">
-            📍 Wholesaler:
-            ${escapeHTML(product.supplierLocation || "To be confirmed")}
-          </p>
+          <p class="home-location">
+  📍 Wholesaler: ${escapeHTML(product.supplierLocation || "To be confirmed")}
+</p>
 
           <p class="home-product-price">
             ${money(product.wholesalePrice)}
           </p>
 
-          <p class="muted">
-            MOQ: ${escapeHTML(product.moq || 1)}
-          </p>
+          <p class="home-moq">
+  📦 MOQ: ${escapeHTML(product.moq || 1)} units
+</p>
 
           <a href="${detailsLink}" class="btn btn-outline">
             View product details
