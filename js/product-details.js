@@ -135,17 +135,27 @@ function displayProduct(product) {
   costInput.dispatchEvent(new Event("input", { bubbles: true }));
   sellingInput.dispatchEvent(new Event("input", { bubbles: true }));
 
-  // UNLOCK SUPPLIER CONTACT
+  // SUPPLIER CONTACT ACCESS
   const unlockButton = document.getElementById("unlock-button");
 
   unlockButton.href =
     `unlock.html?id=${encodeURIComponent(product.id)}`;
 
   if (product.contactAccess === "free") {
-    unlockButton.textContent = "🔓 Request free supplier contact";
-  } else {
+    unlockButton.textContent = "🔓 Get free supplier contact";
+  } else if (
+    product.contactAccess === "paid" &&
+    Number(product.unlockFee) > 0
+  ) {
     unlockButton.textContent =
-      `🔓 Unlock supplier contact — ${money(product.unlockFee)}`;
+      `🔒 Unlock supplier contact — ${money(product.unlockFee)}`;
+  } else {
+    unlockButton.textContent = "Contact NiPlag for supplier access";
+    unlockButton.href =
+      `https://wa.me/${NIPLAG_WHATSAPP}?text=${encodeURIComponent(
+        "Hello NiPlag, please help me with supplier access for product " +
+        product.name + " (Reference: " + product.id + ")."
+      )}`;
   }
 
   // ORDER THROUGH NIPLAG
