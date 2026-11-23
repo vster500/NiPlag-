@@ -127,31 +127,43 @@ function renderProducts(products) {
   }).join("");
 }
 
-// SEARCH FILTER
+
+// SEARCH AND CATEGORY FILTER
 function filterProducts() {
+  const params = new URLSearchParams(window.location.search);
+  const category = params.get("category") || "";
   const term = searchInput.value.trim().toLowerCase();
 
-  if (!term) {
+  let filtered = publishedProducts;
+
+  // FILTER BY EXACT CATEGORY
+  if (category) {
+    filtered = filtered.filter(product =>
+      String(product.category || "").trim().toLowerCase() ===
+      category.trim().toLowerCase()
+    );
+
+    searchHeading.textContent = category;
+  } else if (term) {
+    searchHeading.textContent = `Search for: ${searchInput.value}`;
+
+    filtered = filtered.filter(product => {
+      const searchableText = [
+        product.name,
+        product.category,
+        product.description,
+        product.supplierLocation
+      ].join(" ").toLowerCase();
+
+      return searchableText.includes(term);
+    });
+  } else {
     searchHeading.textContent = "Wholesale products";
-    renderProducts(publishedProducts);
-    return;
   }
 
-  searchHeading.textContent = `Search for: ${searchInput.value}`;
-
-  const filtered = publishedProducts.filter(product => {
-    const searchableText = [
-      product.name,
-      product.category,
-      product.description,
-      product.supplierLocation
-    ].join(" ").toLowerCase();
-
-    return searchableText.includes(term);
-  });
-
   renderProducts(filtered);
-}
+                       }
+
 
 // ADD TO BUCKET
 resultsContainer.addEventListener("click", function(event) {
