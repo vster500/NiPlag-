@@ -2845,4 +2845,271 @@ footer a {
   border-radius: 12px;
   padding: 17px;
     }
+
+/* =================================
+   NIPLAG UNLOCK PAGE DESIGN
+================================= */
+
+.unlock-hero {
+  background: linear-gradient(135deg, #123d30, #267451);
+  color: #ffffff;
+  padding: 25px 20px;
+  border-radius: 15px;
+  margin: 22px 0;
+  box-shadow: 0 5px 16px rgba(18, 61, 48, 0.16);
+}
+
+.unlock-hero .muted {
+  color: #c8f169;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.unlock-hero h1 {
+  color: #ffffff;
+  font-size: 25px;
+  margin: 8px 0;
+}
+
+.unlock-hero p:last-child {
+  color: #e0eee6;
+  font-size: 13px;
+}
+
+/* Main product access card */
+.unlock-product {
+  background: #ffffff;
+  border: 1px solid #dce5e9;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(20, 40, 50, 0.07);
+}
+
+.unlock-product .product-info {
+  padding: 20px;
+}
+
+.unlock-product h2 {
+  color: #183c30;
+  margin-top: 13px;
+}
+
+.unlock-product .muted {
+  color: #6c7c85;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.unlock-badge {
+  background: #e4f2e9;
+  color: #17613d;
+  border: 1px solid #c7e2d1;
+  border-radius: 20px;
+  padding: 7px 12px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Product reference */
+#product-id {
+  background: #edf3f6;
+  color: #344b58;
+  padding: 4px 7px;
+  border-radius: 5px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* PAID CONTACT PRICE */
+.unlock-price {
+  background: linear-gradient(135deg, #fff1c9, #ffe2a0);
+  border: 1px solid #f0d18a;
+  border-radius: 13px;
+  padding: 17px;
+  margin: 20px 0;
+}
+
+.unlock-price .muted {
+  color: #806126;
+  font-weight: 600;
+}
+
+.unlock-price h2 {
+  color: #855500;
+  font-size: 29px;
+  margin: 5px 0;
+}
+
+/* Payment steps */
+.unlock-steps {
+  background: #edf3f6;
+  border: 1px solid #dce6ec;
+  border-left: 4px solid #31718b;
+  border-radius: 11px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.unlock-steps h3 {
+  color: #203e4e;
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.unlock-steps p {
+  color: #435965;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 7px 0;
+}
+
+/* M-PESA FORM */
+#unlock-form {
+  background: #f5f8fa;
+  border: 1px solid #dce5e9;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 18px;
+}
+
+#unlock-form label {
+  display: block;
+  color: #263e49;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+
+#mpesa-code {
+  background: #ffffff;
+  border: 1px solid #bdcdd5;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+/* PAYMENT BUTTON */
+#payment-instructions-button {
+  display: block;
+  background: #17613d;
+  color: #ffffff;
+  border-radius: 9px;
+  text-align: center;
+  padding: 13px;
+  font-weight: 700;
+}
+
+#unlock-form button {
+  width: 100%;
+  background: #183d32;
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  padding: 13px 10px;
+  font-weight: 700;
+}
+
+/* FREE CONTACT */
+#free-panel {
+  background: linear-gradient(145deg, #e4f4e9, #f0f8f1);
+  border: 1px solid #c6e5cf;
+  border-radius: 13px;
+  padding: 18px;
+  margin-top: 20px;
+}
+
+#free-panel .badge {
+  background: #17613d;
+  color: #ffffff;
+  padding: 7px 11px;
+  border-radius: 20px;
+  font-size: 10px;
+}
+
+#free-panel h3 {
+  color: #17613d;
+  margin-top: 15px;
+}
+
+#free-panel p {
+  color: #42644e;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#free-contact-button {
+  display: block;
+  background: #17613d;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 9px;
+  padding: 13px;
+  font-weight: 700;
+}
+
+/* TRANSACTION WARNING */
+.unlock-warning {
+  background: #fff5df;
+  border: 1px solid #f0d69a;
+  border-left: 5px solid #d99a20;
+  border-radius: 11px;
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.unlock-warning strong {
+  color: #79520d;
+}
+
+.unlock-warning p {
+  color: #755f36;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* HELP SECTION */
+.unlock-help {
+  margin-top: 25px;
+  color: #647783;
+  font-size: 13px;
+}
+
+/* GENERAL BUTTON */
+main > a.btn[href*="wa.me/254754058116"] {
+  display: block;
+  text-align: center;
+  background: #263f4b;
+  color: #ffffff;
+  border-radius: 9px;
+  padding: 12px;
+  font-weight: 700;
+}
+
+/* LOADING AND ERROR */
+#unlock-loading,
+#unlock-error {
+  background: #edf3f6;
+  border: 1px solid #dce5e9;
+  border-radius: 11px;
+  padding: 17px;
+}
+
+/* MOBILE SPACING */
+@media (max-width: 480px) {
+  .unlock-hero {
+    padding: 21px 16px;
+  }
+
+  .unlock-product .product-info {
+    padding: 16px;
+  }
+
+  .unlock-price h2 {
+    font-size: 27px;
+  }
+  }
   
