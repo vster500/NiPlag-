@@ -98,6 +98,10 @@ function renderProducts(products) {
           <p class="search-product-category">
             ${escapeHTML(product.category || "Others")}
           </p>
+          <p class="home-product-price">
+  ${money(product.wholesalePrice)}
+</p>
+          
 
           
 <div class="search-product-meta-row">
