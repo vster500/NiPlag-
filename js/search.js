@@ -162,6 +162,7 @@ ${Number(product.suggestedRetailPrice) > Number(product.wholesalePrice)
 }
                                             
 
+
 // SEARCH AND CATEGORY FILTER
 function filterProducts() {
   const params = new URLSearchParams(window.location.search);
@@ -170,7 +171,6 @@ function filterProducts() {
 
   let filtered = publishedProducts;
 
-  // FILTER BY EXACT CATEGORY
   if (category) {
     filtered = filtered.filter(product =>
       String(product.category || "").trim().toLowerCase() ===
@@ -178,6 +178,7 @@ function filterProducts() {
     );
 
     searchHeading.textContent = category;
+
   } else if (term) {
     searchHeading.textContent = `Search for: ${searchInput.value}`;
 
@@ -191,12 +192,14 @@ function filterProducts() {
 
       return searchableText.includes(term);
     });
+
   } else {
     searchHeading.textContent = "Wholesale products";
   }
 
   renderProducts(filtered);
-                       }
+}
+
 
 
 // ADD TO BUCKET
@@ -307,95 +310,3 @@ if (initialCategory) {
 
 loadProducts();
 
-/* NIPLAG SEARCH CARD VISUAL UPGRADE */
-
-/* Card appearance */
-#search-results-grid .search-product-card {
-  background: #ffffff;
-  border: 1px solid #dce3e8;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(20, 35, 50, 0.06);
-}
-
-/* Product image background */
-#search-results-grid .search-product-image,
-#search-results-grid .search-image-placeholder {
-  background: #edf2f6;
-  border-radius: 8px;
-}
-
-/* Wholesale price */
-#search-results-grid .home-product-price {
-  color: #13804a;
-  font-size: 17px;
-  font-weight: 800;
-}
-
-/* Location and MOQ on one line */
-#search-results-grid .search-product-meta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5px;
-  margin-top: 5px;
-}
-
-#search-results-grid .search-product-meta-row p {
-  font-size: 10px;
-  margin: 0;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-/* Profit panel */
-#search-results-grid .search-profit-preview {
-  background: #eef5f2;
-  border: 1px solid #d7e8df;
-  border-radius: 8px;
-  padding: 9px;
-  margin-top: 10px;
-}
-
-#search-results-grid .search-retail-label,
-#search-results-grid .search-retail-price {
-  font-size: 10px;
-  color: #66736c;
-  font-weight: 500;
-}
-
-#search-results-grid .search-profit-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: #263b32;
-}
-
-#search-results-grid .search-profit-value {
-  font-size: 16px;
-  font-weight: 800;
-  color: #13804a;
-}
-
-/* View details - black with white text */
-#search-results-grid .search-details-btn {
-  background: #17211d !important;
-  color: #ffffff !important;
-  border: 1px solid #17211d !important;
-  border-radius: 6px;
-  font-weight: 700;
-}
-
-#search-results-grid .search-details-btn:hover {
-  background: #30443a !important;
-  color: #ffffff !important;
-}
-
-/* Add to bucket - contrasting blue-grey */
-#search-results-grid .add-to-bucket {
-  background: #e9eff4;
-  color: #243746;
-  border: 1px solid #d4dfe7;
-  border-radius: 6px;
-  font-weight: 700;
-    }
-      
-  
