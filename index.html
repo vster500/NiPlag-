@@ -10,6 +10,31 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
+    
+/* COMPACT EXPLORE CATEGORY BUTTONS */
+.home-categories {
+  margin-bottom: 25px;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.category-btn {
+  display: inline-block;
+  background: #edf4ef;
+  color: #146c43;
+  border: 1px solid #d5e5da;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.3;
+    }
+  
     /* VIEW PRODUCT DETAILS BUTTON */
 #home-products .btn-outline {
   background: #17211d !important;
@@ -385,17 +410,22 @@
       </form>
     </section>
 
-    <!-- CATEGORIES -->
-    <section style="margin-bottom:30px;">
-      <h2 class="section-title">Explore categories</h2>
 
-      <div class="product-grid">
-        <a class="btn" href="categories.html">Electronics</a>
-        <a class="btn" href="categories.html">Electrical</a>
-        <a class="btn" href="categories.html">Farming</a>
-        <a class="btn" href="categories.html">Home & Living</a>
-      </div>
-    </section>
+<!-- CATEGORIES -->
+<section class="home-categories">
+  <h2 class="section-title">Explore categories</h2>
+
+  <div class="category-buttons">
+    <a class="category-btn" href="categories.html?category=Electronics">Electronics</a>
+    <a class="category-btn" href="categories.html?category=Electrical">Electrical</a>
+    <a class="category-btn" href="categories.html?category=Farming">Farming</a>
+    <a class="category-btn" href="categories.html?category=Home%20%26%20Living">Home & Living</a>
+    <a class="category-btn" href="categories.html?category=Building%20%26%20Construction">Building & Construction</a>
+    <a class="category-btn" href="categories.html?category=Fashion%20%26%20Accessories">Fashion & Accessories</a>
+    <a class="category-btn" href="categories.html?category=Others">Others</a>
+  </div>
+</section>
+    
 
     <!-- NIPLAG DEALS -->
     <section style="margin-bottom:30px;">
