@@ -257,17 +257,20 @@ async function loadProducts() {
   }
 }
 
+
 // INITIALIZE
 const params = new URLSearchParams(window.location.search);
 const initialQuery = params.get("q") || "";
+const initialCategory = params.get("category") || "";
 
 searchInput.value = initialQuery;
 
 searchInput.addEventListener("input", filterProducts);
 
-if (initialQuery) {
-  searchHeading.textContent = `Search for: ${initialQuery}`;
+if (initialCategory) {
+  searchHeading.textContent = initialCategory;
 }
 
 loadProducts();
+
   
