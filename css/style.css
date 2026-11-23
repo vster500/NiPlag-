@@ -2706,3 +2706,143 @@ footer a {
   grid-template-columns: 1fr auto;
   }
   
+/* NIPLAG PRODUCT PAGE VISUAL UPGRADE */
+
+/* Product information card */
+.product-detail-info {
+  background: #ffffff;
+  border: 1px solid #dce5e9;
+  border-radius: 14px;
+  padding: 17px;
+  box-shadow: 0 4px 14px rgba(20, 40, 50, 0.06);
+}
+
+/* Product image area */
+.product-detail-image {
+  background: linear-gradient(145deg, #dce7ed, #f0f4f6);
+  border: 1px solid #d2dfe6;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Wholesale and retail price panel */
+.product-price-panel {
+  background: linear-gradient(135deg, #102b24, #245342);
+  border: none;
+  border-radius: 12px;
+  padding: 13px 16px;
+  box-shadow: 0 4px 12px rgba(16, 43, 36, 0.13);
+}
+
+.product-price-panel .price-row {
+  color: #e1ebe5;
+  border-color: rgba(255,255,255,0.15);
+}
+
+.product-price-panel .price-row strong {
+  color: #ffffff;
+}
+
+.product-price-panel .price-row:first-child strong {
+  color: #c8f169;
+  font-size: 19px;
+}
+
+/* Product facts */
+.product-facts {
+  background: #edf3f6;
+  border: 1px solid #dce6ec;
+  border-radius: 11px;
+}
+
+/* Supplier verification */
+.product-verification {
+  background: #e4f1e9;
+  border-left: 4px solid #278052;
+  border-radius: 9px;
+}
+
+/* Profit estimator */
+.profit-estimator {
+  background: linear-gradient(145deg, #172b36, #263f4b);
+  border: none;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 5px 16px rgba(20, 40, 50, 0.12);
+}
+
+.profit-estimator,
+.profit-estimator h2,
+.profit-estimator label {
+  color: #ffffff;
+}
+
+.profit-estimator .muted {
+  color: #c4d1d8;
+}
+
+.profit-estimator .form-control {
+  background: #ffffff;
+  color: #17231e;
+  border: 1px solid #b9cbd4;
+  border-radius: 8px;
+}
+
+/* Profit results */
+.profit-estimator .profit-results {
+  background: #e8f2ed;
+  color: #172b23;
+  border-radius: 10px;
+  padding: 13px;
+  margin-top: 15px;
+}
+
+.profit-estimator .profit-results p {
+  color: #52665b;
+  font-size: 12px;
+}
+
+.profit-estimator .profit-results h2,
+.profit-estimator .profit-results h3 {
+  color: #17613d;
+}
+
+/* Buying information cards */
+.product-buying > .product-card {
+  background: #edf3f6;
+  border: 1px solid #dce6ec;
+  border-radius: 11px;
+}
+
+.product-buying > .product-card .product-info {
+  padding: 16px;
+}
+
+/* Buying action buttons */
+#unlock-button {
+  background: #172b36;
+  color: #ffffff;
+}
+
+#add-to-basket {
+  background: #e4edf2;
+  color: #243746;
+  border: 1px solid #cbd9e1;
+}
+
+#assisted-button {
+  background: #c8f169;
+  color: #102b24;
+}
+
+/* Section spacing */
+.product-buying {
+  margin-top: 30px;
+}
+
+.product-more {
+  background: #edf3f6;
+  border-radius: 12px;
+  padding: 17px;
+    }
+  
