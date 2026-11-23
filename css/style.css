@@ -2472,3 +2472,129 @@ footer a {
     grid-template-columns: 1fr 1fr;
   }
   }
+
+/* =================================
+   NIPLAG SEARCH PRODUCT CARDS
+================================= */
+
+#search-results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+#search-results-grid .search-product-card {
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#search-results-grid .product-info {
+  padding: 9px;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+#search-results-grid .search-product-image {
+  width: 100%;
+  height: 115px;
+  display: block;
+  object-fit: contain;
+  background: #f5f6f5;
+  border-radius: 6px;
+}
+
+#search-results-grid .search-image-placeholder {
+  height: 115px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6f5;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+#search-results-grid .product-open-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+#search-results-grid h3 {
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+
+#search-results-grid .search-product-category,
+#search-results-grid .search-product-meta {
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 4px 0;
+  overflow-wrap: anywhere;
+}
+
+#search-results-grid .home-product-price {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 7px 0;
+}
+
+#search-results-grid .home-verified {
+  align-self: flex-start;
+  font-size: 10px;
+  margin: 3px 0;
+}
+
+#search-results-grid .search-profit-preview {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5px;
+  padding: 8px;
+  margin-top: 8px;
+  background: #f1f7f2;
+  border-radius: 6px;
+  font-size: 10px;
+}
+
+#search-results-grid .search-profit-preview strong {
+  text-align: right;
+}
+
+#search-results-grid .search-profit-preview small {
+  grid-column: 1 / -1;
+  color: #666;
+  font-size: 9px;
+}
+
+#search-results-grid .btn {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 5px;
+  font-size: 10px;
+  line-height: 1.3;
+  text-align: center;
+  margin-top: 7px;
+}
+
+#search-results-grid .add-to-bucket {
+  margin-top: 6px;
+}
+
+/* VERY SMALL PHONES */
+@media (max-width: 340px) {
+  #search-results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #search-results-grid .search-product-image,
+  #search-results-grid .search-image-placeholder {
+    height: 160px;
+  }
+  }
+  
