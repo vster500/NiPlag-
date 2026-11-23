@@ -46,7 +46,8 @@ function safeImage(value) {
   return "";
 }
 
-// DISPLAY PRODUCTS
+
+ // DISPLAY PRODUCTS
 function renderProducts(products) {
   if (!products.length) {
     resultsContainer.innerHTML = `
@@ -68,47 +69,64 @@ function renderProducts(products) {
       `product.html?id=${encodeURIComponent(product.id)}`;
 
     return `
-      <article class="product-card">
+      <article class="product-card search-product-card">
+
         <div class="product-info">
 
           <a href="${detailsLink}" class="product-open-link">
+
             ${image ? `
               <img
-                class="home-product-image"
+                class="home-product-image search-product-image"
                 src="${escapeHTML(image)}"
                 alt="${escapeHTML(product.name)}"
                 loading="lazy">
             ` : `
-              <div class="notice">📦 Product image</div>
+              <div class="search-image-placeholder">
+                📦 Product image
+              </div>
             `}
 
             <h3>${escapeHTML(product.name || "Unnamed product")}</h3>
+
           </a>
 
           ${product.verified === true
             ? '<span class="home-verified">✓ VERIFIED</span>'
             : ""}
 
-          <p class="muted">
-            ${escapeHTML(product.category || "Other")}
-          </p>
-
-          <p class="muted">
-            ${escapeHTML(product.description || "")}
-          </p>
-
-          <p class="muted">
-            📍 Wholesaler:
-            ${escapeHTML(product.supplierLocation || "To be confirmed")}
+          <p class="search-product-category">
+            ${escapeHTML(product.category || "Others")}
           </p>
 
           <p class="home-product-price">
             ${money(product.wholesalePrice)}
           </p>
 
-          <p class="muted">
-            MOQ: ${escapeHTML(product.moq || 1)}
+          <p class="search-product-meta">
+            📍 ${escapeHTML(product.supplierLocation || "Location to be confirmed")}
           </p>
+
+          <p class="search-product-meta">
+            📦 MOQ: ${escapeHTML(product.moq || 1)}
+          </p>
+
+          ${Number(product.suggestedRetailPrice) > Number(product.wholesalePrice)
+            ? `
+              <div class="search-profit-preview">
+                <span>Suggested retail:</span>
+                <strong>${money(product.suggestedRetailPrice)}</strong>
+                <span>Potential gross margin:</span>
+                <strong>
+                  ${money(
+                    Number(product.suggestedRetailPrice) -
+                    Number(product.wholesalePrice)
+                  )}
+                </strong>
+                <small>Before transport and other expenses</small>
+              </div>
+            `
+            : ""}
 
           <a href="${detailsLink}" class="btn btn-outline">
             View product details
@@ -126,7 +144,7 @@ function renderProducts(products) {
     `;
   }).join("");
 }
-
+                                            
 
 // SEARCH AND CATEGORY FILTER
 function filterProducts() {
