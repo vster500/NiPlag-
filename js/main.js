@@ -475,7 +475,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const itemsContainer = document.getElementById("basket-items");
 
   if (itemsContainer) {
-    itemsContainer.addEventListener("click", handleBasketActions);
+  itemsContainer.addEventListener("click", handleBasketActions);
+
+  itemsContainer.addEventListener("input", function(event) {
+    const input = event.target.closest("input[data-selling-price]");
+    if (!input) return;
+
+    const id = input.dataset.sellingPrice;
+    const basket = getBasket();
+
+    const item = basket.find(
+      product => String(product.id) === String(id)
+    );
+
+    if (!item) return;
+
+    item.sellingPrice = Math.max(0, Number(input.value) || 0);
+
+    saveBasket(basket);
+    updateBasketCalculator();
+  });
   }
 
   const whatsappButton =
