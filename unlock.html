@@ -106,28 +106,40 @@
 
         </div>
 
-        <div id="free-panel" hidden>
+ 
+<div id="free-panel" hidden>
 
-          <span class="badge">FREE CONTACT</span>
+  <span class="badge">FREE CONTACT</span>
 
-          <h3>No unlock fee</h3>
+  <h3>Contact the supplier directly</h3>
 
-          <p>
-            Request this supplier's contact directly through
-            NiPlag WhatsApp. No payment is required.
-          </p>
+  <p>
+    No unlock fee. Contact the supplier directly using either option below.
+  </p>
 
-          <a
-            id="free-contact-button"
-            class="btn btn-accent"
-            href="#"
-            target="_blank"
-            rel="noopener"
-          >
-            Get free supplier contact
-          </a>
+  <a
+    id="free-contact-button"
+    class="btn btn-accent"
+    href="#"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp Supplier
+  </a>
 
-        </div>
+  <a
+    id="free-supplier-tiktok"
+    class="btn btn-outline"
+    href="#"
+    target="_blank"
+    rel="noopener"
+    hidden
+  >
+    View Supplier on TikTok
+  </a>
+
+</div>
+        
 
       </div>
     </section>
@@ -222,9 +234,15 @@ function displayProduct(product) {
 
     accessLabel.textContent = "FREE SUPPLIER CONTACT";
 
-    const supplierNumber = String(
-      product.freeSupplierWhatsApp || ""
-    ).replace(/\D/g, "");
+    const rawNumber = String(
+  product.freeSupplierWhatsApp || ""
+).replace(/\D/g, "");
+
+const supplierNumber = rawNumber.startsWith("0")
+  ? "254" + rawNumber.substring(1)
+  : rawNumber.startsWith("254")
+    ? rawNumber
+    : rawNumber;
 
     if (!/^\d{10,15}$/.test(supplierNumber)) {
       showError(
@@ -242,33 +260,22 @@ function displayProduct(product) {
     document.getElementById("free-contact-button").href =
       `https://wa.me/${supplierNumber}?text=${encodeURIComponent(message)}`;
 
-    const supplierTikTok = String(
-      product.freeSupplierTikTok || ""
-    ).trim().replace(/^@/, "");
+    
+const supplierTikTok = String(
+  product.freeSupplierTikTok || ""
+).trim().replace(/^@/, "");
 
-    let tiktokLink = document.getElementById("free-supplier-tiktok");
+const tiktokLink = document.getElementById("free-supplier-tiktok");
 
-    if (supplierTikTok) {
-      if (!tiktokLink) {
-        tiktokLink = document.createElement("a");
-        tiktokLink.id = "free-supplier-tiktok";
-        tiktokLink.className = "btn btn-outline";
-        tiktokLink.target = "_blank";
-        tiktokLink.rel = "noopener";
-        tiktokLink.textContent = "View supplier on TikTok";
+if (supplierTikTok) {
+  tiktokLink.href =
+    `https://www.tiktok.com/@${encodeURIComponent(supplierTikTok)}`;
 
-        document.getElementById("free-contact-button")
-          .insertAdjacentElement("afterend", tiktokLink);
-      }
-
-      tiktokLink.href =
-        `https://www.tiktok.com/@${encodeURIComponent(supplierTikTok)}`;
-
-      tiktokLink.hidden = false;
-
-    } else if (tiktokLink) {
-      tiktokLink.hidden = true;
+  tiktokLink.hidden = false;
+} else {
+  tiktokLink.hidden = true;
     }
+    
 
   } else if (
     product.contactAccess === "paid" &&
