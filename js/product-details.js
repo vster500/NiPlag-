@@ -231,11 +231,16 @@ function displayProduct(product) {
       document.getElementById("estimate-selling").value || 0
     );
 
-    window.NiPlagBasket.addProduct(
-      product,
-      quantity,
-      sellingPrice
-    );
+const saved = window.NiPlagBasket.addProduct(
+  product,
+  quantity,
+  sellingPrice
+);
+
+if (!saved) {
+  alert("Could not save this product to your Bucket. Please try again.");
+  return;
+}
 
     addButton.textContent = "✓ Added to bucket";
 
