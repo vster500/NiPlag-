@@ -496,7 +496,20 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBasketCalculator();
   });
   }
+const expensesInput = document.getElementById("basket-expenses");
 
+if (expensesInput) {
+  expensesInput.value =
+    localStorage.getItem(BUCKET_EXPENSE_KEY) || "0";
+
+  expensesInput.addEventListener("input", function() {
+    const expenses = Math.max(0, Number(expensesInput.value) || 0);
+
+    localStorage.setItem(BUCKET_EXPENSE_KEY, String(expenses));
+
+    updateBasketCalculator();
+  });
+     }
   const whatsappButton =
     document.getElementById("send-basket-whatsapp");
 
