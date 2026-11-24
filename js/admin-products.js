@@ -136,6 +136,7 @@ function updateFeeVisibility() {
 
   freeContactFields.hidden = !isFree;
 
+  supplierWhatsAppInput.required = isFree;
   supplierWhatsAppInput.disabled = !isFree;
   supplierTikTokInput.disabled = !isFree;
 }
