@@ -99,48 +99,70 @@
       </div>
     </section>
 
-    <!-- PROFIT ESTIMATOR -->
-    <section class="profit-estimator product-card">
-      <div class="product-info">
 
-        <span class="badge verified">BUSINESS TOOL</span>
-        <h2 class="section-title">Estimate your profit</h2>
+<!-- COMPACT BUSINESS TOOL -->
+<section class="profit-estimator product-card">
+  <div class="product-info">
 
-        <p class="muted">
-          Change the selling price and quantity to estimate
-          your potential gross profit.
-        </p>
+    <details>
+      <summary>
+        <strong>🧮 Business Tool – Calculate your profit</strong>
+        <p class="muted">Estimate your resale earnings after expenses.</p>
+      </summary>
 
-        <label for="estimate-cost">Wholesale cost per item (KES)</label>
+      <div class="profit-inputs">
+
+        <label for="estimate-cost">
+          Wholesale cost per item (KES)
+        </label>
         <input class="form-control" type="number"
-          id="estimate-cost" min="0" placeholder="Wholesale price" readonly>
+          id="estimate-cost" min="0"
+          placeholder="Wholesale price" readonly>
 
-        <label for="estimate-selling">Your expected selling price (KES)</label>
+        <label for="estimate-selling">
+          Your expected selling price (KES)
+        </label>
         <input class="form-control" type="number"
-          id="estimate-selling" min="0" placeholder="Enter selling price">
+          id="estimate-selling" min="0"
+          placeholder="Enter selling price">
 
-        <label for="estimate-quantity">Quantity you plan to buy</label>
+        <label for="estimate-quantity">
+          Quantity you plan to buy
+        </label>
         <input class="form-control" type="number"
           id="estimate-quantity" min="1" value="1">
 
-        <div class="profit-results">
-          <p>Estimated profit per item</p>
-          <h3 id="profit-per-item">Enter prices</h3>
-
-          <p>Total estimated gross profit</p>
-          <h2 id="profit-total">Enter prices</h2>
-
-          <p>Total wholesale cost</p>
-          <h3 id="wholesale-total">Enter price</h3>
-        </div>
-
-        <p class="muted">
-          Estimates exclude transport, delivery, taxes and other
-          business expenses. Actual profit may be lower.
-        </p>
+        <label for="estimate-expenses">
+          Other expenses – total (KES)
+        </label>
+        <input class="form-control" type="number"
+          id="estimate-expenses" min="0" value="0"
+          placeholder="Transport, packaging, delivery etc.">
 
       </div>
-    </section>
+
+      <div class="profit-results">
+
+        <p>Estimated profit per item before expenses</p>
+        <h3 id="profit-per-item">Enter prices</h3>
+
+        <p>Total wholesale cost</p>
+        <h3 id="wholesale-total">Enter price</h3>
+
+        <p>Estimated net profit after expenses</p>
+        <h2 id="profit-total">Enter prices</h2>
+
+      </div>
+
+      <p class="muted">
+        Estimates are for planning purposes. Actual earnings may vary.
+      </p>
+
+    </details>
+
+  </div>
+        </section>
+    
 
     <!-- THREE BUYING OPTIONS -->
     <section class="product-buying">
