@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Basket | NiPlag</title>
+
+  <title>My Bucket | NiPlag</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 
@@ -52,73 +53,52 @@
       margin-top: 0;
     }
 
-    .finance-grid {
+    .compact-finance {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 16px 0;
+      gap: 8px;
+      margin: 12px 0;
     }
 
-    .finance-card {
-      padding: 16px;
-      border-radius: 13px;
-      color: white;
+    .compact-finance > div {
+      background: #eaf2f8;
+      padding: 10px;
+      border-radius: 9px;
       min-width: 0;
     }
 
-    .finance-card p {
-      margin: 0 0 8px;
-      font-size: 13px;
+    .compact-finance span {
+      display: block;
+      font-size: 12px;
+      color: #526477;
     }
 
-    .finance-card h2 {
-      color: white;
-      font-size: 19px;
-      margin: 0;
+    .compact-finance strong {
+      display: block;
+      font-size: 15px;
+      margin-top: 4px;
+      color: #17466a;
       overflow-wrap: anywhere;
     }
 
-    .finance-blue {
-      background: #2463a6;
+    .compact-finance .net-result {
+      background: #dff4e6;
+      grid-column: span 2;
     }
 
-    .finance-purple {
-      background: #7350a5;
+    .compact-finance .net-result strong {
+      color: #13733b;
+      font-size: 19px;
     }
 
-    .finance-green {
-      background: #16834c;
-    }
-
-    .finance-orange {
-      background: #c87521;
-    }
-
-    .finance-red {
-      background: #b83d3d;
-    }
-
-    .expense-box {
-      background: #fff8ec;
-      border: 1px solid #f3d8a9;
-      padding: 16px;
-      border-radius: 13px;
-      margin-top: 16px;
-    }
-
-    .expense-box label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .expense-box input {
+    #basket-expenses {
       width: 100%;
-      padding: 13px;
-      border: 1px solid #dfc38f;
-      border-radius: 9px;
-      font-size: 16px;
+      padding: 10px;
+      margin-top: 7px;
+      border: 1px solid #ccd7df;
+      border-radius: 8px;
       box-sizing: border-box;
+      font-size: 15px;
     }
 
     .calculator-note {
@@ -149,6 +129,23 @@
       width: 100%;
     }
 
+    .order-btn {
+      background: #075c35;
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 9px;
+      width: 100%;
+      margin-bottom: 9px;
+    }
+
+    #share-basket {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
     .notice {
       background: #fff8e8;
       border-left: 4px solid #e6a32c;
@@ -158,199 +155,13 @@
     }
 
     @media (max-width: 360px) {
-      .finance-grid {
-        grid-template-columns: 1fr;
+      .compact-finance {
+        gap: 6px;
       }
-      
-.compact-finance {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin: 12px 0;
-}
 
-.compact-finance > div {
-  background: #eaf2f8;
-  padding: 10px;
-  border-radius: 9px;
-}
-
-.compact-finance span {
-  display: block;
-  font-size: 12px;
-  color: #526477;
-}
-
-.compact-finance strong {
-  display: block;
-  font-size: 15px;
-  margin-top: 4px;
-  color: #17466a;
-}
-
-.compact-finance .net-result {
-  background: #dff4e6;
-  grid-column: span 2;
-}
-
-.compact-finance .net-result strong {
-  color: #13733b;
-  font-size: 19px;
-}
-
-#basket-expenses {
-  width: 100%;
-  padding: 10px;
-  margin-top: 7px;
-  border: 1px solid #ccd7df;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 15px;
-  }
-      .order-btn {
-  background: #075c35;
-  color: #ffffff;
-  font-size: 17px;
-  font-weight: 800;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 9px;
-  width: 100%;
-  margin-bottom: 9px;
-}
-
-#share-basket {
-  font-size: 14px;
-  font-weight: 500;
-    }
-      
-/* Compact profit calculator — all screen sizes */
-.compact-finance {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin: 12px 0;
-}
-
-.compact-finance > div {
-  background: #eaf2f8;
-  padding: 10px;
-  border-radius: 9px;
-  min-width: 0;
-}
-
-.compact-finance span {
-  display: block;
-  font-size: 12px;
-  color: #526477;
-}
-
-.compact-finance strong {
-  display: block;
-  font-size: 15px;
-  margin-top: 4px;
-  color: #17466a;
-  overflow-wrap: anywhere;
-}
-
-.compact-finance .net-result {
-  background: #dff4e6;
-  grid-column: span 2;
-}
-
-.compact-finance .net-result strong {
-  color: #13733b;
-  font-size: 19px;
-}
-
-#basket-expenses {
-  width: 100%;
-  padding: 10px;
-  margin-top: 7px;
-  border: 1px solid #ccd7df;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 15px;
-}
-
-
-.order-btn {
-  background: #075c35;
-  color: #ffffff;
-  font-size: 17px;
-  font-weight: 800;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 9px;
-  width: 100%;
-  margin-bottom: 9px;
-}
-
-#share-basket {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* Compact calculator */
-.compact-finance {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin: 12px 0;
-}
-
-.compact-finance > div {
-  background: #eaf2f8;
-  padding: 10px;
-  border-radius: 9px;
-  min-width: 0;
-}
-
-.compact-finance span {
-  display: block;
-  font-size: 12px;
-  color: #526477;
-}
-
-.compact-finance strong {
-  display: block;
-  font-size: 15px;
-  margin-top: 4px;
-  color: #17466a;
-  overflow-wrap: anywhere;
-}
-
-.compact-finance .net-result {
-  background: #dff4e6;
-  grid-column: span 2;
-}
-
-.compact-finance .net-result strong {
-  color: #13733b;
-  font-size: 19px;
-}
-
-#basket-expenses {
-  width: 100%;
-  padding: 10px;
-  margin-top: 7px;
-  border: 1px solid #ccd7df;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 15px;
-}
-
-@media (max-width: 360px) {
-  .compact-finance {
-    gap: 6px;
-  }
-
-  .compact-finance > div {
-    padding: 8px;
-  }
-  }
-  
-            
+      .compact-finance > div {
+        padding: 8px;
+      }
     }
   </style>
 </head>
@@ -374,94 +185,95 @@
 
   <section class="basket-panel">
 
+    <div id="basket-empty" class="basket-empty">
+      <span>🛒</span>
+      <h2>Your Bucket is empty</h2>
+      <p class="muted">Explore products and add the ones you want to buy.</p>
+      <a href="index.html" class="btn btn-accent">Explore Products</a>
+    </div>
 
-  <div id="basket-empty" class="basket-empty">
-    <span>🛒</span>
-    <h2>Your Bucket is empty</h2>
-    <p class="muted">Explore products and add the ones you want to buy.</p>
-    <a href="index.html" class="btn btn-accent">Explore Products</a>
-  </div>
+    <div id="basket-items"></div>
 
-  <div id="basket-items"></div>
+    <div id="basket-summary" class="basket-total-panel">
 
-  <div id="basket-summary" class="basket-total-panel">
+      <h3>📊 Quick Profit Calculator</h3>
 
-    <h3>📊 Quick Profit Calculator</h3>
+      <div class="compact-finance">
 
-    <div class="compact-finance">
+        <div>
+          <span>Wholesale cost</span>
+          <strong id="basket-total">KES 0</strong>
+        </div>
 
-      <div>
-        <span>Wholesale cost</span>
-        <strong id="basket-total">KES 0</strong>
+        <div>
+          <span>Expected sales</span>
+          <strong id="basket-sales">KES 0</strong>
+        </div>
+
+        <div>
+          <span>Other expenses</span>
+          <strong id="basket-expenses-display">KES 0</strong>
+        </div>
+
+        <div class="net-result">
+          <span>Expected net profit</span>
+          <strong id="basket-net-profit">KES 0</strong>
+        </div>
+
       </div>
 
-      <div>
-        <span>Expected sales</span>
-        <strong id="basket-sales">KES 0</strong>
-      </div>
+      <label for="basket-expenses">
+        Other expenses (transport, packaging etc.)
+      </label>
 
-      <div>
-        <span>Other expenses</span>
-        <strong id="basket-expenses-display">KES 0</strong>
-      </div>
+      <input
+        type="number"
+        id="basket-expenses"
+        min="0"
+        step="1"
+        value="0"
+        placeholder="Enter expenses in KES"
+      >
 
-      <div class="net-result">
-        <span>Expected net profit</span>
-        <strong id="basket-net-profit">KES 0</strong>
-      </div>
+      <p>
+        Total product units: <strong id="basket-quantity">0</strong>
+      </p>
+
+      <small class="calculator-note">
+        Figures are estimates, not guaranteed earnings.
+      </small>
 
     </div>
 
-    <label for="basket-expenses">
-      Other expenses (transport, packaging etc.)
-    </label>
-
-    <input
-      type="number"
-      id="basket-expenses"
-      min="0"
-      step="1"
-      value="0"
-      placeholder="Enter expenses in KES"
-    >
-
-    <p>
-      Total product units: <strong id="basket-quantity">0</strong>
-    </p>
-
-    <small class="calculator-note">
-      Figures are estimates, not guaranteed earnings.
-    </small>
-
-  </div>
-
-</section>
-    
+  </section>
 
   <section class="basket-panel">
-    
 
-<button type="button" id="send-basket-whatsapp" class="btn order-btn">
-  Order Now 
-</button>
+    <button type="button" id="send-basket-whatsapp" class="btn order-btn">
+      Order Now
+    </button>
 
-<button type="button" id="share-basket" class="btn">
-  Share Bucket with Friends
-</button>
+    <button type="button" id="share-basket" class="btn">
+      Share Bucket with Friends
+    </button>
+
     <h2 class="section-title">👥 Share with friends</h2>
-    
+
     <p>
       Planning to buy together? Share this shopping list with friends
       so you can coordinate products and quantities.
     </p>
+
     <div class="notice">
       This is a shared shopping list, not a live group account.
       Friends can send you their requested products and quantities,
       which can then be added to the final order with NiPlag.
     </div>
+
   </section>
 
   <section class="basket-panel">
+
     <h2 class="section-title">🚚 Delivery and transport</h2>
 
     <p>
@@ -473,6 +285,7 @@
       Combining orders with other buyers may help reduce transport
       costs. Final charges will be confirmed before payment.
     </p>
+
   </section>
 
   <section class="notice">
@@ -498,5 +311,5 @@
 </nav>
 
 </body>
-      </html>
-            
+  </html>
+  
