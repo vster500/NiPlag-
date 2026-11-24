@@ -318,52 +318,11 @@ function renderBasket() {
     `;
   }).join("");
 
-  const expensesInput = document.getElementById("basket-expenses");
-  const expensesDisplay = document.getElementById("basket-expenses-display");
-
-  let expenses = Number(localStorage.getItem(BUCKET_EXPENSE_KEY) || 0);
-
-  if (expensesInput) {
-    expensesInput.value = expenses;
-  }
-
-  if (expensesDisplay) {
-    expensesDisplay.textContent = formatKES(expenses);
-  }
-
-  const quantityElement = document.getElementById("basket-quantity");
-  const totalElement = document.getElementById("basket-total");
-  const salesElement = document.getElementById("basket-sales");
-  const netProfitElement = document.getElementById("basket-net-profit");
-
-  if (quantityElement) {
-    quantityElement.textContent = totalQuantity;
-  }
-
-  if (totalElement) {
-    totalElement.textContent = allCostsKnown
-      ? formatKES(totalCost)
-      : formatKES(totalCost) + " + prices pending";
-  }
-
-  if (salesElement) {
-    salesElement.textContent = allSellingPricesKnown
-      ? formatKES(totalSales)
-      : "Enter selling prices";
-  }
-
-  if (netProfitElement) {
-    if (allCostsKnown && allSellingPricesKnown) {
-      const netProfit = totalSales - totalCost - expenses;
-      netProfitElement.textContent = formatKES(netProfit);
-      netProfitElement.style.color = netProfit < 0 ? "#b83d3d" : "#13733b";
-    } else {
-      netProfitElement.textContent = "Complete prices";
-    }
-  }
-
+    updateBasketCalculator();
   updateBasketCount();
-                                        }
+}
+
+ }
      
 
 /* ---------- BASKET BUTTON ACTIONS ---------- */
