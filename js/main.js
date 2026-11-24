@@ -7,6 +7,7 @@
 const NIPLAG_WHATSAPP = "254754058116";
 const BUCKET_KEY = "niplagShoppingBucketV1";
 const OLD_BASKET_KEY = "niplagBasket";
+const BUCKET_EXPENSE_KEY = "niplagBucketExpenses";
 
 /* ---------- GENERAL HELPERS ---------- */
 
@@ -150,6 +151,7 @@ function removeBasketItem(id) {
 
 /* ---------- BASKET DISPLAY ---------- */
 
+
 function renderBasket() {
   const itemsContainer = document.getElementById("basket-items");
   if (!itemsContainer) return;
@@ -168,9 +170,9 @@ function renderBasket() {
   }
 
   let totalCost = 0;
+  let totalSales = 0;
   let totalQuantity = 0;
-  let totalProfit = 0;
-  let allPricesKnown = true;
+  let allCostsKnown = true;
   let allSellingPricesKnown = true;
 
   itemsContainer.innerHTML = basket.map(item => {
@@ -178,19 +180,16 @@ function renderBasket() {
     const price = Number(item.price || 0);
     const sellingPrice = Number(item.sellingPrice || 0);
 
-    const hasPrice = price > 0;
-    const hasSelling = sellingPrice > 0;
-
     totalQuantity += quantity;
 
-    if (hasPrice) {
+    if (price > 0) {
       totalCost += price * quantity;
     } else {
-      allPricesKnown = false;
+      allCostsKnown = false;
     }
 
-    if (hasPrice && hasSelling) {
-      totalProfit += (sellingPrice - price) * quantity;
+    if (sellingPrice > 0) {
+      totalSales += sellingPrice * quantity;
     } else {
       allSellingPricesKnown = false;
     }
@@ -201,15 +200,28 @@ function renderBasket() {
           <h3>${escapeHTML(item.name)}</h3>
 
           <p>
-            Unit price:
-            ${hasPrice ? formatKES(price) : "To be confirmed"}
+            Wholesale price:
+            ${price > 0 ? formatKES(price) : "To be confirmed"}
           </p>
+
+          <label>
+            Your expected selling price (KES)
+            <input
+              type="number"
+              min="0"
+              step="1"
+              value="${sellingPrice || ""}"
+              placeholder="Enter selling price"
+              data-selling-price="${escapeHTML(item.id)}"
+              style="width:100%;padding:9px;margin:6px 0 10px;box-sizing:border-box;"
+            >
+          </label>
 
           <p>Quantity: ${quantity}</p>
 
           <p>
-            Item total:
-            ${hasPrice ? formatKES(price * quantity) : "Price pending"}
+            Wholesale total:
+            ${price > 0 ? formatKES(price * quantity) : "Price pending"}
           </p>
 
           <div class="quantity-controls">
@@ -235,28 +247,53 @@ function renderBasket() {
     `;
   }).join("");
 
+  const expensesInput = document.getElementById("basket-expenses");
+  const expensesDisplay = document.getElementById("basket-expenses-display");
+
+  let expenses = Number(localStorage.getItem(BUCKET_EXPENSE_KEY) || 0);
+
+  if (expensesInput) {
+    expensesInput.value = expenses;
+  }
+
+  if (expensesDisplay) {
+    expensesDisplay.textContent = formatKES(expenses);
+  }
+
   const quantityElement = document.getElementById("basket-quantity");
   const totalElement = document.getElementById("basket-total");
-  const profitElement = document.getElementById("basket-profit");
+  const salesElement = document.getElementById("basket-sales");
+  const netProfitElement = document.getElementById("basket-net-profit");
 
   if (quantityElement) {
     quantityElement.textContent = totalQuantity;
   }
 
   if (totalElement) {
-    totalElement.textContent = allPricesKnown
+    totalElement.textContent = allCostsKnown
       ? formatKES(totalCost)
       : formatKES(totalCost) + " + prices pending";
   }
 
-  if (profitElement) {
-    profitElement.textContent = allSellingPricesKnown
-      ? formatKES(totalProfit)
-      : "Some estimates pending";
+  if (salesElement) {
+    salesElement.textContent = allSellingPricesKnown
+      ? formatKES(totalSales)
+      : "Enter selling prices";
+  }
+
+  if (netProfitElement) {
+    if (allCostsKnown && allSellingPricesKnown) {
+      const netProfit = totalSales - totalCost - expenses;
+      netProfitElement.textContent = formatKES(netProfit);
+      netProfitElement.style.color = netProfit < 0 ? "#b83d3d" : "#13733b";
+    } else {
+      netProfitElement.textContent = "Complete prices";
+    }
   }
 
   updateBasketCount();
-}
+                                        }
+     
 
 /* ---------- BASKET BUTTON ACTIONS ---------- */
 
