@@ -123,17 +123,52 @@ function displayProduct(product) {
     caption.textContent = "No product image available";
   }
 
-  // PROFIT ESTIMATOR
+    // PROFIT ESTIMATOR
   const costInput = document.getElementById("estimate-cost");
   const sellingInput = document.getElementById("estimate-selling");
+  const quantityInput = document.getElementById("estimate-quantity");
+  const expensesInput = document.getElementById("estimate-expenses");
+
+  const profitPerItem = document.getElementById("profit-per-item");
+  const netProfitPerItem = document.getElementById("net-profit-per-item");
+  const wholesaleTotal = document.getElementById("wholesale-total");
+  const profitTotal = document.getElementById("profit-total");
 
   costInput.value = Number(product.wholesalePrice || 0);
 
   sellingInput.value =
     Number(product.suggestedRetailPrice || 0);
 
-  costInput.dispatchEvent(new Event("input", { bubbles: true }));
-  sellingInput.dispatchEvent(new Event("input", { bubbles: true }));
+  function calculateProfit() {
+    const cost = Number(costInput.value || 0);
+    const selling = Number(sellingInput.value || 0);
+    const quantity = Math.max(1, Number(quantityInput.value || 1));
+    const expenses = Math.max(0, Number(expensesInput.value || 0));
+
+    if (selling <= 0) {
+      profitPerItem.textContent = "Enter selling price";
+      netProfitPerItem.textContent = "Enter selling price";
+      wholesaleTotal.textContent = money(cost * quantity);
+      profitTotal.textContent = "Enter selling price";
+      return;
+    }
+
+    const grossPerItem = selling - cost;
+    const totalWholesale = cost * quantity;
+    const netProfit = (grossPerItem * quantity) - expenses;
+    const netPerItem = netProfit / quantity;
+
+    profitPerItem.textContent = money(grossPerItem);
+    netProfitPerItem.textContent = money(netPerItem);
+    wholesaleTotal.textContent = money(totalWholesale);
+    profitTotal.textContent = money(netProfit);
+  }
+
+  sellingInput.addEventListener("input", calculateProfit);
+  quantityInput.addEventListener("input", calculateProfit);
+  expensesInput.addEventListener("input", calculateProfit);
+
+  calculateProfit();
 
   // SUPPLIER CONTACT ACCESS
   const unlockButton = document.getElementById("unlock-button");
