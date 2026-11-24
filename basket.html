@@ -247,79 +247,70 @@
 
   <section class="basket-panel">
 
-    <div id="basket-empty" class="basket-empty">
-      <span>🛒</span>
-      <h2>Your Bucket is empty</h2>
-      <p class="muted">Explore products and add the ones you want to buy.</p>
-      <a href="index.html" class="btn btn-accent">Explore Products</a>
-    </div>
+<section class="basket-panel">
 
-    
-<div id="basket-summary" class="basket-total-panel">
-
-  <h3>📊 Quick Profit Calculator</h3>
-
-  <div class="compact-finance">
-    <div>
-      <span>Wholesale cost</span>
-      <strong id="basket-total">KES 0</strong>
-    </div>
-
-    <div>
-      <span>Expected sales</span>
-      <strong id="basket-sales">KES 0</strong>
-    </div>
-
-    <div>
-      <span>Other expenses</span>
-      <strong id="basket-expenses-display">KES 0</strong>
-    </div>
-
-    <div class="net-result">
-      <span>Expected net profit</span>
-      <strong id="basket-net-profit">KES 0</strong>
-    </div>
+  <div id="basket-empty" class="basket-empty">
+    <span>🛒</span>
+    <h2>Your Bucket is empty</h2>
+    <p class="muted">Explore products and add the ones you want to buy.</p>
+    <a href="index.html" class="btn btn-accent">Explore Products</a>
   </div>
 
-  <label for="basket-expenses">
-    Other expenses (transport, packaging etc.)
-  </label>
+  <div id="basket-items"></div>
 
-  <input
-    type="number"
-    id="basket-expenses"
-    min="0"
-    step="1"
-    value="0"
-    placeholder="Enter expenses in KES"
-  >
+  <div id="basket-summary" class="basket-total-panel">
 
-  <p id="basket-quantity">
-    0
-  </p>
+    <h3>📊 Quick Profit Calculator</h3>
 
-  <small>Total product units. Figures are estimates.</small>
+    <div class="compact-finance">
 
-</div>
-    
-
-      <div class="finance-card finance-green" style="margin-top:16px;">
-        <p>💰 EXPECTED NET PROFIT</p>
-        <h2 id="basket-net-profit">KES 0</h2>
+      <div>
+        <span>Wholesale cost</span>
+        <strong id="basket-total">KES 0</strong>
       </div>
 
-      <p>Total product units:
-        <strong id="basket-quantity">0</strong>
-      </p>
+      <div>
+        <span>Expected sales</span>
+        <strong id="basket-sales">KES 0</strong>
+      </div>
 
-      <p class="calculator-note">
-        These are estimates, not guaranteed earnings. Actual profit
-        depends on your final purchase price, selling price and expenses.
-      </p>
+      <div>
+        <span>Other expenses</span>
+        <strong id="basket-expenses-display">KES 0</strong>
+      </div>
+
+      <div class="net-result">
+        <span>Expected net profit</span>
+        <strong id="basket-net-profit">KES 0</strong>
+      </div>
 
     </div>
 
-  </section>
+    <label for="basket-expenses">
+      Other expenses (transport, packaging etc.)
+    </label>
+
+    <input
+      type="number"
+      id="basket-expenses"
+      min="0"
+      step="1"
+      value="0"
+      placeholder="Enter expenses in KES"
+    >
+
+    <p>
+      Total product units: <strong id="basket-quantity">0</strong>
+    </p>
+
+    <small class="calculator-note">
+      Figures are estimates, not guaranteed earnings.
+    </small>
+
+  </div>
+
+</section>
+    
 
   <section class="basket-panel">
     
