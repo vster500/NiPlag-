@@ -29,6 +29,9 @@ const removeImageButton = document.getElementById("remove-image");
 const accessSelect = document.getElementById("contact-access");
 const feeWrap = document.getElementById("unlock-fee-wrap");
 const feeInput = document.getElementById("unlock-fee");
+const freeContactFields = document.getElementById("free-contact-fields");
+const supplierWhatsAppInput = document.getElementById("supplier-whatsapp");
+const supplierTikTokInput = document.getElementById("supplier-tiktok");
 const productList = document.getElementById("admin-product-list");
 const formMessage = document.getElementById("form-message");
 const storageStatus = document.getElementById("storage-status");
@@ -70,6 +73,12 @@ function normalizeProduct(id, data) {
 featuredDeal: data.featuredDeal === true,
 access: data.contactAccess || "paid",
     fee: Number(data.unlockFee || 0),
+    supplierWhatsApp: data.contactAccess === "free"
+  ? data.freeSupplierWhatsApp || ""
+  : "",
+supplierTikTok: data.contactAccess === "free"
+  ? data.freeSupplierTikTok || ""
+  : "",
     status: data.status || "draft"
   };
 }
@@ -88,6 +97,12 @@ function firestoreProduct(product) {
 featuredDeal: product.featuredDeal,
 contactAccess: product.access,
     unlockFee: product.fee,
+    freeSupplierWhatsApp: product.access === "free"
+  ? product.supplierWhatsApp
+  : "",
+freeSupplierTikTok: product.access === "free"
+  ? product.supplierTikTok
+  : "",
     status: product.status,
     updatedAt: serverTimestamp()
   };
@@ -115,8 +130,14 @@ async function loadProducts() {
 
 function updateFeeVisibility() {
   const isFree = accessSelect.value === "free";
+
   feeWrap.style.display = isFree ? "none" : "block";
   feeInput.disabled = isFree;
+
+  freeContactFields.hidden = !isFree;
+
+  supplierWhatsAppInput.disabled = !isFree;
+  supplierTikTokInput.disabled = !isFree;
 }
 
 function validImagePath(value) {
@@ -249,6 +270,8 @@ function resetForm() {
 
   document.getElementById("minimum-quantity").value = 1;
   feeInput.value = 50;
+  supplierWhatsAppInput.value = "";
+supplierTikTokInput.value = "";
   document.getElementById("featured-deal").value = "no";
 
   document.getElementById("form-heading").textContent = "Add New Product";
@@ -282,6 +305,8 @@ function editProduct(id) {
 
   accessSelect.value = product.access;
   feeInput.value = product.fee;
+  supplierWhatsAppInput.value = product.supplierWhatsApp || "";
+supplierTikTokInput.value = product.supplierTikTok || "";
   document.getElementById("product-status").value = product.status;
 
   imageInput.value = currentImage;
@@ -336,7 +361,15 @@ form.addEventListener("submit", async function(event) {
     verified: document.getElementById("verified-status").value === "yes",
 featuredDeal: document.getElementById("featured-deal").value === "yes",
 access: accessSelect.value,
-    fee: accessSelect.value === "free" ? 0 : Number(feeInput.value),
+fee: accessSelect.value === "free" ? 0 : Number(feeInput.value),
+
+supplierWhatsApp: accessSelect.value === "free"
+  ? supplierWhatsAppInput.value.replace(/\D/g, "")
+  : "",
+
+supplierTikTok: accessSelect.value === "free"
+  ? supplierTikTokInput.value.trim().replace(/^@/, "")
+  : "",
     status
   };
 
@@ -356,6 +389,22 @@ access: accessSelect.value,
   ) {
     formMessage.textContent = "Please check all required fields.";
     return;
+  }
+  if (product.access === "free") {
+  if (!/^\d{10,15}$/.test(product.supplierWhatsApp)) {
+    formMessage.textContent =
+      "Enter a valid supplier WhatsApp number with country code, e.g. 2547XXXXXXXX.";
+    return;
+  }
+
+  if (
+    product.supplierTikTok &&
+    !/^[a-zA-Z0-9._]{2,24}$/.test(product.supplierTikTok)
+  ) {
+    formMessage.textContent =
+      "Enter a valid TikTok username without the @ symbol.";
+    return;
+  }
   }
 
   if (product.image && !validImagePath(product.image)) {
