@@ -7,7 +7,164 @@
   <title>My Basket | NiPlag</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
+
+  <style>
+    .basket-hero {
+      background: linear-gradient(135deg, #102c45, #176b87);
+      color: white;
+      padding: 28px 20px;
+      border-radius: 18px;
+      margin: 20px 0;
+    }
+
+    .basket-hero .muted {
+      color: #c9e9f4;
+    }
+
+    .basket-hero h1 {
+      font-size: 30px;
+      margin: 8px 0;
+    }
+
+    .basket-panel {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      margin: 18px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border: 1px solid #e8edf1;
+    }
+
+    .basket-panel h2,
+    .basket-panel h3 {
+      color: #173b55;
+    }
+
+    .basket-total-panel {
+      background: #f1f6fb;
+      border: 1px solid #dce8f2;
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 20px;
+    }
+
+    .basket-total-panel h3 {
+      margin-top: 0;
+    }
+
+    .finance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .finance-card {
+      padding: 16px;
+      border-radius: 13px;
+      color: white;
+      min-width: 0;
+    }
+
+    .finance-card p {
+      margin: 0 0 8px;
+      font-size: 13px;
+    }
+
+    .finance-card h2 {
+      color: white;
+      font-size: 19px;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .finance-blue {
+      background: #2463a6;
+    }
+
+    .finance-purple {
+      background: #7350a5;
+    }
+
+    .finance-green {
+      background: #16834c;
+    }
+
+    .finance-orange {
+      background: #c87521;
+    }
+
+    .finance-red {
+      background: #b83d3d;
+    }
+
+    .expense-box {
+      background: #fff8ec;
+      border: 1px solid #f3d8a9;
+      padding: 16px;
+      border-radius: 13px;
+      margin-top: 16px;
+    }
+
+    .expense-box label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .expense-box input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #dfc38f;
+      border-radius: 9px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .calculator-note {
+      font-size: 13px;
+      color: #657383;
+      line-height: 1.5;
+    }
+
+    .basket-empty {
+      text-align: center;
+      padding: 28px 10px;
+    }
+
+    .basket-empty span {
+      font-size: 42px;
+    }
+
+    .basket-empty h2 {
+      color: #173b55;
+    }
+
+    .basket-actions {
+      margin: 24px 0 100px;
+    }
+
+    .basket-panel .btn {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .notice {
+      background: #fff8e8;
+      border-left: 4px solid #e6a32c;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    @media (max-width: 360px) {
+      .finance-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header class="site-header">
@@ -20,16 +177,16 @@
 <main class="container">
 
   <section class="basket-hero">
-    <p class="muted">YOUR SHOPPING LIST</p>
-    <h1>My Basket</h1>
-    <p>Collect products from different wholesalers in one place.</p>
+    <p class="muted">YOUR SHOPPING & BUSINESS PLANNER</p>
+    <h1>My Bucket 🛒</h1>
+    <p>Collect products, estimate your investment and plan your profit.</p>
   </section>
 
   <section class="basket-panel">
 
     <div id="basket-empty" class="basket-empty">
       <span>🛒</span>
-      <h2>Your basket is empty</h2>
+      <h2>Your Bucket is empty</h2>
       <p class="muted">Explore products and add the ones you want to buy.</p>
       <a href="index.html" class="btn btn-accent">Explore Products</a>
     </div>
@@ -37,32 +194,81 @@
     <div id="basket-items"></div>
 
     <div id="basket-summary" class="basket-total-panel">
-      <h3>Order Summary</h3>
+
+      <h3>📊 Your Business Calculator</h3>
+      <p class="calculator-note">
+        Adjust your expected selling prices and expenses to estimate
+        how much you could make from this shopping plan.
+      </p>
+
+      <div class="finance-grid">
+
+        <div class="finance-card finance-blue">
+          <p>Wholesale investment</p>
+          <h2 id="basket-total">KES 0</h2>
+        </div>
+
+        <div class="finance-card finance-purple">
+          <p>Expected sales</p>
+          <h2 id="basket-sales">KES 0</h2>
+        </div>
+
+        <div class="finance-card finance-orange">
+          <p>Other expenses</p>
+          <h2 id="basket-expenses-display">KES 0</h2>
+        </div>
+
+        <div class="finance-card finance-green">
+          <p>Expected gross profit</p>
+          <h2 id="basket-profit">KES 0</h2>
+        </div>
+
+      </div>
+
+      <div class="expense-box">
+        <label for="basket-expenses">
+          🚚 Additional expenses (KES)
+        </label>
+
+        <input
+          type="number"
+          id="basket-expenses"
+          min="0"
+          step="1"
+          value="0"
+          placeholder="Enter transport, packaging and other costs"
+        >
+
+        <p class="calculator-note">
+          Include transport, packaging, delivery and any other
+          business expenses. These will be deducted from your gross profit.
+        </p>
+      </div>
+
+      <div class="finance-card finance-green" style="margin-top:16px;">
+        <p>💰 EXPECTED NET PROFIT</p>
+        <h2 id="basket-net-profit">KES 0</h2>
+      </div>
 
       <p>Total product units:
         <strong id="basket-quantity">0</strong>
       </p>
 
-      <p>Estimated product cost:</p>
-      <h2 id="basket-total">KES 0</h2>
-
-      <p>Estimated gross profit:</p>
-      <h2 id="basket-profit">KES 0</h2>
-
-      <p class="muted">
-        Profit is an estimate based on the suggested selling prices.
-        It excludes transport, delivery and other expenses.
+      <p class="calculator-note">
+        These are estimates, not guaranteed earnings. Actual profit
+        depends on your final purchase price, selling price and expenses.
       </p>
+
     </div>
 
   </section>
 
   <section class="basket-panel">
-    <h2 class="section-title">Share with friends</h2>
+    <h2 class="section-title">👥 Share with friends</h2>
 
     <p>
-      Planning to buy together? Share this shopping list with up to
-      two friends so you can coordinate products and quantities.
+      Planning to buy together? Share this shopping list with friends
+      so you can coordinate products and quantities.
     </p>
 
     <div class="notice">
@@ -72,20 +278,20 @@
     </div>
 
     <button type="button" id="share-basket" class="btn btn-accent">
-      Share Basket with Friends
+      Share Bucket with Friends
     </button>
 
     <button type="button" id="send-basket-whatsapp" class="btn">
-      Send Basket to NiPlag on WhatsApp
+      Send Bucket to NiPlag on WhatsApp
     </button>
   </section>
 
   <section class="basket-panel">
-    <h2 class="section-title">Delivery and transport</h2>
+    <h2 class="section-title">🚚 Delivery and transport</h2>
 
     <p>
-      A small delivery or transport charge may apply depending on
-      your location, order size and delivery arrangements.
+      A delivery or transport charge may apply depending on your
+      location, order size and delivery arrangements.
     </p>
 
     <p>
@@ -95,7 +301,7 @@
   </section>
 
   <section class="notice">
-    <strong>Important:</strong> Adding products to your basket does
+    <strong>Important:</strong> Adding products to your Bucket does
     not place an order or reserve stock. NiPlag will confirm stock,
     prices, quantities, service fees and delivery charges before
     you make payment.
@@ -103,7 +309,7 @@
 
   <div class="basket-actions">
     <a href="index.html" class="btn btn-outline">
-      Continue Shopping
+      ← Continue Shopping
     </a>
   </div>
 
@@ -113,9 +319,9 @@
   <a href="index.html">Home</a>
   <a href="search.html">Search</a>
   <a href="categories.html">Categories</a>
-  <a href="basket.html">Basket</a>
+  <a href="basket.html">Bucket</a>
 </nav>
 
 </body>
-  </html>
-  
+      </html>
+            
