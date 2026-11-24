@@ -275,7 +275,7 @@ bucketItems.addEventListener("click", function(event) {
 
 // OPEN AND CLOSE BUCKET
 bucketButton.addEventListener("click", function() {
-  bucketPanel.hidden = !bucketPanel.hidden;
+  window.location.href = "basket.html";
 });
 
 bucketClose.addEventListener("click", function() {
