@@ -153,7 +153,60 @@
       border-radius: 8px;
       margin: 16px 0;
     }
+/* Bucket product layout */
+.basket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e8edf1;
+}
 
+.basket-item > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.basket-item h3 {
+  margin-top: 0;
+  overflow-wrap: anywhere;
+}
+
+.basket-item p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.basket-item > button {
+  flex-shrink: 0;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  min-width: 36px;
+  min-height: 36px;
+  border: 1px solid #ccd7df;
+  border-radius: 7px;
+  background: #f1f6fb;
+  font-size: 18px;
+}
+
+@media (max-width: 420px) {
+  .basket-item {
+    flex-direction: column;
+  }
+
+  .basket-item > button {
+    width: 100%;
+  }
+      }
     @media (max-width: 360px) {
       .compact-finance {
         gap: 6px;
