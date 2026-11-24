@@ -151,7 +151,78 @@ function removeBasketItem(id) {
 
 /* ---------- BASKET DISPLAY ---------- */
 
+function updateBasketCalculator() {
+  const basket = getBasket();
 
+  let totalCost = 0;
+  let totalSales = 0;
+  let totalQuantity = 0;
+
+  let allCostsKnown = true;
+  let allSellingPricesKnown = true;
+
+  basket.forEach(item => {
+    const quantity = Number(item.quantity || 1);
+    const price = Number(item.price || 0);
+    const sellingPrice = Number(item.sellingPrice || 0);
+
+    totalQuantity += quantity;
+
+    if (price > 0) {
+      totalCost += price * quantity;
+    } else {
+      allCostsKnown = false;
+    }
+
+    if (sellingPrice > 0) {
+      totalSales += sellingPrice * quantity;
+    } else {
+      allSellingPricesKnown = false;
+    }
+  });
+
+  const expenses = Math.max(
+    0,
+    Number(localStorage.getItem(BUCKET_EXPENSE_KEY) || 0)
+  );
+
+  const quantityElement = document.getElementById("basket-quantity");
+  const totalElement = document.getElementById("basket-total");
+  const salesElement = document.getElementById("basket-sales");
+  const expensesElement = document.getElementById("basket-expenses-display");
+  const profitElement = document.getElementById("basket-net-profit");
+
+  if (quantityElement) {
+    quantityElement.textContent = totalQuantity;
+  }
+
+  if (totalElement) {
+    totalElement.textContent = allCostsKnown
+      ? formatKES(totalCost)
+      : formatKES(totalCost) + " + prices pending";
+  }
+
+  if (salesElement) {
+    salesElement.textContent = allSellingPricesKnown
+      ? formatKES(totalSales)
+      : "Enter selling prices";
+  }
+
+  if (expensesElement) {
+    expensesElement.textContent = formatKES(expenses);
+  }
+
+  if (profitElement) {
+    if (allCostsKnown && allSellingPricesKnown) {
+      const profit = totalSales - totalCost - expenses;
+
+      profitElement.textContent = formatKES(profit);
+      profitElement.style.color = profit < 0 ? "#b83d3d" : "#13733b";
+    } else {
+      profitElement.textContent = "Complete prices";
+    }
+  }
+}
 function renderBasket() {
   const itemsContainer = document.getElementById("basket-items");
   if (!itemsContainer) return;
