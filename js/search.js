@@ -175,17 +175,16 @@ function filterProducts() {
 
   let filtered = publishedProducts;
 
+  // Apply category filter
   if (category) {
     filtered = filtered.filter(product =>
       String(product.category || "").trim().toLowerCase() ===
       category.trim().toLowerCase()
     );
+  }
 
-    searchHeading.textContent = category;
-
-  } else if (term) {
-    searchHeading.textContent = `Search for: ${searchInput.value}`;
-
+  // Apply keyword search as well
+  if (term) {
     filtered = filtered.filter(product => {
       const searchableText = [
         product.name,
@@ -196,7 +195,14 @@ function filterProducts() {
 
       return searchableText.includes(term);
     });
+  }
 
+  if (category && term) {
+    searchHeading.textContent = `${category}: ${searchInput.value}`;
+  } else if (category) {
+    searchHeading.textContent = category;
+  } else if (term) {
+    searchHeading.textContent = `Search for: ${searchInput.value}`;
   } else {
     searchHeading.textContent = "Wholesale products";
   }
