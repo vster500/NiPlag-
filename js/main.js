@@ -322,7 +322,6 @@ function renderBasket() {
   updateBasketCount();
 }
 
- }
      
 
 /* ---------- BASKET BUTTON ACTIONS ---------- */
