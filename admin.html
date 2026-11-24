@@ -19,8 +19,9 @@
 
   <div class="admin-warning">
     <strong>Administrator access protected.</strong>
-    Product listings are managed through Firebase. Supplier contact
-    information must remain in the protected supplier contacts collection.
+    Product listings are managed through Firebase. Paid supplier contacts
+remain protected. Only supplier contacts approved for Free listings
+are displayed publicly.
   </div>
 
   <section class="admin-welcome">
@@ -89,34 +90,58 @@
           placeholder="Describe the actual product, its features and condition..."
           required></textarea>
 
-        <div class="admin-setting">
-          <h3>Product image *</h3>
-          <p class="muted">
-            First upload the product image to your GitHub repository
-            inside images/products/. Then enter its image path below.
-            Example: images/products/led-bulb.jpg
-          </p>
+        
+<div class="admin-setting">
+  <h3>Supplier contact access</h3>
+  <p class="muted">
+    Choose how buyers will access the supplier contact.
+  </p>
 
-          <label for="product-image-file">Product image path</label>
-          <input class="form-control" id="product-image-file"
-            type="text"
-            placeholder="images/products/led-bulb.jpg">
+  <label for="contact-access">Contact access type *</label>
+  <select class="form-control" id="contact-access" required>
+    <option value="paid">Locked — Paid unlock</option>
+    <option value="free">Free — No payment required</option>
+  </select>
 
-          <div class="admin-image-preview" id="image-preview-box">
-            <img id="product-image-preview"
-              alt="Product image preview" hidden>
-            <p id="image-preview-message">
-              No product image selected yet.
-            </p>
-          </div>
+  <div id="unlock-fee-wrap">
+    <label for="unlock-fee">Unlock fee (KES)</label>
+    <input class="form-control" id="unlock-fee"
+      type="number" min="0" step="1" value="50">
+    <small class="muted">
+      Set your fee per product. You can enter KES 0.
+    </small>
+  </div>
 
-          <button type="button" class="btn btn-outline"
-            id="remove-image" hidden>Remove image</button>
+  <div id="free-contact-fields" hidden>
+    <h3>Public supplier details</h3>
+    <p class="muted">
+      These details will appear publicly on this product page
+      when Free contact is selected.
+    </p>
 
-          <p class="muted" id="image-status" aria-live="polite">
-            An image is required before publishing.
-          </p>
-        </div>
+    <label for="supplier-whatsapp">Supplier WhatsApp number *</label>
+    <input class="form-control" id="supplier-whatsapp"
+      type="tel" maxlength="15"
+      placeholder="2547XXXXXXXX">
+
+    <label for="supplier-tiktok">Supplier TikTok username</label>
+    <input class="form-control" id="supplier-tiktok"
+      type="text" maxlength="50"
+      placeholder="@suppliername">
+
+    <small class="muted">
+      Obtain the supplier's permission before publishing
+      their contact details.
+    </small>
+  </div>
+
+  <div class="admin-private-note">
+    Paid supplier contact details must remain in the protected
+    Firebase supplierContacts collection. Only contacts
+    approved for Free listings will be publicly displayed.
+  </div>
+</div>
+        
 
         <div class="admin-form-grid">
           <div>
