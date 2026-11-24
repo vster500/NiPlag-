@@ -216,19 +216,59 @@ function displayProduct(product) {
 
   if (product.contactAccess === "free") {
 
-    // FREE CONTACT: Never display an unlock fee.
+    // FREE CONTACT: Connect directly to the approved supplier.
     paidPanel.hidden = true;
     freePanel.hidden = false;
 
     accessLabel.textContent = "FREE SUPPLIER CONTACT";
 
+    const supplierNumber = String(
+      product.freeSupplierWhatsApp || ""
+    ).replace(/\D/g, "");
+
+    if (!/^\d{10,15}$/.test(supplierNumber)) {
+      showError(
+        "The supplier's free WhatsApp contact is missing or invalid. Please contact NiPlag."
+      );
+      return;
+    }
+
     const message =
-      "Hello NiPlag, I would like to request the free supplier contact.\n\n" +
+      "Hello, I found your product on NiPlag.\n\n" +
       `Product: ${product.name || "Product"}\n` +
-      `Product reference: ${product.id}`;
+      `Product reference: ${product.id}\n\n` +
+      "Is this product available? Please share your best wholesale price.";
 
     document.getElementById("free-contact-button").href =
-      `https://wa.me/${NIPLAG_WHATSAPP}?text=${encodeURIComponent(message)}`;
+      `https://wa.me/${supplierNumber}?text=${encodeURIComponent(message)}`;
+
+    const supplierTikTok = String(
+      product.freeSupplierTikTok || ""
+    ).trim().replace(/^@/, "");
+
+    let tiktokLink = document.getElementById("free-supplier-tiktok");
+
+    if (supplierTikTok) {
+      if (!tiktokLink) {
+        tiktokLink = document.createElement("a");
+        tiktokLink.id = "free-supplier-tiktok";
+        tiktokLink.className = "btn btn-outline";
+        tiktokLink.target = "_blank";
+        tiktokLink.rel = "noopener";
+        tiktokLink.textContent = "View supplier on TikTok";
+
+        document.getElementById("free-contact-button")
+          .insertAdjacentElement("afterend", tiktokLink);
+      }
+
+      tiktokLink.href =
+        `https://www.tiktok.com/@${encodeURIComponent(supplierTikTok)}`;
+
+      tiktokLink.hidden = false;
+
+    } else if (tiktokLink) {
+      tiktokLink.hidden = true;
+    }
 
   } else if (
     product.contactAccess === "paid" &&
