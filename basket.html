@@ -273,6 +273,73 @@
   font-size: 15px;
 }
 
+
+.order-btn {
+  background: #075c35;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 800;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 9px;
+  width: 100%;
+  margin-bottom: 9px;
+}
+
+#share-basket {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Compact calculator */
+.compact-finance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.compact-finance > div {
+  background: #eaf2f8;
+  padding: 10px;
+  border-radius: 9px;
+  min-width: 0;
+}
+
+.compact-finance span {
+  display: block;
+  font-size: 12px;
+  color: #526477;
+}
+
+.compact-finance strong {
+  display: block;
+  font-size: 15px;
+  margin-top: 4px;
+  color: #17466a;
+  overflow-wrap: anywhere;
+}
+
+.compact-finance .net-result {
+  background: #dff4e6;
+  grid-column: span 2;
+}
+
+.compact-finance .net-result strong {
+  color: #13733b;
+  font-size: 19px;
+}
+
+#basket-expenses {
+  width: 100%;
+  padding: 10px;
+  margin-top: 7px;
+  border: 1px solid #ccd7df;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
 @media (max-width: 360px) {
   .compact-finance {
     gap: 6px;
@@ -281,8 +348,8 @@
   .compact-finance > div {
     padding: 8px;
   }
-}
-      
+  }
+  
             
     }
   </style>
@@ -307,7 +374,6 @@
 
   <section class="basket-panel">
 
-<section class="basket-panel">
 
   <div id="basket-empty" class="basket-empty">
     <span>🛒</span>
