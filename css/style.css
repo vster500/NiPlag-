@@ -3112,32 +3112,33 @@ main > a.btn[href*="wa.me/254754058116"] {
     font-size: 27px;
   }
   }
-  /* Main assisted buying button */
-.order-now-btn {
-  background: #075c35;
-  color: #ffffff;
-  border: none;
+
+  /* NiPlag main Order Now button */
+.product-buying .buying-actions a.order-now-btn {
+  background-color: #075c35 !important;
+  color: #ffffff !important;
+  border: 1px solid #075c35 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  padding: 15px 20px;
-  font-size: 19px;
+  gap: 4px;
+  padding: 16px 20px;
+  font-size: 20px;
   font-weight: 800;
   border-radius: 10px;
   text-decoration: none;
 }
 
-.order-now-btn small {
+.product-buying .buying-actions a.order-now-btn small {
+  color: #e0f2e7 !important;
   font-size: 12px;
   font-weight: 400;
-  color: #e0f2e7;
 }
 
-.order-now-btn:hover {
-  background: #064629;
-  color: #ffffff;
-}
+.product-buying .buying-actions a.order-now-btn:hover {
+  background-color: #064629 !important;
+  color: #ffffff !important;
+  }
 
 
