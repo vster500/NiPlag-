@@ -3113,31 +3113,5 @@ main > a.btn[href*="wa.me/254754058116"] {
   }
   }
   
-/* Main assisted buying button */
-.order-now-btn {
-  background: #075c35;
-  color: #ffffff;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  padding: 15px 20px;
-  font-size: 19px;
-  font-weight: 800;
-  border-radius: 10px;
-  text-decoration: none;
-}
 
-.order-now-btn small {
-  font-size: 12px;
-  font-weight: 400;
-  color: #e0f2e7;
-}
-
-.order-now-btn:hover {
-  background: #064629;
-  color: #ffffff;
-  }
 
